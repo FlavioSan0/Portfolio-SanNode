@@ -38,7 +38,7 @@ export default function About() {
 
         <div className="space-y-5 text-base leading-8 text-[#A9BDD3]">
           <p>
-            Sou Flávio Santos, militar, estudante de programação e design, e
+            Sou Flávio Santos, estudante de programação e design, e
             criador da SanNode. Minha atuação une visão visual, organização e
             tecnologia para criar soluções digitais funcionais.
           </p>
