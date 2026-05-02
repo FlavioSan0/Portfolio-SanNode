@@ -491,39 +491,50 @@ export default function EstoqueProjectPage() {
       </section>
 
       <section className="container-site py-20">
-        <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,#0B2A5B,#123B6D)] p-8 md:p-12">
-          <div className="grid gap-8 md:grid-cols-[1fr_0.65fr] md:items-center">
-            <div>
-              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-[#00D9FF]">
-                <ShieldCheck className="h-6 w-6" />
-              </div>
+  <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#123B6D] p-8 md:p-12">
+    <div className="absolute inset-0 bg-[linear-gradient(135deg,#0B2A5B,#123B6D)]" />
 
-              <p className="text-sm font-semibold uppercase tracking-[0.32em] text-[#B9F5FF]">
-                Projeto privado
-              </p>
+    <div className="relative z-10 grid gap-8 md:grid-cols-[1fr_0.65fr] md:items-center">
+      <div>
+        <p className="text-sm font-semibold uppercase tracking-[0.32em] text-[#B9F5FF]">
+          Próximo passo
+        </p>
 
-              <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">
-                Um sistema real, apresentado como case.
-              </h2>
+        <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">
+          Precisa transformar sua operação em um sistema?
+        </h2>
 
-              <p className="mt-5 max-w-2xl text-base leading-8 text-white/70">
-                Por exigir autenticação, o valor do projeto é mostrado por meio
-                das telas, fluxos e funcionalidades desenvolvidas.
-              </p>
-            </div>
+        <p className="mt-5 max-w-2xl text-base leading-8 text-white/75">
+          Posso ajudar a estruturar um sistema web para controle, gestão,
+          cadastro, relatórios e automação de processos, criando uma solução
+          adaptada à rotina real do seu negócio.
+        </p>
+      </div>
 
-            <a
-              href="https://controle-de-estoque-mecanica.vercel.app"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-4 font-semibold text-[#0B2A5B] transition hover:bg-[#E6FAFF]"
-            >
-              Acessar sistema privado
-              <ExternalLink className="ml-2 h-5 w-5" />
-            </a>
-          </div>
-        </div>
-      </section>
+      <div className="grid gap-3">
+        <a
+          href="https://wa.me/5584988479869"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center justify-center rounded-2xl border border-white/30 bg-white px-6 py-4 text-base font-bold text-[#0B2A5B] shadow-[0_14px_35px_rgba(0,0,0,0.22)] transition hover:bg-[#E6FAFF] hover:text-[#061B42]"
+        >
+          Falar no WhatsApp
+          <ArrowUpRight className="ml-2 h-5 w-5 text-[#0B2A5B]" />
+        </a>
+
+        <a
+          href="https://controle-de-estoque-mecanica.vercel.app"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center justify-center rounded-2xl border border-white/40 bg-white/10 px-6 py-4 text-base font-semibold text-white transition hover:border-white/70 hover:bg-white/15"
+        >
+          Acessar sistema privado
+          <ExternalLink className="ml-2 h-5 w-5 text-white" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
     </main>
   );
 }
