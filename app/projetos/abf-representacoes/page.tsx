@@ -68,19 +68,19 @@ const instagramAssets = [
     title: "Marca representada",
     description:
       "Modelo visual criado para apresentar marcas representadas pela ABF de forma padronizada no Instagram.",
-    image: "/projetos/abf/marca-gama.png",
+    image: "/projetos/ABF/marca-gama.png",
   },
   {
     title: "Capa de destaque",
     description:
       "Capa desenvolvida para organizar os destaques do Instagram da ABF por marca representada.",
-    image: "/projetos/abf/marca-alyne-azul.png",
+    image: "/projetos/ABF/marca-alyne-azul.png",
   },
   {
     title: "Variação visual",
     description:
       "Versão alternativa para aplicação da marca representada, mantendo a identidade da ABF como moldura visual.",
-    image: "/projetos/abf/marca-alyne-branco.png",
+    image: "/projetos/ABF/marca-alyne-branco.png",
   },
 ];
 
@@ -154,7 +154,7 @@ export default function AbfProjectPage() {
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-4 shadow-[0_25px_80px_rgba(0,0,0,0.45)]">
             <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#0F1115]">
               <Image
-                src="/projetos/abf/logo-principal.png"
+                src="/projetos/ABF/logo-principal.png"
                 alt="Logo principal ABF Representações"
                 width={1400}
                 height={1000}
@@ -208,7 +208,7 @@ export default function AbfProjectPage() {
 
           <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#0F1115]">
             <Image
-              src="/projetos/abf/conceito.png"
+              src="/projetos/ABF/conceito.png"
               alt="Conceito da marca ABF Representações"
               width={1400}
               height={1000}
@@ -239,7 +239,7 @@ export default function AbfProjectPage() {
 
         <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#0F1115]">
           <Image
-            src="/projetos/abf/linhas-conceito.png"
+            src="/projetos/ABF/linhas-conceito.png"
             alt="Linhas conceituais da marca ABF"
             width={1400}
             height={1000}
@@ -252,7 +252,7 @@ export default function AbfProjectPage() {
         <div className="container-site grid gap-10 py-20 md:grid-cols-[1.1fr_0.9fr] md:items-center">
           <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#0F1115]">
             <Image
-              src="/projetos/abf/construcao-logo.png"
+              src="/projetos/ABF/construcao-logo.png"
               alt="Construção da logo ABF Representações"
               width={1400}
               height={1000}
@@ -344,7 +344,7 @@ export default function AbfProjectPage() {
 
           <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#0F1115]">
             <Image
-              src="/projetos/abf/variacoes-logo.png"
+              src="/projetos/ABF/variacoes-logo.png"
               alt="Variações da logo ABF Representações"
               width={1400}
               height={1000}
@@ -453,7 +453,7 @@ export default function AbfProjectPage() {
           <div className="mx-auto w-full max-w-[360px] rounded-[2.2rem] border border-white/10 bg-white/[0.04] p-3 shadow-[0_25px_80px_rgba(0,0,0,0.45)]">
           <div className="overflow-hidden rounded-[1.8rem] border border-white/10 bg-[#0F1115]">
             <Image
-              src="/projetos/abf/instagram-perfil.png"
+              src="/projetos/ABF/instagram-perfil.png"
               alt="Perfil do Instagram da ABF Representações estruturado pela SanNode"
               width={820}
               height={1792}
@@ -485,7 +485,7 @@ export default function AbfProjectPage() {
 
         <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#0F1115] shadow-[0_25px_80px_rgba(0,0,0,0.35)]">
           <Image
-            src="/projetos/abf/cartao-visita.png"
+            src="/projetos/ABF/cartao-visita.png"
             alt="Cartão de visita ABF Representações"
             width={1400}
             height={1000}
