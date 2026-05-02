@@ -81,55 +81,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "manual-dos-padrinhos",
-    title: "Manual dos Padrinhos",
-    category: "design",
-    type: "Design Editorial / Casamento",
-    description:
-      "Material visual elegante e afetivo para orientar padrinhos e madrinhas, com linguagem clássica e organização clara.",
-    status: "Projeto editorial",
-    year: "2026",
-    client: "Projeto pessoal",
-    role: "Design editorial e direção visual",
-    highlights: [
-      "Layout editorial",
-      "Paleta marsala",
-      "Comunicação emocional",
-    ],
-    challenge:
-      "Criar um material bonito, organizado e acolhedor para transmitir informações importantes aos padrinhos sem parecer rígido ou genérico.",
-    solution:
-      "Foi desenvolvido um layout editorial com linguagem elegante, textos afetivos, hierarquia clara e elementos visuais alinhados à identidade do casamento.",
-    result:
-      "O manual se tornou uma peça útil e emocional, facilitando a comunicação com os padrinhos e reforçando a identidade visual do evento.",
-    colors: ["#800000", "#08265E", "#F4EFE7", "#D8BFA3"],
-    typography: ["Fonte clássica para títulos", "Fonte legível para textos"],
-    deliverables: [
-      "Capa do manual",
-      "Páginas internas",
-      "Paleta visual",
-      "Orientações de traje",
-      "Arquivo para compartilhamento",
-    ],
-    sections: [
-      {
-        title: "Direção visual",
-        description:
-          "A proposta seguiu um caminho clássico, emocional e elegante, com tons de marsala, azul marinho e fundos suaves.",
-      },
-      {
-        title: "Organização",
-        description:
-          "As informações foram divididas em blocos claros para facilitar leitura e entendimento dos padrinhos.",
-      },
-      {
-        title: "Comunicação",
-        description:
-          "O tom textual buscou equilibrar carinho, formalidade e leveza, mantendo a personalidade do casal.",
-      },
-    ],
-  },
-  {
     slug: "site-casamento",
     title: "Site de Casamento",
     category: "programacao",
@@ -227,54 +178,7 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/FlavioSan0/Controle-de-estoque-mec-nica",
   },
-  {
-    slug: "sistema-garcom",
-    title: "Sistema GARÇOM",
-    category: "programacao",
-    type: "Produto Digital / Web App",
-    description:
-      "Conceito de sistema para pedidos em mesas, delivery, motoboys, estoque e dashboard para restaurantes e lanchonetes.",
-    status: "Conceito estratégico",
-    year: "2026",
-    client: "Projeto autoral",
-    role: "Planejamento de produto e arquitetura inicial",
-    stack: ["Produto Digital", "UX", "Web App"],
-    highlights: [
-      "Pedidos por mesa",
-      "Delivery integrado",
-      "Dashboard gerencial",
-    ],
-    challenge:
-      "Pensar em uma solução genérica que pudesse atender restaurantes, lanchonetes, espetinhos e outros negócios de alimentação.",
-    solution:
-      "Foi estruturado um conceito de sistema com módulos para pedidos em mesa, delivery, motoboys, estoque e dashboard.",
-    result:
-      "O projeto ganhou uma visão mais clara de desenvolvimento, com etapas priorizadas e potencial de evolução para um produto completo.",
-    deliverables: [
-      "Mapa de funcionalidades",
-      "Hierarquia de desenvolvimento",
-      "Módulos principais",
-      "Planejamento de dashboard",
-      "Fluxo para delivery",
-    ],
-    sections: [
-      {
-        title: "Produto",
-        description:
-          "A proposta busca criar uma solução flexível, capaz de atender diferentes modelos de venda no ramo alimentício.",
-      },
-      {
-        title: "Módulos",
-        description:
-          "O sistema foi dividido em pedidos, mesas, delivery, motoboys, estoque e indicadores.",
-      },
-      {
-        title: "Próximos passos",
-        description:
-          "A próxima etapa é transformar o planejamento em protótipo e depois em uma primeira versão funcional.",
-      },
-    ],
-  },
+
   {
     slug: "automacoes-google-workspace",
     title: "Automações Google Workspace",
