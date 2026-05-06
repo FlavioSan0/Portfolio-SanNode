@@ -16,9 +16,35 @@ import {
 import CaseCTA from "@/components/CaseCTA";
 
 export const metadata = {
-  title: "Controle de Estoque Mecânica | Case SanNode",
+  title: "Controle de Estoque Mecânica | Sistema Web Privado",
   description:
-    "Case do sistema de controle de estoque para oficina mecânica, com produtos, entradas, saídas, movimentações, relatórios e acesso restrito.",
+    "Case de sistema web privado para oficina mecânica, com dashboard, produtos, entradas, saídas, movimentações, relatórios e acesso restrito.",
+
+  openGraph: {
+    title: "Controle de Estoque Mecânica | Sistema Web Privado",
+    description:
+      "Sistema web para controle operacional de estoque em oficina mecânica, com dashboard, movimentações, relatórios e evolução para gestão mecânica.",
+    url: "https://san-node.vercel.app/projetos/controle-estoque-mecanica",
+    siteName: "SanNode",
+    images: [
+      {
+        url: "/projetos/estoque-case/dashboard.png",
+        width: 1200,
+        height: 630,
+        alt: "Dashboard do sistema de controle de estoque para oficina mecânica",
+      },
+    ],
+    locale: "pt_BR",
+    type: "article",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Controle de Estoque Mecânica | Sistema Web Privado",
+    description:
+      "Case de sistema web privado com dashboard, produtos, movimentações, relatórios e acesso restrito.",
+    images: ["/projetos/estoque-case/dashboard.png"],
+  },
 };
 
 const projectInfo = [

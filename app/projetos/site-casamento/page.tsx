@@ -13,9 +13,35 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "Site de Casamento | Case SanNode",
+  title: "Site de Casamento | Convite Digital com RSVP e Painel",
   description:
-    "Case do site de casamento com convite digital, confirmação de presença, lista de presentes e painel administrativo.",
+    "Case de site de casamento com convite digital, confirmação de presença, lista de presentes, painel administrativo e experiência mobile.",
+
+  openGraph: {
+    title: "Site de Casamento | Convite Digital com RSVP e Painel",
+    description:
+      "Projeto de convite digital com confirmação de presença, lista de presentes, painel administrativo e estrutura responsiva.",
+    url: "https://san-node.vercel.app/projetos/site-casamento",
+    siteName: "SanNode",
+    images: [
+      {
+        url: "/projetos/site-casamento/mobile-home.png",
+        width: 1200,
+        height: 630,
+        alt: "Case do site de casamento com convite digital e painel administrativo",
+      },
+    ],
+    locale: "pt_BR",
+    type: "article",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Site de Casamento | Convite Digital com RSVP e Painel",
+    description:
+      "Case de site com RSVP, lista de presentes, painel administrativo e experiência mobile.",
+    images: ["/projetos/site-casamento/mobile-home.png"],
+  },
 };
 import CaseCTA from "@/components/CaseCTA";
 

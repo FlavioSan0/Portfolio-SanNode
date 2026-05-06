@@ -10,9 +10,35 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "ABF Representações | Case SanNode",  
+  title: "ABF Representações | Identidade Visual e Presença Digital",
   description:
-    "Case de identidade visual da ABF Representações desenvolvido pela SanNode.",
+    "Case de identidade visual da ABF Representações, com criação de marca, conceito visual, paleta de cores, aplicações comerciais e estrutura para Instagram.",
+
+  openGraph: {
+    title: "ABF Representações | Identidade Visual e Presença Digital",
+    description:
+      "Projeto de identidade visual com logo, conceito, aplicações, cartão de visita e presença digital para Instagram.",
+    url: "https://san-node.vercel.app/projetos/abf-representacoes",
+    siteName: "SanNode",
+    images: [
+      {
+        url: "/projetos/abf-case/logo-principal.png",
+        width: 1200,
+        height: 630,
+        alt: "Case de identidade visual ABF Representações",
+      },
+    ],
+    locale: "pt_BR",
+    type: "article",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "ABF Representações | Identidade Visual e Presença Digital",
+    description:
+      "Case de identidade visual com marca, aplicações comerciais e estrutura para Instagram.",
+    images: ["/projetos/abf-case/logo-principal.png"],
+  },
 };
 
 import CaseCTA from "@/components/CaseCTA";
