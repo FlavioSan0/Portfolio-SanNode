@@ -33,6 +33,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+main {
+  animation: page-enter 420ms ease-out both;
+}
+
 ::selection {
   background: var(--cyan);
   color: #07111f;
@@ -41,4 +45,141 @@ body {
 .container-site {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
+}
+
+.tech-card {
+  position: relative;
+  transition:
+    transform 260ms ease,
+    border-color 260ms ease,
+    background-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 60px rgba(0, 217, 255, 0.08);
+}
+
+.tech-button {
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.tech-button:hover {
+  transform: translateY(-2px);
+}
+
+.tech-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(
+    circle at top right,
+    rgba(0, 217, 255, 0.16),
+    transparent 36%
+  );
+  opacity: 0;
+  transition: opacity 260ms ease;
+  pointer-events: none;
+}
+
+.tech-glow:hover::before {
+  opacity: 1;
+}
+
+.tech-glow > * {
+  position: relative;
+  z-index: 1;
+}
+
+.image-soft-zoom img {
+  transition: transform 500ms ease;
+}
+
+.image-soft-zoom:hover img {
+  transform: scale(1.035);
+}
+
+.tech-grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  animation: grid-move 18s linear infinite;
+}
+
+.tech-lines {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0, 217, 255, 0.16), transparent 18%),
+    radial-gradient(circle at 80% 60%, rgba(37, 99, 235, 0.16), transparent 22%);
+  animation: glow-pulse 7s ease-in-out infinite alternate;
+}
+
+@keyframes grid-move {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 42px 42px, 42px 42px;
+  }
+}
+
+@keyframes glow-pulse {
+  from {
+    opacity: 0.35;
+  }
+
+  to {
+    opacity: 0.75;
+  }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  main {
+    animation: none;
+  }
+
+  .tech-card,
+  .tech-button,
+  .image-soft-zoom img {
+    transition: none;
+  }
+
+  .tech-card:hover,
+  .tech-button:hover,
+  .image-soft-zoom:hover img {
+    transform: none;
+  }
+
+  .tech-grid-bg,
+  .tech-lines {
+    animation: none;
+  }
 }

@@ -151,7 +151,7 @@ export const projects: Project[] = [
     solution:
       "O sistema foi estruturado com páginas específicas, dashboard, formulários padronizados e uma interface visual limpa para facilitar o uso diário.",
     result:
-      "A solução permite acompanhar o estoque com mais clareza, reduzindo desorganização e criando uma base para evoluir o projeto em um sistema completo de gestão mecânica.",    deliverables: [
+    "A solução permite acompanhar o estoque com mais clareza, reduzindo desorganização e criando uma base para evoluir o projeto em um sistema completo de gestão mecânica.",    deliverables: [
       "Dashboard",
       "Cadastro de produtos",
       "Cadastro de fornecedores",

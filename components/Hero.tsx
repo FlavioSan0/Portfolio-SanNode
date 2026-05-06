@@ -12,8 +12,13 @@ const stats = [
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden border-b border-[#1E3654] bg-[#07111F]">
+    <section
+      id="inicio"
+      className="relative overflow-hidden border-b border-[#1E3654] bg-[#07111F]"
+    >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#00D9FF22,transparent_30%),radial-gradient(circle_at_left,#2563EB18,transparent_38%)]" />
+      <div className="tech-grid-bg absolute inset-0 opacity-70" />
+      <div className="tech-lines absolute inset-0 opacity-40" />
 
       <div className="container-site relative grid gap-12 py-20 md:grid-cols-[1.05fr_0.95fr] md:py-28">
         <motion.div
@@ -22,7 +27,7 @@ export default function Hero() {
           transition={{ duration: 0.55 }}
           className="flex flex-col justify-center"
         >
-          <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-[#1E3654] bg-[#0C1B2E] px-4 py-2 text-sm font-medium text-[#A9BDD3]">
+          <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-[#1E3654] bg-[#0C1B2E]/85 px-4 py-2 text-sm font-medium text-[#A9BDD3] backdrop-blur">
             <Sparkles className="h-4 w-4 text-[#00D9FF]" />
             Design, programação e automação
           </div>
@@ -35,25 +40,25 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#A9BDD3]">
-            Sou Flávio Santos, criador da SanNode. Desenvolvo identidades visuais,
-            interfaces, sites, sistemas e automações para transformar ideias em
-            projetos organizados, bonitos e funcionais.
+            Sou Flávio Santos, criador da SanNode. Desenvolvo identidades
+            visuais, interfaces, sites, sistemas e automações para transformar
+            ideias em projetos organizados, bonitos e funcionais.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#projetos"
-              className="inline-flex rounded-2xl bg-[#0B2A5B] px-6 py-4 font-semibold text-white transition hover:bg-[#2563EB]"
+              className="tech-button group inline-flex rounded-2xl bg-[#0B2A5B] px-6 py-4 font-semibold text-white transition hover:bg-[#2563EB]"
             >
               Ver projetos
-              <ArrowUpRight className="ml-2 h-5 w-5" />
+              <ArrowUpRight className="ml-2 h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>
 
             <a
               href="https://wa.me/5584988479869"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex rounded-2xl border border-[#1E3654] bg-[#0C1B2E] px-6 py-4 font-semibold text-[#F5FBFF] transition hover:border-[#00D9FF] hover:text-[#00D9FF]"
+              className="tech-button inline-flex rounded-2xl border border-[#1E3654] bg-[#0C1B2E]/85 px-6 py-4 font-semibold text-[#F5FBFF] transition hover:border-[#00D9FF] hover:text-[#00D9FF]"
             >
               Entrar em contato
             </a>
@@ -72,16 +77,21 @@ export default function Hero() {
           </div>
 
           <div className="mt-10 grid max-w-2xl gap-3 sm:grid-cols-3">
-            {stats.map((stat) => (
-              <div
+            {stats.map((stat, index) => (
+              <motion.div
                 key={stat.value}
-                className="rounded-3xl border border-[#1E3654] bg-[#0C1B2E] p-4"
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.18 + index * 0.08 }}
+                className="tech-card rounded-3xl border border-[#1E3654] bg-[#0C1B2E]/85 p-4 backdrop-blur"
               >
-                <p className="text-xl font-black text-[#00D9FF]">{stat.value}</p>
+                <p className="text-xl font-black text-[#00D9FF]">
+                  {stat.value}
+                </p>
                 <p className="mt-1 text-xs leading-5 text-[#9DB2C7]">
                   {stat.label}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
@@ -92,7 +102,7 @@ export default function Hero() {
           transition={{ duration: 0.65, delay: 0.1 }}
           className="flex items-center justify-center"
         >
-          <div className="relative w-full max-w-md rounded-[2rem] border border-[#1E3654] bg-[#0C1B2E] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
+          <div className="tech-card relative w-full max-w-md rounded-[2rem] border border-[#1E3654] bg-[#0C1B2E]/90 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur">
             <div className="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-[#00D9FF]/15 blur-2xl" />
             <div className="absolute -bottom-8 -left-8 h-36 w-36 rounded-full bg-[#2563EB]/10 blur-2xl" />
 
@@ -122,7 +132,9 @@ export default function Hero() {
                 </p>
 
                 <div className="mt-4 rounded-2xl border border-[#1E3654] bg-[#0C1B2E] px-4 py-3 text-sm text-[#A9BDD3]">
-                  <span className="font-semibold text-[#D9F4FF]">Contato:</span>{" "}
+                  <span className="font-semibold text-[#D9F4FF]">
+                    Contato:
+                  </span>{" "}
                   <a
                     href="https://wa.me/5584988479869"
                     target="_blank"
