@@ -1,4 +1,5 @@
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
+import { contact } from "@/data/contact";
 
 export default function Contact() {
   return (
@@ -29,63 +30,76 @@ export default function Contact() {
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-[#B9F5FF]" />
                 <a
-                  href="tel:+5584988479869"
+                  href={contact.phoneHref}
                   className="hover:text-[#B9F5FF] hover:underline"
                 >
-                  (84) 98847-9869
+                  {contact.phoneDisplay}
                 </a>
               </div>
 
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-[#B9F5FF]" />
-                <span>lucas0202fla@Gmail.com</span>
+                <a
+                  href={contact.emailHref}
+                  className="hover:text-[#B9F5FF] hover:underline"
+                >
+                  {contact.email}
+                </a>
               </div>
             </div>
           </div>
 
           <div className="grid gap-3">
             <a
-              href="https://wa.me/5584988479869"
+              href={contact.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-4 font-semibold text-[#0B2A5B] transition hover:bg-[#E6FAFF]"
+              className="tech-button inline-flex items-center justify-center rounded-2xl bg-white px-6 py-4 font-semibold text-[#0B2A5B] transition hover:bg-[#E6FAFF]"
             >
               Enviar mensagem pelo WhatsApp
               <ArrowUpRight className="ml-2 h-5 w-5" />
             </a>
 
             <a
-              href="tel:+5584988479869"
-              className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-6 py-4 font-semibold text-white transition hover:bg-white/15"
+              href={contact.emailHref}
+              className="tech-button inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-6 py-4 font-semibold text-white transition hover:bg-white/15"
             >
-              Ligar para (84) 98847-9869
+              Enviar e-mail
+              <Mail className="ml-2 h-5 w-5" />
+            </a>
+
+            <a
+              href={contact.phoneHref}
+              className="tech-button inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-6 py-4 font-semibold text-white transition hover:bg-white/15"
+            >
+              Ligar para {contact.phoneDisplay}
               <Phone className="ml-2 h-5 w-5" />
             </a>
 
             <div className="grid grid-cols-3 gap-3">
               <a
-                href="https://github.com/FlavioSan0"
+                href={contact.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/10 py-4 text-sm font-bold text-white transition hover:bg-white/15"
+                className="tech-button inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/10 py-4 text-sm font-bold text-white transition hover:bg-white/15"
               >
                 GH
               </a>
 
               <a
-                href="https://instagram.com/san_node/"
+                href={contact.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/10 py-4 text-sm font-bold text-white transition hover:bg-white/15"
+                className="tech-button inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/10 py-4 text-sm font-bold text-white transition hover:bg-white/15"
               >
                 IG
               </a>
 
               <a
-                href="https://www.linkedin.com/in/flavio-lucas-5676a2193/?skipRedirect=true"
+                href={contact.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/10 py-4 text-sm font-bold text-white transition hover:bg-white/15"
+                className="tech-button inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/10 py-4 text-sm font-bold text-white transition hover:bg-white/15"
               >
                 IN
               </a>
