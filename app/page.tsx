@@ -6,18 +6,24 @@ import ProjectsSection from "@/components/ProjectsSection";
 import Process from "@/components/Process";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#07111F] text-[#F5FBFF]">
+    <>
       <Header />
-      <Hero />
-      <About />
-      <Services />
-      <ProjectsSection />
-      <Process />
-      <Contact />
+
+      <main>
+        <Hero />
+        <About />
+        <Services />
+        <ProjectsSection />
+        <Process />
+        <Contact />
+      </main>
+
       <Footer />
-    </main>
+      <BackToTop />
+    </>
   );
 }
