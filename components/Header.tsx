@@ -22,37 +22,54 @@ export default function Header() {
   }
 
   useEffect(() => {
-    const sections = ["inicio", ...navItems.map((item) => item.id)]
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
+    function updateActiveSection() {
+      const scrollPosition = window.scrollY + 140;
+      const pageBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 80;
 
-    if (!sections.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (visibleEntries[0]?.target?.id) {
-          setActiveSection(visibleEntries[0].target.id);
-        }
-      },
-      {
-        rootMargin: "-25% 0px -55% 0px",
-        threshold: [0.12, 0.25, 0.5],
+      if (pageBottom) {
+        setActiveSection("contato");
+        return;
       }
-    );
 
-    sections.forEach((section) => observer.observe(section));
+      const sectionIds = ["inicio", ...navItems.map((item) => item.id)];
 
-    return () => observer.disconnect();
+      let currentSection = "inicio";
+
+      for (const id of sectionIds) {
+        const element = document.getElementById(id);
+
+        if (!element) continue;
+
+        const sectionTop = element.offsetTop;
+
+        if (scrollPosition >= sectionTop) {
+          currentSection = id;
+        }
+      }
+
+      setActiveSection(currentSection);
+    }
+
+    updateActiveSection();
+
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
   }, []);
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#1E3654] bg-[#07111F]/85 backdrop-blur-xl">
       <div className="container-site flex items-center justify-between py-4">
-        <a href="#inicio" className="flex items-center gap-3" onClick={closeMenu}>
+        <a
+          href="#inicio"
+          className="flex items-center gap-3"
+          onClick={closeMenu}
+        >
           <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl border border-[#1E3654] bg-[#0C1B2E] shadow-[0_0_0_1px_rgba(255,255,255,0.04)]">
             <Image
               src="/logo-sannode.png"
@@ -83,7 +100,7 @@ export default function Header() {
                 className={[
                   "rounded-full px-4 py-2 text-sm font-medium transition",
                   isActive
-                    ? "bg-[#00D9FF]/10 text-[#00D9FF]"
+                    ? "bg-[#00D9FF]/10 text-[#00D9FF] shadow-[0_0_22px_rgba(0,217,255,0.08)]"
                     : "text-[#A9BDD3] hover:bg-white/[0.04] hover:text-[#00D9FF]",
                 ].join(" ")}
               >
