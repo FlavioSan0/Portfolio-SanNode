@@ -13,6 +13,7 @@ import {
   Wrench,
 } from "lucide-react";
 import CaseCTA from "@/components/CaseCTA";
+import BackToTop from "@/components/BackToTop";
 
 export const metadata = {
   title: "Controle de Estoque Mecânica | Sistema Web Privado",
@@ -524,6 +525,7 @@ export default function EstoqueProjectPage() {
       secondaryHref="https://controle-de-estoque-mecanica.vercel.app"
       secondaryExternal
       />
+      <BackToTop />
     </main>
   );
 }

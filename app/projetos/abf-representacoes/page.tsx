@@ -42,6 +42,7 @@ export const metadata = {
 };
 
 import CaseCTA from "@/components/CaseCTA";
+import BackToTop from "@/components/BackToTop";
 
 const projectInfo = [
   {
@@ -555,6 +556,7 @@ export default function AbfProjectPage() {
       secondaryLabel="Ver outros projetos"
       secondaryHref="/"
     />
+    <BackToTop />
     </main>
   );
 }

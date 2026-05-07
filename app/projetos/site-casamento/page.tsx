@@ -13,6 +13,7 @@ import {
   Users,
 } from "lucide-react";
 import CaseCTA from "@/components/CaseCTA";
+import BackToTop from "@/components/BackToTop";
 
 export const metadata = {
   title: "Site de Casamento | Convite Digital com RSVP e Painel",
@@ -590,6 +591,7 @@ export default function SiteCasamentoPage() {
         secondaryHref="https://site-casamento-chi.vercel.app"
         secondaryExternal
       />
+      <BackToTop />
     </main>
   );
 }
