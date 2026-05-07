@@ -101,7 +101,7 @@ export default function Services() {
         </Reveal>
 
         <Reveal delay={80}>
-          <div className="service-tech-panel mb-8 overflow-hidden rounded-[2rem] border border-[#1E3654] bg-[#0C1B2E] p-6 md:p-8">
+          <div className="service-tech-panel mb-8 overflow-hidden rounded-[2rem] border border-[#1E3654] bg-[#0C1B2E] p-4 sm:p-6 md:p-8">
             <div className="service-scan-line" />
 
             <div className="relative z-10 grid gap-6 md:grid-cols-[0.85fr_1.15fr] md:items-center">
@@ -159,7 +159,7 @@ export default function Services() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid gap-3 sm:grid-cols-3">
                     <div className="rounded-2xl border border-[#1E3654] bg-[#0C1B2E]/80 p-4">
                       <p className="text-[10px] uppercase tracking-[0.2em] text-[#7F96AD]">
                         Foco

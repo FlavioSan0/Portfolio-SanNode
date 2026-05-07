@@ -131,7 +131,7 @@ export default function Header() {
       </div>
 
       {isOpen && (
-        <div className="border-t border-[#1E3654] bg-[#07111F] md:hidden">
+        <div className="max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-[#1E3654] bg-[#07111F] md:hidden">
           <nav className="container-site flex flex-col gap-1 py-4">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;

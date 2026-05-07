@@ -44,7 +44,7 @@ export default function Hero() {
             ideias em projetos organizados, bonitos e funcionais.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mobile-action-grid mt-8 flex flex-wrap gap-3 sm:flex-row">
             <a
               href="#projetos"
               className="tech-button group inline-flex rounded-2xl bg-[#0B2A5B] px-6 py-4 font-semibold text-white transition hover:bg-[#2563EB]"

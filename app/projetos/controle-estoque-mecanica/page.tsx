@@ -193,7 +193,7 @@ export default function EstoqueProjectPage() {
                 decisões de interface sem depender do acesso ao painel.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mobile-action-grid mt-8 flex flex-wrap gap-3 sm:flex-row">
               <a
                 href="#telas"
                 className="inline-flex items-center rounded-2xl bg-[#0B2A5B] px-6 py-4 font-semibold text-white transition hover:bg-[#2563EB]"

@@ -162,7 +162,7 @@ export default function AbfProjectPage() {
               estruturação inicial da presença digital no Instagram.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mobile-action-grid mt-8 flex flex-wrap gap-3 sm:flex-row">
               <a
                 href="#aplicacoes"
                 className="inline-flex items-center rounded-2xl bg-[#C6A15B] px-6 py-4 font-semibold text-[#0F1115] transition hover:bg-[#D8B66D]"

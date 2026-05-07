@@ -93,7 +93,7 @@ export default function Footer() {
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="tech-button inline-flex min-w-[132px] items-center justify-center rounded-2xl border border-[#1E3654] bg-[#0C1B2E] px-4 py-3 text-sm font-semibold text-[#A9BDD3] transition hover:border-[#00D9FF] hover:text-[#00D9FF]"
+                    className="tech-button inline-flex min-w-[132px] flex-1 items-center justify-center ...items-center justify-center rounded-2xl border border-[#1E3654] bg-[#0C1B2E] px-4 py-3 text-sm font-semibold text-[#A9BDD3] transition hover:border-[#00D9FF] hover:text-[#00D9FF]"
                   >
                     <span className="mr-2 text-[#00D9FF]">
                       <Icon />
@@ -107,7 +107,7 @@ export default function Footer() {
             <div className="flex w-full flex-wrap gap-3 md:w-auto md:justify-end">
               <a
                 href={contact.emailHref}
-                className="tech-button inline-flex min-w-[132px] items-center justify-center rounded-2xl border border-[#1E3654] bg-[#0C1B2E] px-4 py-3 text-sm font-semibold text-[#A9BDD3] transition hover:border-[#00D9FF] hover:text-[#00D9FF]"
+                className="tech-button inline-flex min-w-[132px] flex-1 items-center justify-center ...items-center justify-center rounded-2xl border border-[#1E3654] bg-[#0C1B2E] px-4 py-3 text-sm font-semibold text-[#A9BDD3] transition hover:border-[#00D9FF] hover:text-[#00D9FF]"
               >
                 <Mail className="mr-2 h-4 w-4 text-[#00D9FF]" />
                 E-mail
@@ -117,7 +117,7 @@ export default function Footer() {
                 href={contact.whatsapp}
                 target="_blank"
                 rel="noreferrer"
-                className="tech-button inline-flex min-w-[132px] items-center justify-center rounded-2xl bg-[#0B2A5B] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#2563EB]"
+                className="tech-button inline-flex min-w-[132px] flex-1 items-center justify-center ...items-center justify-center rounded-2xl bg-[#0B2A5B] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#2563EB]"
               >
                 <MessageCircle className="mr-2 h-4 w-4" />
                 WhatsApp

@@ -413,3 +413,104 @@ main {
     box-shadow: none;
   }
 }
+
+/* Mobile polish */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+.mobile-full-button {
+  width: 100%;
+}
+
+.mobile-card-spacing {
+  padding: clamp(1rem, 4vw, 1.5rem);
+}
+
+.mobile-title-balance {
+  text-wrap: balance;
+}
+
+.mobile-copy-pretty {
+  text-wrap: pretty;
+}
+
+@media (max-width: 640px) {
+  .container-site {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .responsive-section {
+    padding-block: 4rem;
+  }
+
+  .responsive-title-xl {
+    font-size: clamp(2.35rem, 12vw, 3.4rem);
+    line-height: 1;
+    letter-spacing: -0.055em;
+  }
+
+  .responsive-title-lg {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+    line-height: 1.06;
+    letter-spacing: -0.045em;
+  }
+
+  .responsive-copy {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .tech-card:hover,
+  .tech-button:hover {
+    transform: none;
+  }
+
+  .tech-card {
+    box-shadow: none;
+  }
+
+  .mobile-action-grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-action-grid > a,
+  .mobile-action-grid > button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mobile-compact-preview {
+    min-height: 10rem;
+  }
+
+  .mobile-soft-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .mobile-no-hover-glow::before {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .responsive-title-xl {
+    font-size: clamp(2.15rem, 11vw, 3rem);
+  }
+
+  .responsive-title-lg {
+    font-size: clamp(1.85rem, 9vw, 2.4rem);
+  }
+}

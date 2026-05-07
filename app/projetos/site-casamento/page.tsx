@@ -225,7 +225,7 @@ export default function SiteCasamentoPage() {
               administrativo para controle do evento.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mobile-action-grid mt-8 flex flex-wrap gap-3 sm:flex-row">
               <a
                 href="https://site-casamento-chi.vercel.app"
                 target="_blank"
