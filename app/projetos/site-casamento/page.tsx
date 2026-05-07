@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -11,6 +12,7 @@ import {
   ShieldCheck,
   Users,
 } from "lucide-react";
+import CaseCTA from "@/components/CaseCTA";
 
 export const metadata = {
   title: "Site de Casamento | Convite Digital com RSVP e Painel",
@@ -43,7 +45,6 @@ export const metadata = {
     images: ["/projetos/site-casamento/mobile-home.png"],
   },
 };
-import CaseCTA from "@/components/CaseCTA";
 
 const projectInfo = [
   {
@@ -462,11 +463,13 @@ export default function SiteCasamentoPage() {
 
               <div className="bg-[#07111F] p-3 md:p-5">
                 <div className="overflow-hidden rounded-[1.5rem] border border-white/10">
-                  <img
-                    src={screen.image}
-                    alt={screen.title}
-                    className="h-auto w-full object-cover"
-                  />
+                  <Image
+                  src={screen.image}
+                  alt={screen.title}
+                  width={1600}
+                  height={900}
+                  className="h-auto w-full object-cover"
+                />
                 </div>
               </div>
             </article>
@@ -501,9 +504,11 @@ export default function SiteCasamentoPage() {
 
             <div className="mx-auto w-full max-w-[360px] rounded-[2.2rem] border border-white/10 bg-white/[0.04] p-3 shadow-[0_25px_80px_rgba(0,0,0,0.45)]">
               <div className="overflow-hidden rounded-[1.8rem] border border-white/10 bg-[#07111F]">
-                <img
+                <Image
                   src="/projetos/site-casamento/mobile-home.png"
                   alt="Visualização mobile da página inicial do site de casamento"
+                  width={720}
+                  height={1600}
                   className="h-auto w-full object-contain"
                 />
               </div>

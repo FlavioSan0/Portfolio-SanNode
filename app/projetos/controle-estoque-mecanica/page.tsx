@@ -10,7 +10,6 @@ import {
   Lock,
   Package,
   Repeat,
-  ShieldCheck,
   Wrench,
 } from "lucide-react";
 import CaseCTA from "@/components/CaseCTA";

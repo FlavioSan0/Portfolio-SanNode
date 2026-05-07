@@ -4,7 +4,7 @@ import {
   ArrowLeft,
   ArrowUpRight,
   CheckCircle2,
-  Mail,
+  Palette,
   PenTool,
   Sparkles,
 } from "lucide-react";
