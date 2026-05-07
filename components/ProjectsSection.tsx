@@ -131,7 +131,7 @@ export default function ProjectsSection() {
                 Projetos de design
               </p>
 
-              <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-tight text-[#F5FBFF] md:text-5xl">
+              <h2 className="responsive-title-lg mt-3 max-w-3xl font-black text-[#F5FBFF] text-balance">
                 Marcas, peças e materiais com boa apresentação e clareza visual.
               </h2>
             </div>
@@ -196,7 +196,7 @@ export default function ProjectsSection() {
                   Projetos de programação
                 </p>
 
-                <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-tight text-[#F5FBFF] md:text-5xl">
+                <h2 className="responsive-title-lg mt-3 max-w-3xl font-black text-[#F5FBFF] text-balance">
                   Sistemas, sites e automações desenvolvidos para problemas
                   reais.
                 </h2>

@@ -87,7 +87,7 @@ export default function Services() {
                 Como posso ajudar
               </p>
 
-              <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-tight text-[#F5FBFF] md:text-5xl">
+              <h2 className="responsive-title-lg mt-3 max-w-3xl font-black text-[#F5FBFF] text-balance">
                 Soluções digitais para apresentar, organizar e automatizar.
               </h2>
             </div>

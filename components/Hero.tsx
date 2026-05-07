@@ -32,14 +32,13 @@ export default function Hero() {
             Design, programação e automação
           </div>
 
-          <h1 className="max-w-5xl text-4xl font-black tracking-tight text-[#F5FBFF] sm:text-5xl lg:text-7xl">
-            Soluções digitais com visual limpo,
+            <h1 className="responsive-title-xl max-w-5xl font-black text-[#F5FBFF] text-balance">            Soluções digitais com visual limpo,
             <span className="block bg-gradient-to-r from-[#F5FBFF] via-[#6DB9FF] to-[#00D9FF] bg-clip-text text-transparent">
               lógica clara e execução real.
             </span>
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#A9BDD3]">
+          <p className="responsive-copy mt-6 max-w-2xl text-[#A9BDD3] text-pretty">
             Sou Flávio Santos, criador da SanNode. Desenvolvo identidades
             visuais, interfaces, sites, sistemas e automações para transformar
             ideias em projetos organizados, bonitos e funcionais.

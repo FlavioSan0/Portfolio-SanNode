@@ -37,7 +37,7 @@ export default function Process() {
               Processo
             </p>
 
-            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-tight text-[#F5FBFF] md:text-5xl">
+            <h2 className="responsive-title-lg mt-3 max-w-3xl font-black text-[#F5FBFF] text-balance">
               Do planejamento ao projeto publicado.
             </h2>
           </div>
