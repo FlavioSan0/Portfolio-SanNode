@@ -26,7 +26,7 @@ export default function NotFound() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/"
-              className="tech-button inline-flex items-center justify-center rounded-2xl bg-[#0B2A5B] px-6 py-4 font-semibold text-white transition hover:bg-[#2563EB]"
+              className="tech-button inline-flex min-w-[132px] flex-1 items-center justify-center ...x items-center justify-center rounded-2xl bg-[#0B2A5B] px-6 py-4 font-semibold text-white transition hover:bg-[#2563EB]"
             >
               <ArrowLeft className="mr-2 h-5 w-5" />
               Voltar para o portfólio
@@ -36,7 +36,7 @@ export default function NotFound() {
               href={contact.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="tech-button inline-flex items-center justify-center rounded-2xl border border-[#1E3654] bg-[#10233B] px-6 py-4 font-semibold text-[#F5FBFF] transition hover:border-[#00D9FF] hover:text-[#00D9FF]"
+              className="tech-button inline-flex min-w-[132px] flex-1 items-center justify-center ...x items-center justify-center rounded-2xl border border-[#1E3654] bg-[#10233B] px-6 py-4 font-semibold text-[#F5FBFF] transition hover:border-[#00D9FF] hover:text-[#00D9FF]"
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               Falar no WhatsApp

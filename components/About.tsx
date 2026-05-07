@@ -136,7 +136,7 @@ export default function About() {
             </h3>
           </div>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="mobile-action-grid">
             {skills.map((skill) => (
               <span
                 key={skill}

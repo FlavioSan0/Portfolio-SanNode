@@ -180,7 +180,7 @@ export default function AbfProjectPage() {
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-4 shadow-[0_25px_80px_rgba(0,0,0,0.45)]">
+          <div className="mobile-panel ... md:p-8">border border-white/10 bg-white/[0.03] p-4 shadow-[0_25px_80px_rgba(0,0,0,0.45)]">
             <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#0F1115]">
               <Image
                 src="/projetos/abf-case/logo-principal.png"
@@ -402,7 +402,7 @@ export default function AbfProjectPage() {
     </p>
   </div>
 
-  <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 md:p-8">
+  <div className="mobile-panel ... md:p-8">border border-white/10 bg-white/[0.03] p-6 md:p-8">
     <div className="mb-8 flex items-center justify-between gap-4 border-b border-white/10 pb-6">
       <div>
         <p className="text-sm font-semibold text-white">

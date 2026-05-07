@@ -11,7 +11,7 @@ import Reveal from "@/components/Reveal";
 function ProjectPreview({ slug, category }: { slug: string; category: string }) {
   if (slug === "abf-representacoes") {
     return (
-      <div className="mb-6 h-40 sm:h-44 rounded-[1.5rem] border border-white/10 bg-[linear-gradient(135deg,#0F1115,#1A1D23)] p-5">
+      <div className="mb-6 h-40 sm:h-40 sm:h-44 rounded-[1.5rem] border border-white/10 bg-[linear-gradient(135deg,#0F1115,#1A1D23)] p-5">
         <div className="flex h-full flex-col justify-between">
           <div className="flex items-center justify-between">
             <div className="h-12 w-12 rounded-2xl bg-[#C6A15B]" />
@@ -33,7 +33,7 @@ function ProjectPreview({ slug, category }: { slug: string; category: string }) 
 
   if (slug === "site-casamento") {
     return (
-      <div className="mb-6 h-40 sm:h-44 rounded-[1.5rem] border border-white/10 bg-[radial-gradient(circle_at_top_right,#80000066,transparent_30%),linear-gradient(135deg,#08265E,#07111F)] p-5">
+      <div className="mb-6 h-40 sm:h-40 sm:h-44 rounded-[1.5rem] border border-white/10 bg-[radial-gradient(circle_at_top_right,#80000066,transparent_30%),linear-gradient(135deg,#08265E,#07111F)] p-5">
         <div className="flex h-full flex-col justify-between">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-[#D8BFA3]">
             ♥
@@ -52,7 +52,7 @@ function ProjectPreview({ slug, category }: { slug: string; category: string }) 
 
   if (slug === "controle-estoque-mecanica") {
     return (
-      <div className="mb-6 h-40 sm:h-44 rounded-[1.5rem] border border-[#1E3654] bg-[linear-gradient(135deg,#0C1B2E,#10233B)] p-5">
+      <div className="mb-6 h-40 sm:h-40 sm:h-44 rounded-[1.5rem] border border-[#1E3654] bg-[linear-gradient(135deg,#0C1B2E,#10233B)] p-5">
         <div className="grid h-full grid-cols-[0.75fr_1.25fr] gap-4">
           <div className="space-y-3">
             <div className="h-8 rounded-xl bg-[#00D9FF]/20" />
@@ -78,7 +78,7 @@ function ProjectPreview({ slug, category }: { slug: string; category: string }) 
 
   if (slug === "automacoes-google-workspace") {
     return (
-      <div className="mb-6 h-40 sm:h-44 rounded-[1.5rem] border border-[#1E3654] bg-[radial-gradient(circle_at_top_right,#00D9FF33,transparent_30%),linear-gradient(135deg,#0B2A5B,#091728)] p-5">
+      <div className="mb-6 h-40 sm:h-40 sm:h-44 rounded-[1.5rem] border border-[#1E3654] bg-[radial-gradient(circle_at_top_right,#00D9FF33,transparent_30%),linear-gradient(135deg,#0B2A5B,#091728)] p-5">
         <div className="flex h-full items-center justify-between gap-2">
           {["Forms", "Sheets", "Script", "Drive"].map((item, index) => (
             <div key={item} className="flex items-center gap-2">
@@ -96,7 +96,7 @@ function ProjectPreview({ slug, category }: { slug: string; category: string }) 
   }
 
   return (
-    <div className="mb-6 h-40 sm:h-44 rounded-[1.5rem] border border-[#1E3654] bg-[radial-gradient(circle_at_top_right,#00D9FF33,transparent_30%),radial-gradient(circle_at_bottom_left,#2563EB22,transparent_35%),linear-gradient(135deg,#0B2A5B,#091728)] p-5">
+    <div className="mb-6 h-40 sm:h-40 sm:h-44 rounded-[1.5rem] border border-[#1E3654] bg-[radial-gradient(circle_at_top_right,#00D9FF33,transparent_30%),radial-gradient(circle_at_bottom_left,#2563EB22,transparent_35%),linear-gradient(135deg,#0B2A5B,#091728)] p-5">
       <div className="flex h-full flex-col justify-between">
         {category === "design" ? (
           <Palette className="h-7 w-7 text-white/90" />

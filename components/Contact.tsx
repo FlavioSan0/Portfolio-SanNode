@@ -117,7 +117,7 @@ export default function Contact() {
               href={contact.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="tech-button inline-flex items-center justify-center rounded-2xl bg-white px-6 py-4 font-semibold text-[#0B2A5B] transition hover:bg-[#E6FAFF]"
+              className="tech-button inline-flex min-w-[132px] flex-1 items-center justify-center ...x items-center justify-center rounded-2xl bg-white px-6 py-4 font-semibold text-[#0B2A5B] transition hover:bg-[#E6FAFF]"
             >
               Enviar mensagem pelo WhatsApp
               <ArrowUpRight className="ml-2 h-5 w-5" />
@@ -125,7 +125,7 @@ export default function Contact() {
 
             <a
               href={contact.emailHref}
-              className="tech-button inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-6 py-4 font-semibold text-white transition hover:bg-white/15"
+              className="tech-button inline-flex min-w-[132px] flex-1 items-center justify-center ...x items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-6 py-4 font-semibold text-white transition hover:bg-white/15"
             >
               Enviar e-mail
               <Mail className="ml-2 h-5 w-5" />
@@ -133,7 +133,7 @@ export default function Contact() {
 
             <a
               href={contact.phoneHref}
-              className="tech-button inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-6 py-4 font-semibold text-white transition hover:bg-white/15"
+              className="tech-button inline-flex min-w-[132px] flex-1 items-center justify-center ...x items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-6 py-4 font-semibold text-white transition hover:bg-white/15"
             >
               Ligar para {contact.phoneDisplay}
               <Phone className="ml-2 h-5 w-5" />
@@ -149,7 +149,7 @@ export default function Contact() {
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="tech-button inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-4 py-4 text-sm font-bold text-white transition hover:border-[#B9F5FF]/40 hover:bg-white/15 hover:text-[#B9F5FF]"
+                    className="tech-button inline-flex min-w-[132px] flex-1 items-center justify-center ...x items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-4 py-4 text-sm font-bold text-white transition hover:border-[#B9F5FF]/40 hover:bg-white/15 hover:text-[#B9F5FF]"
                     aria-label={item.label}
                   >
                     <span className="mr-2 text-[#B9F5FF]">

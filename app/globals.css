@@ -514,3 +514,242 @@ canvas {
     font-size: clamp(1.85rem, 9vw, 2.4rem);
   }
 }
+
+/* ============================= */
+/* RESPONSIVIDADE GLOBAL MOBILE  */
+/* ============================= */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 320px;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Evita textos estourando em telas pequenas */
+p,
+h1,
+h2,
+h3,
+h4,
+span,
+a,
+button {
+  overflow-wrap: break-word;
+}
+
+/* Containers */
+.container-site {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+@media (max-width: 480px) {
+  .container-site {
+    width: min(100% - 24px, 1180px);
+  }
+}
+
+@media (max-width: 360px) {
+  .container-site {
+    width: min(100% - 20px, 1180px);
+  }
+}
+
+/* Tipografia responsiva */
+.responsive-title-xl {
+  font-size: clamp(2.15rem, 10vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.responsive-title-lg {
+  font-size: clamp(1.85rem, 8vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.responsive-copy {
+  font-size: clamp(0.98rem, 2.8vw, 1.125rem);
+  line-height: 1.75;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Seções */
+.responsive-section {
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+@media (max-width: 640px) {
+  .responsive-section {
+    padding-block: 4rem;
+  }
+}
+
+/* Botões no mobile */
+.mobile-action-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .mobile-action-grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-action-grid > a,
+  .mobile-action-grid > button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Cards */
+.mobile-card {
+  padding: clamp(1rem, 4vw, 1.5rem);
+}
+
+@media (max-width: 640px) {
+  .tech-card:hover,
+  .tech-button:hover {
+    transform: none;
+  }
+
+  .tech-card {
+    box-shadow: none;
+  }
+
+  .tech-glow::before {
+    display: none;
+  }
+}
+
+/* Grids responsivos */
+.mobile-grid-1 {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .mobile-grid-1 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-grid-1 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Imagens em cases */
+.case-image-frame {
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 640px) {
+  .case-image-frame {
+    border-radius: 1.25rem;
+  }
+}
+
+/* Painéis grandes */
+.mobile-panel {
+  border-radius: 2rem;
+  padding: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .mobile-panel {
+    border-radius: 1.5rem;
+    padding: 1rem;
+  }
+}
+
+/* Ajuste para celulares muito estreitos */
+@media (max-width: 360px) {
+  .responsive-title-xl {
+    font-size: clamp(2rem, 11vw, 2.75rem);
+  }
+
+  .responsive-title-lg {
+    font-size: clamp(1.7rem, 9vw, 2.25rem);
+  }
+
+  .responsive-copy {
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+
+  .mobile-panel {
+    padding: 0.9rem;
+  }
+}
+
+/* Celulares grandes e dobráveis estreitos */
+@media (min-width: 390px) and (max-width: 640px) {
+  .responsive-title-xl {
+    font-size: clamp(2.35rem, 10vw, 3.35rem);
+  }
+
+  .responsive-title-lg {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+  }
+}
+
+/* Tablets em pé */
+@media (min-width: 641px) and (max-width: 900px) {
+  .container-site {
+    width: min(100% - 40px, 1180px);
+  }
+
+  .responsive-title-xl {
+    font-size: clamp(3rem, 7vw, 4.25rem);
+  }
+
+  .responsive-title-lg {
+    font-size: clamp(2.4rem, 5vw, 3.25rem);
+  }
+}
+
+/* Landscape mobile */
+@media (max-height: 520px) and (orientation: landscape) {
+  .responsive-section {
+    padding-block: 3rem;
+  }
+
+  .responsive-title-xl {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .responsive-title-lg {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+  }
+}

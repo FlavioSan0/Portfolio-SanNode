@@ -101,7 +101,7 @@ export default function Services() {
         </Reveal>
 
         <Reveal delay={80}>
-          <div className="service-tech-panel mb-8 overflow-hidden rounded-[2rem] border border-[#1E3654] bg-[#0C1B2E] p-4 sm:p-6 md:p-8">
+          <div className="service-tech-panel mobile-panel mb-8 overflow-hidden border border-[#1E3654] bg-[#0C1B2E] md:p-8">
             <div className="service-scan-line" />
 
             <div className="relative z-10 grid gap-6 md:grid-cols-[0.85fr_1.15fr] md:items-center">

@@ -44,7 +44,7 @@ export default function Hero() {
             ideias em projetos organizados, bonitos e funcionais.
           </p>
 
-          <div className="mobile-action-grid mt-8 flex flex-wrap gap-3 sm:flex-row">
+          <div className="mobile-action-grid mt-8">
             <a
               href="#projetos"
               className="tech-button group inline-flex rounded-2xl bg-[#0B2A5B] px-6 py-4 font-semibold text-white transition hover:bg-[#2563EB]"
@@ -57,7 +57,7 @@ export default function Hero() {
               href="https://wa.me/5584988479869"
               target="_blank"
               rel="noreferrer"
-              className="tech-button inline-flex rounded-2xl border border-[#1E3654] bg-[#0C1B2E]/85 px-6 py-4 font-semibold text-[#F5FBFF] transition hover:border-[#00D9FF] hover:text-[#00D9FF]"
+              className="tech-button inline-flex min-w-[132px] flex-1 items-center justify-center ...x rounded-2xl border border-[#1E3654] bg-[#0C1B2E]/85 px-6 py-4 font-semibold text-[#F5FBFF] transition hover:border-[#00D9FF] hover:text-[#00D9FF]"
             >
               Entrar em contato
             </a>
