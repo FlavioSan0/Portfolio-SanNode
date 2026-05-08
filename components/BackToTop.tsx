@@ -32,7 +32,7 @@ export default function BackToTop() {
       type="button"
       onClick={scrollToTop}
       aria-label="Voltar ao topo"
-      className="tech-button fixed bottom-5 right-5 z-50 flex h-12 w-12 items-center justify-center rounded-2xl border border-[#1E3654] bg-[#0C1B2E]/90 text-[#00D9FF] shadow-[0_18px_45px_rgba(0,0,0,0.35)] backdrop-blur transition hover:border-[#00D9FF] hover:bg-[#10233B]"
+      className="back-to-top-button tech-button fixed bottom-5 right-5 z-50 flex h-12 w-12 items-center justify-center rounded-2xl border border-[#1E3654] bg-[#0C1B2E]/90 text-[#00D9FF] shadow-[0_18px_45px_rgba(0,0,0,0.35)] backdrop-blur transition hover:border-[#00D9FF] hover:bg-[#10233B]"
     >
       <ArrowUp className="h-5 w-5" />
     </button>

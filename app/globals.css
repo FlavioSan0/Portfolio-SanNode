@@ -788,3 +788,98 @@ button {
     display: none;
   }
 }
+
+/* ============================= */
+/* TABLET / MOBILE REFINEMENT    */
+/* ============================= */
+
+@media (max-width: 1024px) {
+  .tablet-stack {
+    grid-template-columns: 1fr !important;
+  }
+
+  .tablet-full-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tablet-action-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .tablet-action-grid > a,
+  .tablet-action-grid > button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tablet-social-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .tablet-social-grid > a {
+    min-width: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tablet-footer-actions {
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .tablet-footer-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .tablet-footer-row-secondary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .tablet-footer-row > a,
+  .tablet-footer-row-secondary > a {
+    min-width: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .tablet-social-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tablet-footer-row,
+  .tablet-footer-row-secondary {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Evita o botão voltar ao topo encostar nos CTAs em telas menores */
+@media (max-width: 1024px) {
+  .back-to-top-button {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .back-to-top-button {
+    right: 1rem;
+    bottom: 1rem;
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}

@@ -68,7 +68,7 @@ export default function Contact() {
       <div className="relative overflow-hidden rounded-[2rem] border border-[#1E3654] bg-[linear-gradient(135deg,#0B2A5B,#123B6D)] p-8 md:p-12">
         <div className="absolute right-0 top-0 h-72 w-72 translate-x-20 -translate-y-20 rounded-full bg-[#00D9FF]/20 blur-3xl" />
 
-        <div className="relative grid gap-8 md:grid-cols-[1fr_0.8fr] md:items-center">
+        <div className="tablet-stack relative grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
           <div>
             <div className="mb-4 inline-flex items-center gap-2 text-[#B9F5FF]">
               <Mail className="h-5 w-5" />
@@ -112,7 +112,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="grid gap-3">
+          <div className="tablet-action-grid grid gap-3">
             <a
               href={contact.whatsapp}
               target="_blank"

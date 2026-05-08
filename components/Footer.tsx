@@ -66,7 +66,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-[#1E3654] bg-[#07111F]">
       <div className="container-site py-10">
-        <div className="grid gap-8 md:grid-cols-[1fr_1fr] md:items-center">
+        <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center">
           <div>
             <p className="text-2xl font-black text-[#F5FBFF]">
               {contact.brand}
@@ -82,8 +82,8 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-3 md:items-end">
-            <div className="flex w-full flex-wrap gap-3 md:w-auto md:justify-end">
+          <div className="tablet-footer-actions flex flex-col gap-3 lg:items-end">
+            <div className="tablet-footer-row-secondary flex w-full flex-wrap gap-3 lg:w-auto lg:justify-end">
               {footerLinks.map((item) => {
                 const Icon = item.icon;
 
@@ -104,7 +104,7 @@ export default function Footer() {
               })}
             </div>
 
-            <div className="flex w-full flex-wrap gap-3 md:w-auto md:justify-end">
+            <div className="tablet-footer-row flex w-full flex-wrap gap-3 lg:w-auto lg:justify-end">
               <a
                 href={contact.emailHref}
                 className="tech-button inline-flex min-w-[132px] flex-1 items-center justify-center ...x min-w-[132px] flex-1 items-center justify-center ...items-center justify-center rounded-2xl border border-[#1E3654] bg-[#0C1B2E] px-4 py-3 text-sm font-semibold text-[#A9BDD3] transition hover:border-[#00D9FF] hover:text-[#00D9FF]"
