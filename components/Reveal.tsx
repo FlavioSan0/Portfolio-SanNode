@@ -1,111 +1,62 @@
 "use client";
 
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { ReactNode, useRef } from "react";
 
 type RevealProps = {
   children: ReactNode;
-  delay?: number;
   className?: string;
-  direction?: "up" | "down" | "left" | "right" | "none";
+  delay?: number;
+  y?: number;
+  amount?: number;
+  fadeOut?: boolean;
 };
-
-function isElementInViewport(element: HTMLElement) {
-  const rect = element.getBoundingClientRect();
-
-  return (
-    rect.top < window.innerHeight &&
-    rect.bottom > 0 &&
-    rect.left < window.innerWidth &&
-    rect.right > 0
-  );
-}
 
 export default function Reveal({
   children,
-  delay = 0,
   className = "",
-  direction = "up",
+  delay = 0,
+  y = 18,
+  amount = 0.18,
+  fadeOut = true,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
-    const element = ref.current;
+  const isInView = useInView(ref, {
+    amount,
+    margin: "0px 0px -8% 0px",
+  });
 
-    if (!element) return;
-
-    function revealIfVisible() {
-      if (!element) return;
-
-      if (isElementInViewport(element)) {
-        setVisible(true);
-      }
-    }
-
-    revealIfVisible();
-
-    const timeout = window.setTimeout(() => {
-      revealIfVisible();
-    }, 150);
-
-    const fallbackTimeout = window.setTimeout(() => {
-      setVisible(true);
-    }, 900);
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.unobserve(element);
-        }
-      },
-      {
-        threshold: 0.08,
-        rootMargin: "0px 0px -20px 0px",
-      }
-    );
-
-    observer.observe(element);
-
-    function handlePageShow() {
-      window.requestAnimationFrame(() => {
-        revealIfVisible();
-      });
-    }
-
-    window.addEventListener("pageshow", handlePageShow);
-    window.addEventListener("popstate", handlePageShow);
-
-    return () => {
-      observer.disconnect();
-      window.clearTimeout(timeout);
-      window.clearTimeout(fallbackTimeout);
-      window.removeEventListener("pageshow", handlePageShow);
-      window.removeEventListener("popstate", handlePageShow);
-    };
-  }, []);
-
-  const directionClass = {
-    up: "translate-y-8",
-    down: "-translate-y-8",
-    left: "translate-x-8",
-    right: "-translate-x-8",
-    none: "translate-y-0",
-  }[direction];
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
-    <div
+    <motion.div
       ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={[
-        "transition-all duration-700 ease-out will-change-transform",
-        visible
-          ? "translate-x-0 translate-y-0 opacity-100"
-          : `${directionClass} opacity-0`,
-        className,
-      ].join(" ")}
+      initial={false}
+      animate={
+        isInView || !fadeOut
+          ? {
+              opacity: 1,
+              y: 0,
+              filter: "blur(0px)",
+            }
+          : {
+              opacity: 0,
+              y,
+              filter: "blur(4px)",
+            }
+      }
+      transition={{
+        duration: 0.42,
+        delay: delay / 1000,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className={className}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
