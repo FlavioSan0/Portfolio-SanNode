@@ -3,6 +3,8 @@
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { ReactNode, useRef } from "react";
 
+type RevealDirection = "up" | "left" | "right";
+
 type RevealProps = {
   children: ReactNode;
   className?: string;
@@ -10,6 +12,7 @@ type RevealProps = {
   y?: number;
   amount?: number;
   fadeOut?: boolean;
+  direction?: RevealDirection;
 };
 
 export default function Reveal({
@@ -19,6 +22,7 @@ export default function Reveal({
   y = 18,
   amount = 0.18,
   fadeOut = true,
+  direction = "up",
 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -27,6 +31,29 @@ export default function Reveal({
     amount,
     margin: "0px 0px -8% 0px",
   });
+
+  function getHiddenPosition() {
+    if (direction === "left") {
+      return {
+        x: -28,
+        y: 0,
+      };
+    }
+
+    if (direction === "right") {
+      return {
+        x: 28,
+        y: 0,
+      };
+    }
+
+    return {
+      x: 0,
+      y,
+    };
+  }
+
+  const hiddenPosition = getHiddenPosition();
 
   if (prefersReducedMotion) {
     return <div className={className}>{children}</div>;
@@ -40,12 +67,14 @@ export default function Reveal({
         isInView || !fadeOut
           ? {
               opacity: 1,
+              x: 0,
               y: 0,
               filter: "blur(0px)",
             }
           : {
               opacity: 0,
-              y,
+              x: hiddenPosition.x,
+              y: hiddenPosition.y,
               filter: "blur(4px)",
             }
       }
