@@ -67,7 +67,7 @@ function getAccentClasses(accent: string) {
 
 export default function FeaturedProjects() {
   return (
-    <section id="projetos" className="border-y border-[#1E3654] bg-[#07111F]/80">
+    <section id="projetos" className="border-y border-[#1E3654]">
       <div className="container-site responsive-section">
         <Reveal>
           <div className="mb-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">

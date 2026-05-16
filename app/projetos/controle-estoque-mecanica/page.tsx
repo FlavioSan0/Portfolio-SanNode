@@ -154,7 +154,7 @@ const screens = [
 export default function EstoqueProjectPage() {
   return (
     <main className="min-h-screen bg-[#07111F] text-[#F5FBFF]">
-      <section className="border-b border-white/10 bg-[#07111F]">
+      <section className="border-b border-white/10">
         <div className="container-site py-8">
           <Link
             href="/"
@@ -166,7 +166,7 @@ export default function EstoqueProjectPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-b border-white/10 bg-[#07111F]">
+      <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#00D9FF22,transparent_30%),radial-gradient(circle_at_left,#2563EB18,transparent_38%)]" />
 
         <div className="container-site relative grid gap-12 py-20 md:grid-cols-[0.95fr_1.05fr] md:items-center md:py-28">

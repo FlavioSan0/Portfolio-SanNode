@@ -42,6 +42,7 @@ export default function ProfileCard() {
               alt="Flávio Oliveira"
               fill
               priority
+              sizes="(max-width: 640px) 100vw, 40vw"
               className="object-cover object-center"
             />
 

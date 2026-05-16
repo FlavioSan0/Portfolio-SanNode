@@ -3,7 +3,7 @@ import { ArrowDownRight } from "lucide-react";
 
 export default function Manifesto() {
   return (
-    <section className="border-y border-[#1E3654] bg-[#07111F]/70">
+    <section className="border-y border-[#1E3654]">
       <div className="container-site responsive-section">
         <Reveal>
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import AnimatedSiteBackground from "@/components/AnimatedSiteBackground";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 
   keywords: [
     "SanNode",
-    "Flávio Santos",
+    " Flávio Oliveira",
     "portfólio",
     "design",
     "programação",
@@ -42,11 +43,11 @@ export const metadata: Metadata = {
 
   authors: [
     {
-      name: "Flávio Santos",
+      name: " Flávio Oliveira",
     },
   ],
 
-  creator: "Flávio Santos",
+  creator: " Flávio Oliveira",
 
   icons: {
     icon: [
@@ -97,8 +98,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body>{children}
+      <body>
+        <AnimatedSiteBackground />
+        <div className="relative z-10">
+          {children}
           <Analytics />
+        </div>
       </body>
     </html>
   );

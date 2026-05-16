@@ -12,7 +12,7 @@ body {
   min-width: 320px;
   max-width: 100%;
   overflow-x: hidden;
-  background: var(--background);
+  background: transparent; /* allow animated background to show through */
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   text-rendering: optimizeLegibility;

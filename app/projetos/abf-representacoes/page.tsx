@@ -4,7 +4,6 @@ import {
   ArrowLeft,
   ArrowUpRight,
   CheckCircle2,
-  Palette,
   PenTool,
   Sparkles,
 } from "lucide-react";
@@ -123,7 +122,7 @@ const instagramChecklist = [
 export default function AbfProjectPage() {
   return (
     <main className="min-h-screen bg-[#0F1115] text-[#F5F3EF]">
-      <section className="border-b border-white/10 bg-[#0F1115]">
+      <section className="border-b border-white/10">
         <div className="container-site py-8">
           <Link
             href="/"
@@ -135,7 +134,7 @@ export default function AbfProjectPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-b border-white/10 bg-[#0F1115]">
+      <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#C6A15B22,transparent_30%),radial-gradient(circle_at_left,#ffffff08,transparent_40%)]" />
 
         <div className="container-site relative grid gap-12 py-20 md:grid-cols-[0.95fr_1.05fr] md:items-center md:py-28">
@@ -215,7 +214,7 @@ export default function AbfProjectPage() {
 
       <section
         id="conceito"
-        className="border-y border-white/10 bg-[#121419]"
+        className="border-y border-white/10"
       >
         <div className="container-site grid gap-10 py-20 md:grid-cols-[0.8fr_1.2fr] md:items-center">
           <div>
@@ -430,6 +429,8 @@ export default function AbfProjectPage() {
                 src={asset.image}
                 alt={asset.title}
                 fill
+                loading="lazy"
+                sizes="(max-width: 640px) 50vw, 210px"
                 className="object-cover transition duration-300 group-hover:scale-105"
               />
             </div>

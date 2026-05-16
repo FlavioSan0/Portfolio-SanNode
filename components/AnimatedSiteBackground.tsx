@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const nodes = [
   { top: "10%", left: "12%", delay: 0 },
@@ -21,9 +21,17 @@ const lines = [
   { top: "78%", left: "34%", width: "220px", rotate: "0deg", delay: 0.9 },
 ];
 
+const separators = [
+  { top: "18%", delay: 0 },
+  { top: "38%", delay: 0.6 },
+  { top: "58%", delay: 1.2 },
+  { top: "78%", delay: 0.9 },
+];
+
 export default function AnimatedSiteBackground() {
+  const reduceMotion = useReducedMotion();
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#040B14]">
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#040B14]">
       {/* base glow */}
       <div
         className="absolute inset-0"
@@ -38,39 +46,27 @@ export default function AnimatedSiteBackground() {
 
       {/* grid */}
       <motion.div
-        className="absolute inset-0 opacity-[0.14]"
+        className="absolute inset-0 opacity-[0.18]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
+            linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)
           `,
           backgroundSize: "32px 32px",
         }}
-        animate={{
-          backgroundPosition: ["0px 0px", "32px 32px"],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+        animate={reduceMotion ? undefined : { backgroundPosition: ["0px 0px", "32px 32px"] }}
+        transition={reduceMotion ? undefined : { duration: 16, repeat: Infinity, ease: "linear" }}
       />
 
       {/* overlay tech vertical */}
       <motion.div
-        className="absolute inset-y-0 left-1/2 w-[42%] -translate-x-1/2 opacity-20 blur-2xl"
+        className="absolute inset-y-0 left-1/2 w-[42%] -translate-x-1/2 opacity-28 blur-2xl"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(0,217,255,0.10), transparent 22%, transparent 78%, rgba(37,99,235,0.10))",
+            "linear-gradient(to bottom, rgba(0,217,255,0.14), transparent 22%, transparent 78%, rgba(37,99,235,0.12))",
         }}
-        animate={{
-          opacity: [0.14, 0.26, 0.14],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        animate={reduceMotion ? undefined : { opacity: [0.12, 0.28, 0.12] }}
+        transition={reduceMotion ? undefined : { duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* scan horizontal */}
@@ -80,14 +76,8 @@ export default function AnimatedSiteBackground() {
           background:
             "linear-gradient(to bottom, transparent, rgba(0,217,255,0.12), transparent)",
         }}
-        animate={{
-          y: ["-15%", "115%"],
-        }}
-        transition={{
-          duration: 9,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+        animate={reduceMotion ? undefined : { y: ["-15%", "115%"] }}
+        transition={reduceMotion ? undefined : { duration: 9, repeat: Infinity, ease: "linear" }}
       />
 
       {/* scan diagonal/side glow */}
@@ -98,26 +88,20 @@ export default function AnimatedSiteBackground() {
           background:
             "linear-gradient(90deg, transparent, rgba(0,217,255,0.08), transparent)",
         }}
-        animate={{
-          x: ["0%", "140%"],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+        animate={reduceMotion ? undefined : { x: ["0%", "140%"] }}
+        transition={reduceMotion ? undefined : { duration: 14, repeat: Infinity, ease: "linear" }}
       />
 
       {/* floating glows */}
       <motion.div
-        className="absolute -left-16 top-[22%] h-72 w-72 rounded-full bg-[#2563EB]/10 blur-3xl"
-        animate={{ opacity: [0.08, 0.18, 0.08], scale: [1, 1.06, 1] }}
-        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -left-16 top-[22%] h-80 w-80 rounded-full bg-[#2563EB]/12 blur-3xl"
+        animate={reduceMotion ? undefined : { opacity: [0.10, 0.24, 0.10], scale: [1, 1.08, 1] }}
+        transition={reduceMotion ? undefined : { duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute right-[-70px] top-[10%] h-80 w-80 rounded-full bg-[#00D9FF]/10 blur-3xl"
-        animate={{ opacity: [0.10, 0.22, 0.10], scale: [1, 1.08, 1] }}
-        transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute right-[-70px] top-[10%] h-96 w-96 rounded-full bg-[#00D9FF]/12 blur-3xl"
+        animate={reduceMotion ? undefined : { opacity: [0.12, 0.28, 0.12], scale: [1, 1.1, 1] }}
+        transition={reduceMotion ? undefined : { duration: 6.6, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* tech lines */}
@@ -133,16 +117,8 @@ export default function AnimatedSiteBackground() {
             background:
               "linear-gradient(to right, transparent, rgba(0,217,255,0.9), transparent)",
           }}
-          animate={{
-            opacity: [0.18, 0.55, 0.18],
-            scaleX: [0.96, 1.04, 0.96],
-          }}
-          transition={{
-            duration: 3.8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: line.delay,
-          }}
+          animate={reduceMotion ? undefined : { opacity: [0.18, 0.55, 0.18], scaleX: [0.96, 1.04, 0.96] }}
+          transition={reduceMotion ? undefined : { duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: line.delay }}
         />
       ))}
 
@@ -156,16 +132,23 @@ export default function AnimatedSiteBackground() {
             left: node.left,
             boxShadow: "0 0 18px rgba(0,217,255,0.85)",
           }}
-          animate={{
-            opacity: [0.25, 0.9, 0.25],
-            scale: [0.9, 1.2, 0.9],
+          animate={reduceMotion ? undefined : { opacity: [0.25, 0.9, 0.25], scale: [0.9, 1.2, 0.9] }}
+          transition={reduceMotion ? undefined : { duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: node.delay }}
+        />
+      ))}
+
+      {/* soft horizontal separators to smooth section divisions */}
+      {separators.map((sep, i) => (
+        <motion.div
+          key={`sep-${i}`}
+          className="absolute left-0 right-0 h-px blur-sm"
+          style={{
+            top: sep.top,
+            background:
+              "linear-gradient(90deg, transparent, rgba(0,217,255,0.08), rgba(37,99,235,0.06), transparent)",
           }}
-          transition={{
-            duration: 3.2,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: node.delay,
-          }}
+          animate={reduceMotion ? undefined : { opacity: [0.06, 0.22, 0.06], translateY: [-2, 2, -2] }}
+          transition={reduceMotion ? undefined : { duration: 8 + i * 1.2, repeat: Infinity, ease: "easeInOut", delay: sep.delay }}
         />
       ))}
 

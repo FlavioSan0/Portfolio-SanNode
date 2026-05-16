@@ -78,7 +78,7 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="servicos" className="border-y border-[#1E3654] bg-[#091728]">
+    <section id="servicos" className="border-y border-[#1E3654]">
       <div className="container-site py-20">
         <Reveal>
           <div className="mb-10 grid gap-6 md:grid-cols-[0.9fr_1.1fr] md:items-end">
