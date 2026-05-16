@@ -3,6 +3,7 @@ import {
   CheckCircle2,
   Code2,
   ExternalLink,
+  Heart,
   Palette,
 } from "lucide-react";
 import { projects } from "@/data/projects";
@@ -36,7 +37,7 @@ function ProjectPreview({ slug, category }: { slug: string; category: string }) 
       <div className="mb-6 h-40 sm:h-40 sm:h-44 rounded-[1.5rem] border border-white/10 bg-[radial-gradient(circle_at_top_right,#80000066,transparent_30%),linear-gradient(135deg,#08265E,#07111F)] p-5">
         <div className="flex h-full flex-col justify-between">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-[#D8BFA3]">
-            ♥
+            <Heart className="h-6 w-6" />
           </div>
 
           <div>

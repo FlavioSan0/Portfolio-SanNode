@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Inter, Space_Grotesk } from "next/font/google";
-import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import AnimatedSiteBackground from "@/components/AnimatedSiteBackground";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,11 +26,11 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Portfólio da SanNode: identidade visual, sites, sistemas web, interfaces e automações com Google Workspace.",
+    "Portfólio da SanNode: identidade visual, sites, sistemas web, interfaces, landing pages e automações com Google Workspace.",
 
   keywords: [
     "SanNode",
-    " Flávio Oliveira",
+    "Flávio Oliveira",
     "portfólio",
     "design",
     "programação",
@@ -37,37 +38,47 @@ export const metadata: Metadata = {
     "sites",
     "sistemas web",
     "identidade visual",
+    "UI UX",
+    "landing page",
     "Google Workspace",
     "Apps Script",
   ],
 
   authors: [
     {
-      name: " Flávio Oliveira",
+      name: "Flávio Oliveira",
     },
   ],
 
-  creator: " Flávio Oliveira",
+  creator: "Flávio Oliveira",
 
   icons: {
     icon: [
       {
-        url: "/favicon.png",
+        url: "/logo-sannode.png",
         type: "image/png",
+        sizes: "32x32",
       },
       {
-        url: "/icon.png",
+        url: "/logo-sannode.png",
         type: "image/png",
+        sizes: "512x512",
       },
     ],
-    shortcut: "/favicon.png",
-    apple: "/apple-icon.png",
+    shortcut: "/logo-sannode.png",
+    apple: [
+      {
+        url: "/logo-sannode.png",
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
   },
 
   openGraph: {
     title: "SanNode | Design, Programação e Automação",
     description:
-      "Portfólio de projetos digitais, identidades visuais, sistemas web e automações.",
+      "Portfólio de projetos digitais, identidades visuais, landing pages, sistemas web e automações.",
     url: "https://san-node.vercel.app",
     siteName: "SanNode",
     images: [
@@ -86,7 +97,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SanNode | Design, Programação e Automação",
     description:
-      "Portfólio de projetos digitais, identidades visuais, sistemas web e automações.",
+      "Portfólio de projetos digitais, identidades visuais, landing pages, sistemas web e automações.",
     images: ["/og-sannode.png"],
   },
 };
@@ -94,16 +105,16 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body>
+      <body className="bg-[#040B14] text-[#F5FBFF]">
         <AnimatedSiteBackground />
-        <div className="relative z-10">
-          {children}
-          <Analytics />
-        </div>
+
+        <div className="relative z-10 min-h-screen">{children}</div>
+
+        <Analytics />
       </body>
     </html>
   );
