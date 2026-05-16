@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import AnimatedBackground from "@/components/background/AnimatedBackground";
 
 import Manifesto from "@/components/home/Manifesto";
 import Problems from "@/components/home/Problems";
@@ -16,7 +15,6 @@ export default function Home() {
   return (
     <>
       <Header />
-      <AnimatedBackground variant="hero" />
 
       <main>
         <Hero />
