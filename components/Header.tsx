@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 import { contact } from "@/data/contact";
 
 const navItems = [
-  { label: "Sobre", href: "#sobre", id: "sobre" },
-  { label: "Serviços", href: "#servicos", id: "servicos" },
+  { label: "O que resolvo", href: "#problemas", id: "problemas" },
   { label: "Projetos", href: "#projetos", id: "projetos" },
   { label: "Processo", href: "#processo", id: "processo" },
+  { label: "Serviços", href: "#servicos", id: "servicos" },
   { label: "Contato", href: "#contato", id: "contato" },
 ];
 
@@ -89,7 +89,7 @@ export default function Header() {
           </div>
         </a>
 
-        <nav className="hidden items-center gap-2 md:flex">
+        <nav className="hidden items-center gap-2 lg:flex">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
 
@@ -101,7 +101,7 @@ export default function Header() {
                   "rounded-full px-4 py-2 text-sm font-medium transition",
                   isActive
                     ? "bg-[#00D9FF]/10 text-[#00D9FF] shadow-[0_0_22px_rgba(0,217,255,0.08)]"
-                    : "text-[#A9BDD3] hover:bg-white/[0.04] hover:text-[#00D9FF]",
+                    : "text-[#A9BDD3] hover:bg-white/4 hover:text-[#00D9FF]",
                 ].join(" ")}
               >
                 {item.label}
@@ -114,7 +114,7 @@ export default function Header() {
           href={contact.whatsapp}
           target="_blank"
           rel="noreferrer"
-          className="tech-button hidden rounded-2xl bg-[#0B2A5B] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#2563EB] md:inline-flex"
+          className="tech-button hidden rounded-2xl bg-[#0B2A5B] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#2563EB] lg:inline-flex"
         >
           Fale comigo
           <MessageCircle className="ml-2 h-4 w-4" />
@@ -123,7 +123,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setIsOpen((value) => !value)}
-          className="rounded-2xl border border-[#1E3654] bg-[#0C1B2E] p-3 text-[#F5FBFF] md:hidden"
+          className="rounded-2xl border border-[#1E3654] bg-[#0C1B2E] p-3 text-[#F5FBFF] lg:hidden"
           aria-label="Abrir menu"
         >
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -131,7 +131,7 @@ export default function Header() {
       </div>
 
       {isOpen && (
-        <div className="max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-[#1E3654] bg-[#07111F] md:hidden">
+        <div className="max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-[#1E3654] bg-[#07111F] lg:hidden">
           <nav className="container-site flex flex-col gap-1 py-4">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;

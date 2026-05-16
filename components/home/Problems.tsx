@@ -26,7 +26,7 @@ const problems = [
 
 export default function Problems() {
   return (
-    <section className="container-site responsive-section">
+    <section id="problemas" className="container-site responsive-section">
       <Reveal>
         <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
           <div>
