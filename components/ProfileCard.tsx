@@ -1,81 +1,89 @@
-import Image from "next/image";
-import { Code2, Layers3, Palette, Workflow } from "lucide-react";
+"use client";
 
-const highlights = [
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { BadgeCheck, Code2, Layers3, Workflow } from "lucide-react";
+
+const pillars = [
   {
-    icon: Palette,
-    label: "Design",
-    description: "Identidade e interfaces",
+    icon: Layers3,
+    title: "Design",
+    description: "Identidade visual e interfaces",
   },
   {
     icon: Code2,
-    label: "Dev",
+    title: "Dev",
     description: "Sites e sistemas",
   },
   {
     icon: Workflow,
-    label: "Processo",
+    title: "Processo",
     description: "Organização e evolução",
   },
 ];
 
 export default function ProfileCard() {
   return (
-    <div className="tech-card relative overflow-hidden rounded-[2rem] border border-[#1E3654] bg-[#0C1B2E]/90 p-4 shadow-[0_25px_80px_rgba(0,0,0,0.35)] backdrop-blur">
-      <div className="absolute right-0 top-0 h-48 w-48 translate-x-14 -translate-y-14 rounded-full bg-[#00D9FF]/15 blur-3xl" />
-      <div className="absolute bottom-0 left-0 h-40 w-40 -translate-x-12 translate-y-12 rounded-full bg-[#2563EB]/15 blur-3xl" />
+    <motion.article
+      initial={{ opacity: 0, y: 18, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.55, delay: 0.08 }}
+      className="relative overflow-hidden rounded-[2rem] border border-[#17385D] bg-[#081423]/90 shadow-[0_28px_80px_rgba(0,0,0,0.38)] backdrop-blur-xl"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,217,255,0.10),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(37,99,235,0.10),transparent_30%)]" />
 
-      <div className="relative overflow-hidden rounded-[1.6rem] border border-[#1E3654] bg-[#07111F]">
-        <Image
-          src="/flavio-profilee.png"
-          alt="Flávio Oliveira, criador da SanNode"
-          width={900}
-          height={1100}
-          className="aspect-[4/5] w-full object-cover object-center"
-          priority
-        />
+      <div className="relative p-3">
+        <div className="overflow-hidden rounded-[1.6rem] border border-[#183C62] bg-[#0B1627]">
+          <div className="relative aspect-[4/4.9]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,217,255,0.12),transparent_22%),linear-gradient(to_bottom,rgba(4,11,20,0.08),rgba(4,11,20,0.22))] z-10" />
 
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07111F] via-[#07111F]/75 to-transparent p-5 pt-20">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#00D9FF]/25 bg-[#07111F]/80 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#00D9FF] backdrop-blur">
-            <span className="h-2 w-2 rounded-full bg-[#00D9FF] shadow-[0_0_16px_rgba(0,217,255,0.9)]" />
-            Criador da SanNode
+            <Image
+              src="/flavio-profilee.png"
+              alt="Flávio Oliveira"
+              fill
+              priority
+              className="object-cover object-center"
+            />
+
+            <div className="absolute bottom-4 left-4 z-20 rounded-full border border-[#00D9FF]/35 bg-[#05101D]/82 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.26em] text-[#00D9FF] backdrop-blur">
+              Criador da SanNode
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="relative mt-5">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#00D9FF]">
-          Por trás da SanNode
-        </p>
-
-        <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+      <div className="relative px-6 pb-6">
+        <div className="flex items-start justify-between gap-4">
           <div>
-            <h3 className="text-2xl font-black text-[#F5FBFF]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.34em] text-[#00D9FF]">
+              Por trás da SanNode
+            </p>
+
+            <h3 className="mt-3 text-3xl font-black text-[#F5FBFF]">
               Flávio Oliveira
             </h3>
 
-            <p className="mt-1 text-sm text-[#A9BDD3]">
+            <p className="mt-2 text-sm text-[#A9BDD3]">
               Design, programação e automação
             </p>
           </div>
 
-          <div className="w-fit rounded-full border border-[#1E3654] bg-[#10233B] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#A9BDD3]">
+          <span className="mt-6 rounded-full border border-[#1E3654] bg-[#10233B] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#9DB2C7]">
             SanNode
-          </div>
+          </span>
         </div>
 
-        <div className="mt-5 rounded-3xl border border-[#1E3654] bg-[#07111F]/70 p-4">
+        <div className="mt-5 rounded-[1.6rem] border border-[#1E3654] bg-[#09192C]/88 p-5">
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#10233B] text-[#00D9FF]">
-              <Layers3 className="h-5 w-5" />
+            <div className="mt-0.5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#0C2744] text-[#00D9FF]">
+              <BadgeCheck className="h-5 w-5" />
             </div>
 
             <div>
-              <p className="text-sm font-semibold text-[#F5FBFF]">
+              <h4 className="text-base font-bold text-[#F5FBFF]">
                 Trabalho com visão completa
-              </p>
-
-              <p className="mt-1 text-xs leading-5 text-[#A9BDD3]">
+              </h4>
+              <p className="mt-2 text-sm leading-6 text-[#A9BDD3]">
                 Da ideia inicial à entrega visual e funcional, conectando marca,
                 interface, código e processo.
               </p>
@@ -84,30 +92,33 @@ export default function ProfileCard() {
         </div>
 
         <div className="mt-4 grid gap-3">
-          {highlights.map((item) => {
-            const Icon = item.icon;
+          {pillars.map((pillar) => {
+            const Icon = pillar.icon;
 
             return (
               <div
-                key={item.label}
-                className="flex items-center justify-between gap-3 rounded-2xl border border-[#1E3654] bg-[#10233B]/80 px-4 py-3"
+                key={pillar.title}
+                className="flex items-center justify-between gap-4 rounded-2xl border border-[#1E3654] bg-[#0C1B2E]/84 px-4 py-4"
               >
                 <div className="flex items-center gap-3">
-                  <Icon className="h-4 w-4 text-[#00D9FF]" />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#10233B] text-[#00D9FF]">
+                    <Icon className="h-4.5 w-4.5" />
+                  </div>
 
-                  <span className="text-sm font-semibold text-[#F5FBFF]">
-                    {item.label}
-                  </span>
+                  <div>
+                    <p className="text-sm font-bold text-[#F5FBFF]">
+                      {pillar.title}
+                    </p>
+                    <p className="text-xs text-[#9DB2C7]">
+                      {pillar.description}
+                    </p>
+                  </div>
                 </div>
-
-                <span className="text-right text-xs text-[#9DB2C7]">
-                  {item.description}
-                </span>
               </div>
             );
           })}
         </div>
       </div>
-    </div>
+    </motion.article>
   );
 }

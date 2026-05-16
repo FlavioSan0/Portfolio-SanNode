@@ -5,9 +5,11 @@ import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import AnimatedBackground from "@/components/background/AnimatedBackground";
 
+import Manifesto from "@/components/home/Manifesto";
 import Problems from "@/components/home/Problems";
-import FeaturedProjects from "@/components/home/FeaturedProjects";
+import ProjectEditorial from "@/components/home/ProjectEditorial";
 import WorkMethod from "@/components/home/WorkMethod";
+import BehindTheBuild from "@/components/home/BehindTheBuild";
 import WorkFronts from "@/components/home/WorkFronts";
 
 export default function Home() {
@@ -18,9 +20,11 @@ export default function Home() {
 
       <main>
         <Hero />
+        <Manifesto />
         <Problems />
-        <FeaturedProjects />
+        <ProjectEditorial />
         <WorkMethod />
+        <BehindTheBuild />
         <WorkFronts />
         <Contact />
       </main>
