@@ -1,0 +1,119 @@
+/* ============================= */
+/* SECTION TRANSITIONS - SANNODE */
+/* ============================= */
+
+/*
+  Suaviza as divisões duras entre seções que usam:
+  border-y, border-t, border-b e border-[#1E3654].
+*/
+
+main > section {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Reduz a força das bordas padrão entre seções */
+main > section[class*="border-y"],
+main > section[class*="border-t"],
+main > section[class*="border-b"],
+footer[class*="border-t"],
+header[class*="border-b"] {
+  border-color: rgba(30, 54, 84, 0.34) !important;
+}
+
+/* Cria um brilho sutil na transição superior das seções */
+main > section[class*="border-y"]::before,
+main > section[class*="border-t"]::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  top: -1px;
+  z-index: -1;
+  height: 96px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 217, 255, 0.1),
+      rgba(37, 99, 235, 0.08),
+      transparent
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 217, 255, 0.08),
+      transparent
+    );
+  opacity: 0.58;
+  filter: blur(10px);
+}
+
+/* Cria um fade suave na saída da seção */
+main > section[class*="border-y"]::after,
+main > section[class*="border-b"]::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  z-index: -1;
+  height: 110px;
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(0, 217, 255, 0.045),
+      rgba(7, 17, 31, 0.22)
+    );
+  opacity: 0.7;
+  filter: blur(12px);
+}
+
+/* Suaviza seções com fundo escuro/translúcido para não parecerem blocos chapados */
+main > section[class*="bg-[#07111F]"],
+main > section[class*="bg-[#0C1B2E]"] {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.018);
+}
+
+/* Transição especial para seções editoriais com borda em cima e embaixo */
+main > section[class*="border-y"] {
+  background-blend-mode: screen;
+}
+
+/* Remove sensação de corte reto quando uma seção vem logo após outra */
+main > section + section {
+  margin-top: -1px;
+}
+
+/* Header mais integrado ao fundo */
+header[class*="border-b"] {
+  box-shadow:
+    0 1px 0 rgba(0, 217, 255, 0.04),
+    0 18px 60px rgba(0, 0, 0, 0.18);
+}
+
+/* Footer com transição mais suave */
+footer[class*="border-t"] {
+  box-shadow:
+    0 -1px 0 rgba(0, 217, 255, 0.04),
+    0 -30px 90px rgba(0, 217, 255, 0.025);
+}
+
+/* Ajuste para telas menores: menos glow para não poluir */
+@media (max-width: 768px) {
+  main > section[class*="border-y"]::before,
+  main > section[class*="border-t"]::before {
+    height: 64px;
+    opacity: 0.42;
+    filter: blur(8px);
+  }
+
+  main > section[class*="border-y"]::after,
+  main > section[class*="border-b"]::after {
+    height: 72px;
+    opacity: 0.48;
+    filter: blur(8px);
+  }
+}

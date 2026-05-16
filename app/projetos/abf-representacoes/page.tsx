@@ -8,7 +8,6 @@ import {
   ExternalLink,
   Palette,
   PanelsTopLeft,
-  Sparkles,
 } from "lucide-react";
 
 import BackToTop from "@/components/BackToTop";
@@ -153,17 +152,17 @@ export default function ABFRepresentacoesPage() {
 </div>
             </div>
 
-            <div className="relative rounded-[2rem] border border-[#1E3654] bg-[#0C1B2E]/80 p-6 shadow-[0_25px_90px_rgba(0,0,0,0.35)] backdrop-blur">
+            <div className="relative rounded-4xl border border-[#1E3654] bg-[#0C1B2E]/80 p-6 shadow-[0_25px_90px_rgba(0,0,0,0.35)] backdrop-blur">
               <div className="absolute right-0 top-0 h-40 w-40 translate-x-10 -translate-y-10 rounded-full bg-[#C6A15B]/20 blur-3xl" />
 
-              <div className="relative flex min-h-[280px] items-center justify-center rounded-[1.5rem] border border-white/10 bg-[linear-gradient(135deg,#0F1115,#07111F)] p-10">
+              <div className="relative flex min-h-70 items-center justify-center rounded-3xl border border-white/10 bg-[linear-gradient(135deg,#0F1115,#07111F)] p-10">
                 <Image
                   src="/projetos/abf-case/logo-principal.png"
                   alt="Logo ABF Representações"
                   width={720}
                   height={420}
                   priority
-                  className="h-auto max-h-[240px] w-full object-contain"
+                  className="h-auto max-h-60 w-full object-contain"
                 />
               </div>
             </div>
@@ -183,7 +182,7 @@ export default function ABFRepresentacoesPage() {
             </h2>
           </div>
 
-          <div className="rounded-[2rem] border border-[#1E3654] bg-[#0C1B2E]/72 p-6 backdrop-blur md:p-8">
+          <div className="rounded-4xl border border-[#1E3654] bg-[#0C1B2E]/72 p-6 backdrop-blur md:p-8">
             <p className="text-base leading-8 text-[#A9BDD3]">
               A ABF Representações precisava de uma identidade visual mais
               sólida para comunicar profissionalismo, confiança e presença
@@ -233,7 +232,7 @@ export default function ABFRepresentacoesPage() {
             {decisions.map((item) => (
               <article
                 key={item.title}
-                className="rounded-[2rem] border border-[#1E3654] bg-[#0C1B2E]/72 p-6 backdrop-blur"
+                className="rounded-4xl border border-[#1E3654] bg-[#0C1B2E]/72 p-6 backdrop-blur"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#10233B] text-[#C6A15B]">
                   <Palette className="h-6 w-6" />
@@ -267,9 +266,9 @@ export default function ABFRepresentacoesPage() {
           {visualAssets.map((asset) => (
             <article
               key={asset.title}
-              className="overflow-hidden rounded-[2rem] border border-[#1E3654] bg-[#0C1B2E]/72 backdrop-blur"
+              className="overflow-hidden rounded-4xl border border-[#1E3654] bg-[#0C1B2E]/72 backdrop-blur"
             >
-              <div className="relative min-h-[280px] bg-[#07111F]">
+              <div className="relative min-h-70 bg-[#07111F]">
                 <Image
                   src={asset.image}
                   alt={asset.title}
@@ -295,7 +294,7 @@ export default function ABFRepresentacoesPage() {
 
       <section className="border-y border-[#1E3654] bg-[#07111F]/78">
         <div className="container-site responsive-section">
-          <div className="grid gap-8 rounded-[2rem] border border-[#1E3654] bg-[#0C1B2E]/72 p-6 backdrop-blur md:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+          <div className="grid gap-8 rounded-4xl border border-[#1E3654] bg-[#0C1B2E]/72 p-6 backdrop-blur md:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#00D9FF]">
                 Evolução do projeto
@@ -324,7 +323,7 @@ export default function ABFRepresentacoesPage() {
               </div>
             </div>
 
-            <div className="rounded-[1.5rem] border border-[#1E3654] bg-[#07111F]/80 p-5">
+            <div className="rounded-3xl border border-[#1E3654] bg-[#07111F]/80 p-5">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#10233B] text-[#00D9FF]">
                 <PanelsTopLeft className="h-6 w-6" />
               </div>
@@ -357,7 +356,7 @@ export default function ABFRepresentacoesPage() {
       </section>
 
       <section className="container-site responsive-section">
-        <div className="grid gap-8 rounded-[2rem] border border-[#1E3654] bg-[#0C1B2E]/72 p-6 backdrop-blur md:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="grid gap-8 rounded-4xl border border-[#1E3654] bg-[#0C1B2E]/72 p-6 backdrop-blur md:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#C6A15B]">
               Resultado
@@ -381,8 +380,6 @@ export default function ABFRepresentacoesPage() {
         eyebrow="Quer uma presença digital mais profissional?"
         title="Sua marca também pode sair do improviso."
         description="Posso ajudar a organizar sua identidade visual, criar uma página de apresentação e transformar sua presença digital em algo mais claro, bonito e funcional."
-        primaryLabel="Falar sobre meu projeto"
-        primaryHref="https://wa.me/5584988479869"
         secondaryLabel="Voltar aos projetos"
         secondaryHref="/#projetos"
         variant="gold"
