@@ -3,8 +3,10 @@
 /* ============================= */
 
 /*
-  Suaviza as divisões duras entre seções que usam:
-  border-y, border-t, border-b e border-[#1E3654].
+  Objetivo:
+  - Remover a sensação de "linha dura" separando seções.
+  - Manter leitura organizada sem cortar o background animado.
+  - Usar fade/glow sutil no lugar de bordas retas.
 */
 
 main > section {
@@ -12,108 +14,124 @@ main > section {
   isolation: isolate;
 }
 
-/* Reduz a força das bordas padrão entre seções */
+/* Suaviza drasticamente bordas entre seções */
 main > section[class*="border-y"],
 main > section[class*="border-t"],
 main > section[class*="border-b"],
 footer[class*="border-t"],
 header[class*="border-b"] {
-  border-color: rgba(30, 54, 84, 0.34) !important;
+  border-color: rgba(30, 54, 84, 0.14) !important;
 }
 
-/* Cria um brilho sutil na transição superior das seções */
+/* Remove visual de linha dura no encontro entre seções */
+main > section[class*="border-y"],
+main > section[class*="border-t"],
+main > section[class*="border-b"] {
+  box-shadow:
+    inset 0 1px 0 rgba(0, 217, 255, 0.018),
+    inset 0 -1px 0 rgba(0, 217, 255, 0.012);
+}
+
+/* Fade superior sutil */
 main > section[class*="border-y"]::before,
 main > section[class*="border-t"]::before {
   content: "";
   pointer-events: none;
   position: absolute;
   inset-inline: 0;
-  top: -1px;
+  top: -80px;
   z-index: -1;
-  height: 96px;
+  height: 180px;
   background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(0, 217, 255, 0.1),
-      rgba(37, 99, 235, 0.08),
-      transparent
-    ),
-    linear-gradient(
-      180deg,
-      rgba(0, 217, 255, 0.08),
-      transparent
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 217, 255, 0.055),
+      rgba(37, 99, 235, 0.035) 34%,
+      transparent 72%
     );
-  opacity: 0.58;
-  filter: blur(10px);
+  opacity: 0.68;
+  filter: blur(18px);
 }
 
-/* Cria um fade suave na saída da seção */
+/* Fade inferior sutil */
 main > section[class*="border-y"]::after,
 main > section[class*="border-b"]::after {
   content: "";
   pointer-events: none;
   position: absolute;
   inset-inline: 0;
-  bottom: -1px;
+  bottom: -90px;
   z-index: -1;
-  height: 110px;
+  height: 190px;
   background:
-    linear-gradient(
-      180deg,
-      transparent,
+    radial-gradient(
+      ellipse at center,
       rgba(0, 217, 255, 0.045),
-      rgba(7, 17, 31, 0.22)
+      rgba(37, 99, 235, 0.032) 36%,
+      transparent 74%
     );
-  opacity: 0.7;
-  filter: blur(12px);
+  opacity: 0.62;
+  filter: blur(20px);
 }
 
-/* Suaviza seções com fundo escuro/translúcido para não parecerem blocos chapados */
-main > section[class*="bg-[#07111F]"],
-main > section[class*="bg-[#0C1B2E]"] {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.025),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.018);
-}
-
-/* Transição especial para seções editoriais com borda em cima e embaixo */
-main > section[class*="border-y"] {
-  background-blend-mode: screen;
-}
-
-/* Remove sensação de corte reto quando uma seção vem logo após outra */
+/* Evita um corte visual quando uma section encosta na outra */
 main > section + section {
   margin-top: -1px;
 }
 
-/* Header mais integrado ao fundo */
+/* Deixa backgrounds das seções mais integrados ao fundo global */
+main > section[class*="bg-[#07111F]"],
+main > section[class*="bg-[#040B14]"],
+main > section[class*="bg-[#0C1B2E]"] {
+  background-blend-mode: screen;
+}
+
+/* Suaviza a separação do header sem tirar sua leitura */
 header[class*="border-b"] {
+  border-color: rgba(30, 54, 84, 0.22) !important;
   box-shadow:
-    0 1px 0 rgba(0, 217, 255, 0.04),
-    0 18px 60px rgba(0, 0, 0, 0.18);
+    0 1px 0 rgba(0, 217, 255, 0.025),
+    0 18px 60px rgba(0, 0, 0, 0.16);
 }
 
-/* Footer com transição mais suave */
+/* Footer integrado ao fundo */
 footer[class*="border-t"] {
+  border-color: rgba(30, 54, 84, 0.18) !important;
   box-shadow:
-    0 -1px 0 rgba(0, 217, 255, 0.04),
-    0 -30px 90px rgba(0, 217, 255, 0.025);
+    0 -1px 0 rgba(0, 217, 255, 0.025),
+    0 -30px 90px rgba(0, 217, 255, 0.018);
 }
 
-/* Ajuste para telas menores: menos glow para não poluir */
+/* Quando uma seção tiver borda, a linha não deve dominar */
+.border-y,
+.border-t,
+.border-b {
+  border-color: rgba(30, 54, 84, 0.16);
+}
+
+/* Ajuste mobile: menos glow e menos processamento visual */
 @media (max-width: 768px) {
   main > section[class*="border-y"]::before,
   main > section[class*="border-t"]::before {
-    height: 64px;
+    top: -48px;
+    height: 110px;
     opacity: 0.42;
-    filter: blur(8px);
+    filter: blur(12px);
   }
 
   main > section[class*="border-y"]::after,
   main > section[class*="border-b"]::after {
-    height: 72px;
-    opacity: 0.48;
-    filter: blur(8px);
+    bottom: -56px;
+    height: 120px;
+    opacity: 0.4;
+    filter: blur(12px);
+  }
+
+  main > section[class*="border-y"],
+  main > section[class*="border-t"],
+  main > section[class*="border-b"] {
+    box-shadow:
+      inset 0 1px 0 rgba(0, 217, 255, 0.012),
+      inset 0 -1px 0 rgba(0, 217, 255, 0.008);
   }
 }

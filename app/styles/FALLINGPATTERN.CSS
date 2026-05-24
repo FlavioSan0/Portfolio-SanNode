@@ -1,0 +1,72 @@
+/* ============================= */
+/* SANNODE FALLING PATTERN - LITE */
+/* ============================= */
+
+.sannode-falling-pattern {
+  background-image:
+    radial-gradient(
+      2px 90px at 24px 120px,
+      var(--sannode-pattern-color),
+      transparent 72%
+    ),
+    radial-gradient(
+      2px 76px at 150px 40px,
+      var(--sannode-pattern-color),
+      transparent 74%
+    ),
+    radial-gradient(
+      1.5px 60px at 250px 210px,
+      var(--sannode-pattern-color),
+      transparent 72%
+    ),
+    radial-gradient(
+      1.5px 1.5px at 90px 160px,
+      var(--sannode-pattern-color),
+      transparent 140%
+    );
+
+  background-size:
+    var(--sannode-pattern-size) var(--sannode-pattern-size),
+    calc(var(--sannode-pattern-size) * 0.92)
+      calc(var(--sannode-pattern-size) * 1.15),
+    calc(var(--sannode-pattern-size) * 1.12)
+      calc(var(--sannode-pattern-size) * 0.95),
+    calc(var(--sannode-pattern-size) * 0.7)
+      calc(var(--sannode-pattern-size) * 0.7);
+
+  animation: sannode-falling-pattern var(--sannode-pattern-duration) linear
+    infinite;
+  will-change: background-position;
+  transform: translateZ(0);
+}
+
+@keyframes sannode-falling-pattern {
+  from {
+    background-position:
+      0 0,
+      80px -120px,
+      -60px -40px,
+      40px 20px;
+  }
+
+  to {
+    background-position:
+      0 1200px,
+      80px 980px,
+      -60px 1080px,
+      40px 820px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sannode-falling-pattern {
+    animation-duration: calc(var(--sannode-pattern-duration) * 1.45);
+    opacity: 0.42 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sannode-falling-pattern {
+    animation: none;
+  }
+}
