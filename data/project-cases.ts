@@ -83,6 +83,38 @@ export const projectCases: ProjectCase[] = [
     ],
   },
   {
+    slug: "vem-voando",
+    title: "Vem Voando",
+    eyebrow: "Landing page comercial",
+    status: "Em desenvolvimento",
+    category: "Site",
+    summary:
+      "Landing page para apresentar a Vem Voando com clareza, impacto visual e foco em conversão.",
+    coverImage: "/projetos/vem-voando/home.png",
+    tags: ["Landing page", "Conversão", "Responsivo", "Viagens"],
+    overview:
+      "A landing page da Vem Voando está sendo desenvolvida para apresentar a marca de forma objetiva, profissional e comercial. A proposta é criar uma página clara, visualmente atrativa e preparada para direcionar o visitante para uma ação, seja contato, orçamento, atendimento ou interesse em serviços relacionados a viagens.",
+    challenge:
+      "O desafio do projeto é transformar uma ideia comercial em uma página simples de entender e forte o suficiente para gerar confiança rapidamente. A página precisa comunicar valor, evitar excesso de informação e conduzir o usuário para o contato sem parecer genérica.",
+    solution:
+      "A solução foi pensada com uma estrutura de landing page direta: hero com proposta forte, blocos de benefício, seções explicativas, chamadas de ação e layout responsivo. O visual prioriza clareza, contraste, boa hierarquia e uma experiência fluida tanto no desktop quanto no mobile.",
+    result:
+      "O projeto está em desenvolvimento e já serve como base para posicionar a Vem Voando com mais presença digital, melhorar a apresentação comercial e preparar a marca para captar oportunidades online.",
+    highlights: [
+      "Hero com proposta clara e chamada de ação.",
+      "Estrutura objetiva para apresentar serviços e benefícios.",
+      "Layout responsivo com foco em navegação rápida.",
+      "Base preparada para publicação e evolução comercial.",
+    ],
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "UI/UX"],
+    nextSteps: [
+      "Inserir imagens finais da marca.",
+      "Revisar textos comerciais.",
+      "Ajustar CTAs para WhatsApp ou canal principal de contato.",
+      "Finalizar responsividade e validação antes do deploy.",
+    ],
+  },
+  {
     slug: "mesaflow-sistema-garcom",
     title: "MesaFlow / Sistema Garçom",
     eyebrow: "Sistema operacional para estabelecimentos gastronômicos",

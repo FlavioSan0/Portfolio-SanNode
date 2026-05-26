@@ -92,6 +92,21 @@ const projectGroups: ProjectGroup[] = [
           "Projeto em desenvolvimento para transformar fotos, vídeos e identidade visual em uma presença digital mais profissional.",
         deliverables: ["Momentos", "Vídeos", "Identidade"],
       },
+      {
+        number: "05",
+        title: "Vem Voando",
+        category: "Landing page • Em desenvolvimento",
+        slug: "vem-voando",
+        image: "/projetos/vem-voando/home.png",
+        imageMode: "screen",
+        context:
+          "Landing page para apresentar a Vem Voando com clareza, impacto visual e foco em conversão.",
+        decision:
+          "Estrutura criada para destacar proposta, benefícios, chamada principal e caminho rápido para contato.",
+        result:
+          "Projeto em desenvolvimento para fortalecer a presença digital da marca e transformar visitas em oportunidades comerciais.",
+        deliverables: ["Landing", "Conversão", "Responsivo"],
+      },
     ],
   },
   {
@@ -103,7 +118,7 @@ const projectGroups: ProjectGroup[] = [
     icon: Code2,
     projects: [
       {
-        number: "05",
+        number: "06",
         title: "Controle de Estoque Mecânica",
         category: "Sistema web",
         slug: "controle-estoque-mecanica",
@@ -117,14 +132,14 @@ const projectGroups: ProjectGroup[] = [
         deliverables: ["Dashboard", "Estoque", "Gestão"],
       },
       {
-        number: "06",
+        number: "07",
         title: "MesaFlow / Sistema Garçom",
         category: "Sistema operacional • Em desenvolvimento",
         slug: "mesaflow-sistema-garcom",
         image: "/projetos/mesaflow/dashboard.png",
         imageMode: "screen",
         context:
-          "Sistema para operação de estabelecimentos gastronômicos, com foco em pedidos, mesas, setores de preparo, caixa e controle operacional.",
+          "Sistema para operação de pedidos, mesas, preparo, caixa e rotina de estabelecimentos gastronômicos.",
         decision:
           "Estrutura genérica para atender lanchonetes, pizzarias, espetinhos, bares, restaurantes e outros negócios, com áreas configuráveis por operação.",
         result:
@@ -157,9 +172,9 @@ export default function ProjectEditorial() {
             </div>
 
             <p className="responsive-copy max-w-2xl text-[#A9BDD3] text-pretty">
-              Cada case mostra uma entrega prática da SanNode: identidade,
-              site, sistema ou automação com foco em apresentação, organização e
-              uso real.
+              Cada case mostra uma entrega prática da SanNode: identidade, site,
+              sistema ou automação com foco em apresentação, organização e uso
+              real.
             </p>
           </div>
         </Reveal>
