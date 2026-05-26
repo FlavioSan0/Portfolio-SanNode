@@ -62,6 +62,36 @@ const projectGroups: ProjectGroup[] = [
         deliverables: ["RSVP", "Painel", "Mobile"],
         liveUrl: "https://site-casamento-chi.vercel.app",
       },
+      {
+        number: "03",
+        title: "Paróquia / Santuário",
+        category: "Site institucional • Em desenvolvimento",
+        slug: "paroquia-santuario",
+        image: "/projetos/paroquia-santuario/home.png",
+        imageMode: "screen",
+        context:
+          "Site institucional para organizar informações da paróquia, horários, eventos, pastorais e comunicação com a comunidade.",
+        decision:
+          "Estrutura pensada para ser acolhedora, clara e fácil de navegar, com seções institucionais, agenda, informações pastorais e pontos de contato.",
+        result:
+          "Projeto em desenvolvimento para fortalecer a presença digital da paróquia e facilitar o acesso às informações pelos fiéis.",
+        deliverables: ["Institucional", "Agenda", "Responsivo"],
+      },
+      {
+        number: "04",
+        title: "Banda Praise",
+        category: "Site artístico • Em desenvolvimento",
+        slug: "banda-praise",
+        image: "/projetos/banda-praise/home.png",
+        imageMode: "screen",
+        context:
+          "Site para apresentar a identidade da Banda Praise, seus momentos, vídeos, fotos, agenda e presença musical.",
+        decision:
+          "Direção visual focada em emoção, movimento e experiência, usando momentos reais da banda para criar uma página viva e envolvente.",
+        result:
+          "Projeto em desenvolvimento para transformar fotos, vídeos e identidade visual em uma presença digital mais profissional.",
+        deliverables: ["Momentos", "Vídeos", "Identidade"],
+      },
     ],
   },
   {
@@ -73,7 +103,7 @@ const projectGroups: ProjectGroup[] = [
     icon: Code2,
     projects: [
       {
-        number: "03",
+        number: "05",
         title: "Controle de Estoque Mecânica",
         category: "Sistema web",
         slug: "controle-estoque-mecanica",
@@ -85,6 +115,21 @@ const projectGroups: ProjectGroup[] = [
           "Base operacional com dashboard, cadastros, histórico e estrutura para evoluir para gestão mecânica.",
         result: "Mais controle sobre estoque, registros e movimentações.",
         deliverables: ["Dashboard", "Estoque", "Gestão"],
+      },
+      {
+        number: "06",
+        title: "MesaFlow / Sistema Garçom",
+        category: "Sistema operacional • Em desenvolvimento",
+        slug: "mesaflow-sistema-garcom",
+        image: "/projetos/mesaflow/dashboard.png",
+        imageMode: "screen",
+        context:
+          "Sistema para operação de estabelecimentos gastronômicos, com foco em pedidos, mesas, setores de preparo, caixa e controle operacional.",
+        decision:
+          "Estrutura genérica para atender lanchonetes, pizzarias, espetinhos, bares, restaurantes e outros negócios, com áreas configuráveis por operação.",
+        result:
+          "Projeto em desenvolvimento para reduzir improviso, organizar pedidos e centralizar a rotina entre salão, preparo e caixa.",
+        deliverables: ["Pedidos", "Mesas", "Operação"],
       },
     ],
   },

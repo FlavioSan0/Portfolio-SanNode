@@ -1,91 +1,93 @@
 "use client";
 
-import { motion, useInView, useReducedMotion } from "framer-motion";
-import { ReactNode, useRef } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
-type RevealDirection = "up" | "left" | "right";
+type RevealDirection = "up" | "down" | "left" | "right" | "none";
 
 type RevealProps = {
   children: ReactNode;
-  className?: string;
   delay?: number;
-  y?: number;
-  amount?: number;
-  fadeOut?: boolean;
+  className?: string;
   direction?: RevealDirection;
+};
+
+const hiddenDirectionClass: Record<RevealDirection, string> = {
+  up: "translate-y-6",
+  down: "-translate-y-6",
+  left: "translate-x-6",
+  right: "-translate-x-6",
+  none: "translate-x-0 translate-y-0",
 };
 
 export default function Reveal({
   children,
-  className = "",
   delay = 0,
-  y = 18,
-  amount = 0.18,
-  fadeOut = true,
+  className = "",
   direction = "up",
 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const prefersReducedMotion = useReducedMotion();
+  const [isVisible, setIsVisible] = useState(false);
 
-  const isInView = useInView(ref, {
-    amount,
-    margin: "0px 0px -8% 0px",
-  });
+  useEffect(() => {
+    const element = ref.current;
 
-  function getHiddenPosition() {
-    if (direction === "left") {
-      return {
-        x: -28,
-        y: 0,
-      };
+    if (!element) {
+      setIsVisible(true);
+      return;
     }
 
-    if (direction === "right") {
-      return {
-        x: 28,
-        y: 0,
-      };
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      setIsVisible(true);
+      return;
     }
 
-    return {
-      x: 0,
-      y,
+    const fallbackTimer = window.setTimeout(() => {
+      setIsVisible(true);
+    }, 700 + delay);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          window.clearTimeout(fallbackTimer);
+
+          window.setTimeout(() => {
+            setIsVisible(true);
+          }, delay);
+
+          observer.disconnect();
+        }
+      },
+      {
+        root: null,
+        threshold: 0.08,
+        rootMargin: "0px 0px -8% 0px",
+      }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      window.clearTimeout(fallbackTimer);
+      observer.disconnect();
     };
-  }
-
-  const hiddenPosition = getHiddenPosition();
-
-  if (prefersReducedMotion) {
-    return <div className={className}>{children}</div>;
-  }
+  }, [delay]);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={false}
-      animate={
-        isInView || !fadeOut
-          ? {
-              opacity: 1,
-              x: 0,
-              y: 0,
-              filter: "blur(0px)",
-            }
-          : {
-              opacity: 0,
-              x: hiddenPosition.x,
-              y: hiddenPosition.y,
-              filter: "blur(4px)",
-            }
-      }
-      transition={{
-        duration: 0.42,
-        delay: delay / 1000,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className={className}
+      className={[
+        "transition-all duration-700 ease-out will-change-transform",
+        isVisible
+          ? "translate-x-0 translate-y-0 opacity-100"
+          : `${hiddenDirectionClass[direction]} opacity-0`,
+        className,
+      ].join(" ")}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
