@@ -19,6 +19,70 @@ export type ProjectCase = {
 
 export const projectCases: ProjectCase[] = [
   {
+    slug: "abf-representacoes",
+    title: "ABF Representações",
+    eyebrow: "Identidade visual e landing page",
+    status: "Publicado",
+    category: "Design",
+    summary:
+      "Identidade visual e landing page para fortalecer a presença comercial da ABF.",
+    coverImage: "/projetos/abf-case/logo-principal.png",
+    liveUrl: "https://abf-representacao.vercel.app/#",
+    tags: ["Identidade visual", "Landing page", "Marca", "Comercial"],
+    overview:
+      "O projeto da ABF Representações nasceu para organizar a presença visual e comercial da marca, criando uma identidade mais sólida, profissional e preparada para aplicação digital.",
+    challenge:
+      "O desafio foi construir uma imagem que transmitisse confiança, solidez e crescimento, sem cair em um visual genérico. A marca precisava funcionar tanto em peças institucionais quanto em uma landing page objetiva.",
+    solution:
+      "A solução combinou identidade visual com aplicação prática em uma landing page institucional. A composição priorizou contraste, presença, hierarquia clara e elementos visuais voltados para comunicação comercial.",
+    result:
+      "A ABF passou a contar com uma presença digital mais consistente, com marca aplicada, página publicada e comunicação visual mais alinhada ao posicionamento da empresa.",
+    highlights: [
+      "Criação de identidade visual com direção comercial.",
+      "Aplicação da marca em landing page institucional.",
+      "Organização visual para apresentação dos serviços.",
+      "Base preparada para evoluir a comunicação digital.",
+    ],
+    stack: ["Identidade visual", "UI/UX", "Next.js", "Tailwind CSS"],
+    nextSteps: [
+      "Expandir aplicações da identidade.",
+      "Criar materiais complementares para redes sociais.",
+      "Evoluir conteúdo comercial da landing page.",
+    ],
+  },
+  {
+    slug: "site-casamento",
+    title: "Site de Casamento",
+    eyebrow: "Convite digital com painel",
+    status: "Publicado",
+    category: "Site",
+    summary:
+      "Convite digital com experiência para convidados e painel administrativo para organização do evento.",
+    coverImage: "/projetos/site-casamento/mobile-home.png",
+    liveUrl: "https://site-casamento-chi.vercel.app",
+    tags: ["RSVP", "Painel", "Lista de presentes", "Evento"],
+    overview:
+      "O site de casamento foi criado para transformar o convite em uma experiência digital completa, com informações do evento, confirmação de presença, lista de presentes, cotas e área administrativa.",
+    challenge:
+      "O desafio foi unir emoção, organização e funcionalidade em uma solução simples para convidados e útil para o casal. Além do visual, o projeto precisava ajudar na gestão real do evento.",
+    solution:
+      "A solução foi uma landing page com experiência mobile, seções claras, RSVP, presentes, PIX, galeria e painel administrativo para acompanhar confirmações e organização.",
+    result:
+      "O evento ganhou um ambiente digital próprio, facilitando o acesso dos convidados às informações e dando ao casal uma ferramenta prática de acompanhamento.",
+    highlights: [
+      "Convite digital responsivo.",
+      "Confirmação de presença com acompanhantes.",
+      "Lista de presentes e cotas.",
+      "Painel administrativo para gestão do evento.",
+    ],
+    stack: ["Next.js", "React", "TypeScript", "Supabase", "Tailwind CSS"],
+    nextSteps: [
+      "Aprimorar modelos comercializáveis.",
+      "Criar variações visuais por estilo de evento.",
+      "Expandir recursos administrativos.",
+    ],
+  },
+  {
     slug: "paroquia-santuario",
     title: "Paróquia / Santuário",
     eyebrow: "Site institucional religioso",
@@ -115,6 +179,46 @@ export const projectCases: ProjectCase[] = [
     ],
   },
   {
+    slug: "controle-estoque-mecanica",
+    title: "Controle de Estoque Mecânica",
+    eyebrow: "Sistema web para oficina",
+    status: "Sistema interno",
+    category: "Sistema",
+    summary:
+      "Sistema privado para organizar produtos, entradas, saídas e movimentações em uma rotina real de oficina.",
+    coverImage: "/projetos/estoque-case/dashboard.png",
+    tags: ["Estoque", "Dashboard", "Fornecedores", "Movimentações"],
+    overview:
+      "O sistema de controle de estoque para mecânica foi desenvolvido para organizar produtos, entradas, saídas, fornecedores e movimentações em uma rotina operacional real.",
+    challenge:
+      "O principal desafio foi substituir controles soltos por uma base mais confiável, com histórico, filtros, dashboard e registros claros para consulta.",
+    solution:
+      "A solução foi construída com uma arquitetura separada entre frontend, API e banco de dados, permitindo evolução modular e criação de novos módulos sem recomeçar o projeto.",
+    result:
+      "O projeto criou uma base operacional para gestão de estoque e abriu caminho para evolução futura em clientes, veículos, ordens de serviço, financeiro, agenda e relatórios.",
+    highlights: [
+      "Dashboard inicial para visão rápida.",
+      "Cadastro e detalhe de produtos.",
+      "Controle de entradas e saídas.",
+      "Histórico de movimentações.",
+      "Base preparada para expansão modular.",
+    ],
+    stack: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "Supabase",
+    ],
+    nextSteps: [
+      "Estabilizar funcionalidades atuais.",
+      "Adicionar clientes e veículos.",
+      "Evoluir para ordens de serviço.",
+      "Integrar financeiro, agenda e relatórios.",
+    ],
+  },
+  {
     slug: "mesaflow-sistema-garcom",
     title: "MesaFlow / Sistema Garçom",
     eyebrow: "Sistema operacional para estabelecimentos gastronômicos",
@@ -153,6 +257,49 @@ export const projectCases: ProjectCase[] = [
       "Implementar atualização automática entre telas.",
       "Refinar onboarding inicial do estabelecimento.",
       "Preparar roadmap para dashboard gerencial.",
+    ],
+  },
+  {
+    slug: "gestao-financeira",
+    title: "Gestão Financeira",
+    eyebrow: "Sistema financeiro familiar",
+    status: "Em desenvolvimento",
+    category: "Sistema",
+    summary:
+      "Sistema para organizar lançamentos, contas, cartões, entradas, despesas fixas e rotina financeira familiar.",
+    coverImage: "/projetos/gestao-financeira/dashboard.png",
+    tags: ["Finanças", "Dashboard", "Mobile", "Contas", "Cartões"],
+    overview:
+      "O sistema de Gestão Financeira foi criado para organizar a rotina financeira familiar com mais clareza, separando contas, cartões, lançamentos, despesas fixas, entradas e visão mensal. A proposta é transformar o controle manual em uma interface prática, visual e confiável.",
+    challenge:
+      "O desafio foi criar uma experiência que funcionasse bem no uso real do dia a dia, principalmente no mobile. Além de registrar entradas e saídas, o sistema precisava lidar com contas recorrentes, cartões, status de pagamento, responsáveis e filtros sem deixar a interface pesada ou confusa.",
+    solution:
+      "A solução foi estruturada com uma interface escura, responsiva e organizada, usando dashboard, formulários, filtros por sheet no mobile, controle de contas e cartões, lançamentos fixos, edição de registros e separação entre quem lançou e quem alterou o status de pagamento.",
+    result:
+      "O projeto está em desenvolvimento e já consolida uma base forte para gestão financeira pessoal/familiar, com foco em usabilidade, organização de dados e evolução futura para recursos como família, múltiplos usuários, notificações e integrações.",
+    highlights: [
+      "Dashboard financeiro com visão organizada.",
+      "Controle de contas, cartões e lançamentos.",
+      "Despesas fixas, recorrentes e parceladas.",
+      "Filtros mobile padronizados em sheet inferior.",
+      "Planejamento para lembretes próximos ao vencimento.",
+      "Base preparada para evolução com autenticação e família.",
+    ],
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "Neon",
+      "PostgreSQL",
+    ],
+    nextSteps: [
+      "Finalizar edição de contas, cartões e lançamentos.",
+      "Polir responsividade mobile.",
+      "Implementar entradas fixas.",
+      "Melhorar lógica de lançamentos recorrentes.",
+      "Preparar autenticação, família e permissões em etapa futura.",
     ],
   },
 ];

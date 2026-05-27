@@ -146,6 +146,21 @@ const projectGroups: ProjectGroup[] = [
           "Projeto em desenvolvimento para reduzir improviso, organizar pedidos e centralizar a rotina entre salão, preparo e caixa.",
         deliverables: ["Pedidos", "Mesas", "Operação"],
       },
+      {
+        number: "08",
+        title: "Gestão Financeira",
+        category: "Sistema financeiro • Em desenvolvimento",
+        slug: "gestao-financeira",
+        image: "/projetos/gestao-financeira/dashboard.png",
+        imageMode: "screen",
+        context:
+          "Sistema para organizar lançamentos, contas, cartões, entradas, despesas fixas e rotina financeira familiar.",
+        decision:
+          "Interface escura, responsiva e prática, com foco em separar responsabilidades, status de pagamento e visão mensal.",
+        result:
+          "Projeto em desenvolvimento para transformar controle financeiro manual em uma experiência mais clara, visual e confiável.",
+        deliverables: ["Finanças", "Dashboard", "Mobile"],
+      },
     ],
   },
 ];
