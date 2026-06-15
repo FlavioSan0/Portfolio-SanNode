@@ -138,18 +138,61 @@ export default async function ProjectCasePage({ params }: ProjectPageProps) {
             <div className="relative">
               <div className="absolute -inset-4 rounded-[2.5rem] bg-[#00D9FF]/10 blur-3xl" />
 
-              <div className="relative overflow-hidden rounded-[2rem] border border-[#1E3654]/70 bg-[#040B14] shadow-[0_28px_100px_rgba(0,0,0,0.35)]">
-                <div className="relative aspect-[16/10]">
-                  <Image
-                    src={project.coverImage}
-                    alt={`Imagem do projeto ${project.title}`}
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                  />
+              {project.livePreview && project.liveUrl ? (
+                <div className="relative overflow-hidden rounded-[2rem] border border-[#1E3654]/70 bg-[#040B14] shadow-[0_28px_100px_rgba(0,0,0,0.35)]">
+                  <div className="flex items-center justify-between gap-4 border-b border-[#1E3654]/55 bg-[#07111F]/95 px-4 py-3">
+                    <div
+                      aria-hidden="true"
+                      className="flex shrink-0 items-center gap-2"
+                    >
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+                    </div>
+
+                    <div className="min-w-0 flex-1 rounded-full border border-[#1E3654]/70 bg-[#040B14]/80 px-3 py-1.5 text-center text-[0.66rem] font-bold uppercase tracking-[0.16em] text-[#A9BDD3]">
+                      <span className="block truncate">
+                        Landing oficial ao vivo
+                      </span>
+                    </div>
+
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hidden shrink-0 items-center gap-1.5 rounded-full border border-[#00D9FF]/35 bg-[#00D9FF]/[0.06] px-3 py-1.5 text-[0.66rem] font-black uppercase tracking-[0.14em] text-[#D9F4FF] transition hover:border-[#00D9FF]/75 hover:bg-[#00D9FF]/[0.12] sm:inline-flex"
+                    >
+                      Abrir
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
+
+                  <div className="relative aspect-[16/10] bg-[#020812]">
+                    <iframe
+                      src={project.liveUrl}
+                      title={`Prévia ao vivo do projeto ${project.title}`}
+                      loading="lazy"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      className="h-full w-full border-0"
+                    />
+
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#040B14]/45 to-transparent" />
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="relative overflow-hidden rounded-[2rem] border border-[#1E3654]/70 bg-[#040B14] shadow-[0_28px_100px_rgba(0,0,0,0.35)]">
+                  <div className="relative aspect-[16/10]">
+                    <Image
+                      src={project.coverImage}
+                      alt={`Imagem do projeto ${project.title}`}
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

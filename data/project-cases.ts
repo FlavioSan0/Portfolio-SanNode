@@ -10,6 +10,7 @@ export type ProjectCase = {
   coverImage: string;
   liveUrl?: string;
   liveLabel?: string;
+  livePreview?: boolean;
   tags: string[];
   overview: string;
   challenge: string;
@@ -232,6 +233,7 @@ export const projectCases: ProjectCase[] = [
     coverImage: "/projetos/mesaflow/dashboard.png",
     liveUrl: MESAFLOW_LANDING_URL,
     liveLabel: "Ver landing page oficial",
+    livePreview: true,
     tags: [
       "SaaS",
       "MVP funcional",
