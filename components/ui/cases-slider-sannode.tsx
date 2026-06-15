@@ -14,6 +14,7 @@ export type CaseSliderItem = {
   result: string;
   deliverables: string[];
   liveUrl?: string;
+  liveLabel?: string;
 };
 
 type CasesSliderSanNodeProps = {
@@ -93,7 +94,7 @@ export default function CasesSliderSanNode({
                   rel="noreferrer"
                   className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-[#00D9FF]/45 bg-[#00D9FF]/[0.035] px-4 py-3 text-sm font-bold text-[#D9F4FF] transition hover:border-[#00D9FF]/80 hover:bg-[#00D9FF]/[0.08]"
                 >
-                  Acessar
+                  {project.liveLabel ?? "Acessar"}
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
               ) : null}

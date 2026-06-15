@@ -31,9 +31,17 @@ export default function Reveal({
   useEffect(() => {
     const element = ref.current;
 
+    const revealImmediately = () =>
+      window.setTimeout(() => {
+        setIsVisible(true);
+      }, 0);
+
     if (!element) {
-      setIsVisible(true);
-      return;
+      const immediateTimer = revealImmediately();
+
+      return () => {
+        window.clearTimeout(immediateTimer);
+      };
     }
 
     const prefersReducedMotion = window.matchMedia(
@@ -41,8 +49,11 @@ export default function Reveal({
     ).matches;
 
     if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-      setIsVisible(true);
-      return;
+      const immediateTimer = revealImmediately();
+
+      return () => {
+        window.clearTimeout(immediateTimer);
+      };
     }
 
     const fallbackTimer = window.setTimeout(() => {

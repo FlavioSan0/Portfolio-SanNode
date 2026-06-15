@@ -1,3 +1,4 @@
+import { MESAFLOW_LANDING_URL } from "@/data/project-links";
 import Reveal from "@/components/Reveal";
 import CasesSliderSanNode, {
   type CaseSliderItem,
@@ -119,6 +120,23 @@ const projectGroups: ProjectGroup[] = [
     projects: [
       {
         number: "06",
+        title: "MesaFlow",
+        category: "Sistema SaaS • MVP funcional",
+        slug: "mesaflow-sistema-garcom",
+        image: "/projetos/mesaflow/dashboard.png",
+        imageMode: "screen",
+        context:
+          "Sistema web para pequenos negócios organizarem cardápio digital, pedidos, balcão, delivery, mesas, garçom e gestão em uma única plataforma.",
+        decision:
+          "MVP estruturado com fluxo real de operação, permissões por função, setores de preparo, impressão, gestão de produtos e base multiempresa.",
+        result:
+          "Produto pronto para apresentação comercial, testes com clientes reais e evolução como solução SaaS para estabelecimentos gastronômicos.",
+        deliverables: ["SaaS", "Pedidos", "Cardápio"],
+        liveUrl: MESAFLOW_LANDING_URL,
+        liveLabel: "Landing oficial",
+      },
+      {
+        number: "07",
         title: "Controle de Estoque Mecânica",
         category: "Sistema web",
         slug: "controle-estoque-mecanica",
@@ -130,21 +148,6 @@ const projectGroups: ProjectGroup[] = [
           "Base operacional com dashboard, cadastros, histórico e estrutura para evoluir para gestão mecânica.",
         result: "Mais controle sobre estoque, registros e movimentações.",
         deliverables: ["Dashboard", "Estoque", "Gestão"],
-      },
-      {
-        number: "07",
-        title: "MesaFlow / Sistema Garçom",
-        category: "Sistema operacional • Em desenvolvimento",
-        slug: "mesaflow-sistema-garcom",
-        image: "/projetos/mesaflow/dashboard.png",
-        imageMode: "screen",
-        context:
-          "Sistema para operação de pedidos, mesas, preparo, caixa e rotina de estabelecimentos gastronômicos.",
-        decision:
-          "Estrutura genérica para atender lanchonetes, pizzarias, espetinhos, bares, restaurantes e outros negócios, com áreas configuráveis por operação.",
-        result:
-          "Projeto em desenvolvimento para reduzir improviso, organizar pedidos e centralizar a rotina entre salão, preparo e caixa.",
-        deliverables: ["Pedidos", "Mesas", "Operação"],
       },
       {
         number: "08",

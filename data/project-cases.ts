@@ -1,12 +1,15 @@
+import { MESAFLOW_LANDING_URL } from "@/data/project-links";
+
 export type ProjectCase = {
   slug: string;
   title: string;
   eyebrow: string;
-  status: "Publicado" | "Em desenvolvimento" | "Sistema interno";
+  status: "Publicado" | "Em desenvolvimento" | "Sistema interno" | "MVP funcional";
   category: "Design" | "Site" | "Sistema";
   summary: string;
   coverImage: string;
   liveUrl?: string;
+  liveLabel?: string;
   tags: string[];
   overview: string;
   challenge: string;
@@ -220,28 +223,40 @@ export const projectCases: ProjectCase[] = [
   },
   {
     slug: "mesaflow-sistema-garcom",
-    title: "MesaFlow / Sistema Garçom",
-    eyebrow: "Sistema operacional para estabelecimentos gastronômicos",
-    status: "Em desenvolvimento",
+    title: "MesaFlow — Sistema de Pedidos e Atendimento",
+    eyebrow: "Produto SaaS para pequenos negócios gastronômicos",
+    status: "MVP funcional",
     category: "Sistema",
     summary:
-      "Sistema para operação de pedidos, mesas, preparo, caixa e rotina de estabelecimentos gastronômicos.",
+      "Sistema web para pequenos estabelecimentos organizarem cardápio digital, pedidos, balcão, delivery, mesas, atendimento por garçom e gestão operacional em uma única plataforma.",
     coverImage: "/projetos/mesaflow/dashboard.png",
-    tags: ["Sistema web", "Pedidos", "Mesas", "Operação", "Gestão"],
+    liveUrl: MESAFLOW_LANDING_URL,
+    liveLabel: "Ver landing page oficial",
+    tags: [
+      "SaaS",
+      "MVP funcional",
+      "Cardápio digital",
+      "Delivery",
+      "Garçom",
+      "Gestão",
+    ],
     overview:
-      "O MesaFlow é um sistema web em desenvolvimento para organizar a operação de estabelecimentos gastronômicos como lanchonetes, pizzarias, espetinhos, bares, restaurantes, cafeterias e açaíterias. A proposta é centralizar pedidos, mesas, setores de preparo, caixa, estoque simples e gestão operacional em uma interface prática.",
+      "O MesaFlow é um sistema web desenvolvido para organizar o fluxo de pedidos, atendimento, balcão, delivery, mesas e gestão operacional de pequenos estabelecimentos como lanchonetes, hamburguerias, docerias, marmitarias, açaíterias, espetinhos, pizzarias e restaurantes.",
     challenge:
-      "Muitos negócios gastronômicos operam com comandas manuais, mensagens soltas, retrabalho entre garçom, cozinha e caixa, além de pouca visibilidade sobre o andamento dos pedidos. O desafio é criar um sistema flexível o suficiente para diferentes tipos de estabelecimento, mas simples o bastante para ser usado no dia a dia sem travar a operação.",
+      "Pequenos negócios do ramo alimentício ainda dependem de comandas em papel, pedidos espalhados pelo WhatsApp, planilhas improvisadas ou sistemas caros demais para a operação real. O desafio foi criar uma solução simples de vender, fácil de usar e flexível o bastante para diferentes tipos de estabelecimento.",
     solution:
-      "A solução está sendo desenhada com login por função, áreas separadas para garçom, preparo, caixa e gestão, além de configurações iniciais por tipo de estabelecimento. O sistema considera setores configuráveis como cozinha, bar, churrasqueira, pizzaria, chapa e copa, permitindo que cada negócio adapte o fluxo à sua realidade.",
+      "A solução foi estruturar um MVP funcional com cardápio digital personalizado, pedidos por balcão, delivery e mesas, atendimento por garçom, setores de preparo, gestão de produtos, categorias, adicionais, usuários por função, impressão de comprovantes, filtros operacionais e painel administrativo para o dono ou gerente.",
     result:
-      "O projeto está em fase de construção e já possui uma base operacional voltada para pedidos, mesas, equipe, setores e configurações. A proposta é evoluir para um produto reutilizável, com foco em organização, rastreabilidade e agilidade no atendimento.",
+      "O MesaFlow saiu da fase de protótipo e chegou a uma base funcional para apresentação comercial, testes com clientes reais e evolução como produto SaaS. A plataforma já permite demonstrar fluxo completo de atendimento e validar módulos, preço e posicionamento com pequenos estabelecimentos.",
     highlights: [
-      "Fluxo de pedidos por mesa e atendimento.",
-      "Setores de preparo configuráveis por estabelecimento.",
-      "Área de equipe com permissões por função.",
-      "Base para dashboard, caixa e controle operacional.",
-      "Planejamento para onboarding por nicho gastronômico.",
+      "Cardápio digital público com identidade do estabelecimento.",
+      "Pedidos por delivery, balcão, mesas e atendimento por garçom.",
+      "Gestão de produtos, categorias, adicionais, promoções e disponibilidade.",
+      "Organização por setores como cozinha, bar, copa, churrasqueira e preparo.",
+      "Controle de mesas, contas abertas, status dos pedidos e impressão de comprovantes.",
+      "Painel administrativo com usuários, permissões por função e configurações da operação.",
+      "Estrutura preparada para multiempresa, slug público, relatórios, fechamento de caixa e auditoria.",
+      "Layout responsivo para uso em desktop, tablet e celular.",
     ],
     stack: [
       "Next.js",
@@ -249,14 +264,18 @@ export const projectCases: ProjectCase[] = [
       "TypeScript",
       "Tailwind CSS",
       "Prisma",
+      "Supabase",
       "PostgreSQL",
+      "Vercel",
+      "Playwright",
+      "Git/GitHub",
     ],
     nextSteps: [
-      "Polir telas operacionais.",
-      "Finalizar área de equipe e permissões.",
-      "Implementar atualização automática entre telas.",
-      "Refinar onboarding inicial do estabelecimento.",
-      "Preparar roadmap para dashboard gerencial.",
+      "Validar o MVP com negócios reais e coletar feedback operacional.",
+      "Refinar relatórios, fechamento de caixa, auditoria e permissões avançadas.",
+      "Evoluir notificações segmentadas por função, módulo e setor.",
+      "Fortalecer segurança, LGPD, backups e preparação para escala multiempresa.",
+      "Ajustar o posicionamento comercial conforme os primeiros testes de venda.",
     ],
   },
   {

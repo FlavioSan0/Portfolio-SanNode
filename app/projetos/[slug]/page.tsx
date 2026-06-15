@@ -32,6 +32,8 @@ const statusStyles: Record<ProjectCase["status"], string> = {
     "border-[#00D9FF]/35 bg-[#00D9FF]/[0.08] text-[#B8F3FF]",
   "Sistema interno":
     "border-amber-300/30 bg-amber-300/[0.08] text-amber-100",
+  "MVP funcional":
+    "border-[#00D9FF]/40 bg-[#00D9FF]/[0.10] text-[#D9F4FF]",
 };
 
 export async function generateStaticParams() {
@@ -127,7 +129,7 @@ export default async function ProjectCasePage({ params }: ProjectPageProps) {
                   rel="noreferrer"
                   className="mt-9 inline-flex items-center justify-center rounded-2xl border border-[#00D9FF]/50 bg-[#00D9FF]/[0.08] px-6 py-4 text-sm font-bold text-[#D9F4FF] transition hover:border-[#00D9FF]/80 hover:bg-[#00D9FF]/[0.13]"
                 >
-                  Acessar projeto
+                  {project.liveLabel ?? "Acessar projeto"}
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
               ) : null}

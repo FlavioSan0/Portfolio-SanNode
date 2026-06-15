@@ -27,14 +27,14 @@ const featuredProjects = [
   },
   {
     number: "03",
-    title: "Controle de Estoque Mecânica",
-    category: "Sistema web privado",
-    slug: "controle-estoque-mecanica",
+    title: "MesaFlow",
+    category: "Sistema SaaS / MVP funcional",
+    slug: "mesaflow-sistema-garcom",
     summary:
-      "Sistema com dashboard, produtos, entradas, saídas, movimentações e base para evoluir para uma gestão completa de oficina.",
-    result: "Operação mais organizada, com dados, histórico e controle.",
+      "Sistema web para pequenos negócios organizarem cardápio digital, pedidos, balcão, delivery, mesas, garçom e gestão em uma única plataforma.",
+    result: "Produto pronto para apresentação comercial e validação com clientes reais.",
     accent: "blue",
-    tags: ["Dashboard", "Estoque", "Gestão"],
+    tags: ["SaaS", "Pedidos", "Cardápio"],
   },
 ];
 

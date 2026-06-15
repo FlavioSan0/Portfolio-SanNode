@@ -1,3 +1,5 @@
+import { MESAFLOW_LANDING_URL } from "@/data/project-links";
+
 export type ProjectCategory = "design" | "programacao";
 
 export type ProjectSection = {
@@ -128,6 +130,69 @@ export const projects: Project[] = [
       },
     ],
     link: "https://site-casamento-chi.vercel.app",
+  },
+
+  {
+    slug: "mesaflow-sistema-garcom",
+    title: "MesaFlow — Sistema de Pedidos e Atendimento",
+    category: "programacao",
+    type: "Sistema SaaS / Gestão de pedidos",
+    description:
+      "Sistema web para pequenos estabelecimentos organizarem cardápio digital, pedidos, balcão, delivery, mesas, atendimento por garçom e gestão operacional em uma única plataforma.",
+    status: "MVP funcional",
+    year: "2026",
+    client: "Produto próprio SanNode",
+    role: "Desenvolvimento full stack, UI/UX, regras de negócio e direção de produto",
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "Supabase",
+      "PostgreSQL",
+      "Vercel",
+      "Playwright",
+    ],
+    highlights: [
+      "Cardápio digital",
+      "Pedidos e mesas",
+      "Permissões por função",
+    ],
+    challenge:
+      "Pequenos negócios gastronômicos precisam sair do papel, WhatsApp desorganizado e planilhas improvisadas sem depender de sistemas caros ou complexos demais.",
+    solution:
+      "Foi criado um MVP funcional com cardápio público, pedidos por balcão, delivery e mesas, atendimento por garçom, setores de preparo, gestão de produtos, permissões por função e impressão de comprovantes.",
+    result:
+      "O projeto chegou a uma base pronta para apresentação comercial, validação com clientes reais e evolução como produto SaaS para pequenos estabelecimentos.",
+    deliverables: [
+      "Cardápio digital",
+      "Painel administrativo",
+      "Fluxo de pedidos",
+      "Módulo garçom",
+      "Módulo delivery",
+      "Setores de preparo",
+      "Impressão de comprovantes",
+      "Estrutura multiempresa",
+    ],
+    sections: [
+      {
+        title: "Operação real",
+        description:
+          "O sistema centraliza pedidos, mesas, preparo e gestão para reduzir improviso e melhorar o controle da rotina.",
+      },
+      {
+        title: "Produto SaaS",
+        description:
+          "A base foi pensada para múltiplos estabelecimentos, com identidade própria, slug público, permissões e configurações por negócio.",
+      },
+      {
+        title: "Uso comercial",
+        description:
+          "O MVP já permite demonstração, testes com clientes reais e validação de módulos, preço e posicionamento.",
+      },
+    ],
+    link: MESAFLOW_LANDING_URL,
   },
 
   {

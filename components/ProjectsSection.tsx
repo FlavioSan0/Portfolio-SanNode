@@ -51,6 +51,37 @@ function ProjectPreview({ slug, category }: { slug: string; category: string }) 
     );
   }
 
+  if (slug === "mesaflow-sistema-garcom") {
+    return (
+      <div className="mb-6 h-40 rounded-[1.5rem] border border-[#1E3654] bg-[radial-gradient(circle_at_top_right,#00D9FF33,transparent_32%),linear-gradient(135deg,#07111F,#0B2A5B)] p-5 sm:h-44">
+        <div className="grid h-full grid-cols-[0.85fr_1.15fr] gap-4">
+          <div className="flex flex-col justify-between">
+            <div className="h-11 w-11 rounded-2xl border border-[#00D9FF]/35 bg-[#00D9FF]/15" />
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-[#00D9FF]">
+                SaaS MVP
+              </p>
+              <p className="mt-2 text-lg font-black text-white">MesaFlow</p>
+            </div>
+          </div>
+
+          <div className="flex flex-col justify-between rounded-2xl border border-white/10 bg-[#07111F]/70 p-4">
+            <div className="grid gap-2">
+              <div className="h-4 rounded-full bg-[#00D9FF]/25" />
+              <div className="h-4 w-4/5 rounded-full bg-white/10" />
+              <div className="h-4 w-3/5 rounded-full bg-white/10" />
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              <div className="h-8 rounded-xl bg-[#00D9FF]/15" />
+              <div className="h-8 rounded-xl bg-white/10" />
+              <div className="h-8 rounded-xl bg-[#2563EB]/20" />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (slug === "controle-estoque-mecanica") {
     return (
       <div className="mb-6 h-40 sm:h-40 sm:h-44 rounded-[1.5rem] border border-[#1E3654] bg-[linear-gradient(135deg,#0C1B2E,#10233B)] p-5">
