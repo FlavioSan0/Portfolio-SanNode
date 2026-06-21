@@ -82,8 +82,8 @@ export default async function ProjectCasePage({ params }: ProjectPageProps) {
             Voltar para projetos
           </Link>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-            <div>
+          <div className="mt-10 grid min-w-0 grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,0.8fr)] lg:items-center lg:gap-12 xl:gap-16">
+            <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="rounded-full border border-[#00D9FF]/35 bg-[#00D9FF]/[0.07] px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-[#00D9FF]">
                   {project.category}
@@ -135,12 +135,12 @@ export default async function ProjectCasePage({ params }: ProjectPageProps) {
               ) : null}
             </div>
 
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-[2.5rem] bg-[#00D9FF]/10 blur-3xl" />
+            <div className="relative min-w-0 lg:flex lg:justify-end">
+              <div className="pointer-events-none absolute -inset-3 rounded-[2rem] bg-[#00D9FF]/10 blur-3xl lg:-inset-4 lg:rounded-[2.5rem]" />
 
               {project.livePreview && project.liveUrl ? (
-                <div className="relative overflow-hidden rounded-[2rem] border border-[#1E3654]/70 bg-[#040B14] shadow-[0_28px_100px_rgba(0,0,0,0.35)]">
-                  <div className="flex items-center justify-between gap-4 border-b border-[#1E3654]/55 bg-[#07111F]/95 px-4 py-3">
+                <div className="relative mx-auto w-full max-w-full overflow-hidden rounded-[1.5rem] border border-[#1E3654]/70 bg-[#040B14] shadow-[0_28px_100px_rgba(0,0,0,0.35)] sm:rounded-[2rem] lg:mx-0 lg:max-w-[620px] xl:max-w-[680px] 2xl:max-w-[700px]">
+                  <div className="flex min-w-0 items-center justify-between gap-2 border-b border-[#1E3654]/55 bg-[#07111F]/95 px-3 py-2.5 sm:gap-4 sm:px-4 sm:py-3">
                     <div
                       aria-hidden="true"
                       className="flex shrink-0 items-center gap-2"
@@ -160,14 +160,14 @@ export default async function ProjectCasePage({ params }: ProjectPageProps) {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="hidden shrink-0 items-center gap-1.5 rounded-full border border-[#00D9FF]/35 bg-[#00D9FF]/[0.06] px-3 py-1.5 text-[0.66rem] font-black uppercase tracking-[0.14em] text-[#D9F4FF] transition hover:border-[#00D9FF]/75 hover:bg-[#00D9FF]/[0.12] sm:inline-flex"
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#00D9FF]/35 bg-[#00D9FF]/[0.06] px-2.5 py-1.5 text-[0.62rem] font-black uppercase tracking-[0.12em] text-[#D9F4FF] transition hover:border-[#00D9FF]/75 hover:bg-[#00D9FF]/[0.12] sm:px-3 sm:text-[0.66rem] sm:tracking-[0.14em]"
                     >
                       Abrir
                       <ExternalLink className="h-3.5 w-3.5" />
                     </a>
                   </div>
 
-                  <div className="relative aspect-[16/10] bg-[#020812]">
+                  <div className="relative aspect-[4/3] bg-[#020812] sm:aspect-[16/11] lg:aspect-[16/10]">
                     <iframe
                       src={project.liveUrl}
                       title={`Prévia ao vivo do projeto ${project.title}`}
@@ -180,8 +180,8 @@ export default async function ProjectCasePage({ params }: ProjectPageProps) {
                   </div>
                 </div>
               ) : (
-                <div className="relative overflow-hidden rounded-[2rem] border border-[#1E3654]/70 bg-[#040B14] shadow-[0_28px_100px_rgba(0,0,0,0.35)]">
-                  <div className="relative aspect-[16/10]">
+                <div className="relative mx-auto w-full max-w-full overflow-hidden rounded-[1.5rem] border border-[#1E3654]/70 bg-[#040B14] shadow-[0_28px_100px_rgba(0,0,0,0.35)] sm:rounded-[2rem] lg:mx-0 lg:max-w-[620px] xl:max-w-[680px] 2xl:max-w-[700px]">
+                  <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/10]">
                     <Image
                       src={project.coverImage}
                       alt={`Imagem do projeto ${project.title}`}
