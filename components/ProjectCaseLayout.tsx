@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
+import CaseImageGallery from "@/components/CaseImageGallery";
 import Reveal from "@/components/Reveal";
 import type { ProjectCase } from "@/data/project-cases";
 
@@ -16,7 +17,7 @@ export default function ProjectCaseLayout({
   previousProject,
   nextProject,
 }: ProjectCaseLayoutProps) {
-  const coverFit = project.category === "Design" ? "object-contain" : "object-cover";
+  const coverFit = project.coverFit ?? (project.category === "Design" ? "contain" : "cover");
 
   return (
     <main className="relative z-10 overflow-hidden bg-[#040B14] text-[#F5FBFF]">
@@ -85,15 +86,27 @@ export default function ProjectCaseLayout({
             </div>
 
             <Reveal direction="right" delay={120} distance={30} initialScale={0.985}>
-              <div className="overflow-hidden rounded-[1.5rem] border border-[#1E3654]/50 bg-[#07111F] sm:rounded-[2rem]">
-                <div className="relative aspect-[4/3] sm:aspect-[16/10]">
+              <div
+                className={`overflow-hidden rounded-[1.5rem] border sm:rounded-[2rem] ${
+                  project.coverFit === "contain"
+                    ? "border-[#00D9FF]/20 bg-[#0F1B3D] p-3 shadow-[0_18px_45px_rgba(0,0,0,0.22)]"
+                    : "border-[#1E3654]/50 bg-[#07111F]"
+                }`}
+              >
+                <div
+                  className={`relative ${
+                    project.coverFit === "contain" ? "aspect-video" : "aspect-[4/3] sm:aspect-[16/10]"
+                  }`}
+                >
                   <Image
                     src={project.coverImage}
                     alt={`Imagem principal do projeto ${project.title}`}
                     fill
                     preload
                     sizes="(max-width: 1024px) 100vw, 58vw"
-                    className={`${coverFit} p-0 ${project.category === "Design" ? "p-8 sm:p-12" : ""}`}
+                    className={`${coverFit === "contain" ? "object-contain" : "object-cover"} ${
+                      project.category === "Design" ? "p-8 sm:p-12" : ""
+                    }`}
                   />
                 </div>
               </div>
@@ -139,7 +152,27 @@ export default function ProjectCaseLayout({
         </div>
       </section>
 
-      {project.gallery?.length ? (
+      {project.gallerySection && project.gallery?.length ? (
+        <section className="border-y border-[#1E3654]/25 bg-[#07111F]/55 py-16 md:py-24">
+          <div className="container-site">
+            <SectionHeading
+              label="Interface"
+              title={project.gallerySection.title}
+              description={project.gallerySection.description}
+            />
+
+            <CaseImageGallery items={project.gallery} />
+
+            {project.confidentialityNote ? (
+              <Reveal direction="none" delay={100}>
+                <p className="mx-auto mt-12 max-w-3xl text-center text-xs leading-6 text-[#7F96AD] md:mt-16">
+                  {project.confidentialityNote}
+                </p>
+              </Reveal>
+            ) : null}
+          </div>
+        </section>
+      ) : project.gallery?.length ? (
         <section className="border-y border-[#1E3654]/25 bg-[#07111F]/55 py-16 md:py-24">
           <div className="container-site">
             <SectionHeading
@@ -231,7 +264,7 @@ export default function ProjectCaseLayout({
           </div>
         </Reveal>
 
-        {project.confidentialityNote ? (
+        {project.confidentialityNote && !project.gallerySection ? (
           <Reveal direction="none" delay={100}>
             <p className="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[#7F96AD]">
               {project.confidentialityNote}

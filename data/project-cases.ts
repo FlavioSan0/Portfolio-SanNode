@@ -4,6 +4,16 @@ export type ProjectGalleryItem = {
   src: string;
   alt: string;
   caption?: string;
+  title?: string;
+  description?: string;
+  layout?: "full" | "half" | "third";
+  sectionTitle?: string;
+  sectionDescription?: string;
+};
+
+export type ProjectGallerySection = {
+  title: string;
+  description: string;
 };
 
 export type ProjectCase = {
@@ -14,6 +24,7 @@ export type ProjectCase = {
   category: "Design" | "Site" | "Sistema" | "Dashboards & Automações";
   summary: string;
   coverImage: string;
+  coverFit?: "cover" | "contain";
   liveUrl?: string;
   liveLabel?: string;
   tags: string[];
@@ -25,6 +36,7 @@ export type ProjectCase = {
   results: string[];
   stack: string[];
   gallery?: ProjectGalleryItem[];
+  gallerySection?: ProjectGallerySection;
   confidentialityNote?: string;
   seo?: {
     title: string;
@@ -432,7 +444,8 @@ export const projectCases: ProjectCase[] = [
     category: "Dashboards & Automações",
     summary:
       "Dashboard integrado ao Google Forms e Sheets que transforma registros de atendimento em indicadores, filtros e análises comerciais.",
-    coverImage: "/projects/dashboard-leads-vem-voando.webp",
+    coverImage: "/projects/dashboard-leads/gallery/visao-geral.png",
+    coverFit: "contain",
     tags: ["Leads", "Conversões", "Gestores", "Dashboard"],
     overview:
       "A Vem Voando já registrava os atendimentos no Google Forms e armazenava as respostas em uma planilha. O projeto aproveitou esse fluxo sem exigir migração.",
@@ -440,6 +453,104 @@ export const projectCases: ProjectCase[] = [
       "A equipe precisava percorrer muitas linhas para acompanhar conversões, origens e períodos, preparar reuniões e diferenciar recorrência de duplicidade.",
     solution:
       "Um dashboard conectado à planilha, com indicadores e filtros por período, gestor, origem, produto e conversão. A análise de duplicidade combina cliente, produto e cotação.",
+    gallerySection: {
+      title: "Interface e acompanhamento comercial",
+      description:
+        "O painel organiza diferentes níveis da operação comercial, desde a visão geral dos indicadores até a análise detalhada dos leads, permitindo consultar resultados, aplicar filtros e identificar pontos que precisam de atenção.",
+    },
+    gallery: [
+      {
+        src: "/projects/dashboard-leads/gallery/visao-geral.png",
+        alt: "Visão geral do painel comercial de leads da Vem Voando",
+        title: "Visão centralizada da operação",
+        description:
+          "A tela inicial reúne o período analisado, os filtros principais e os indicadores necessários para acompanhar o desempenho comercial mensal.",
+        layout: "full",
+      },
+      {
+        src: "/projects/dashboard-leads/gallery/indicadores-filtros.png",
+        alt: "Indicadores comerciais e filtros rápidos por situação dos leads",
+        title: "Situação atual dos leads",
+        description:
+          "Os indicadores apresentam pendências, retornos, possíveis duplicidades, erros e decisões finalizadas. Os filtros rápidos permitem acessar cada situação sem navegar manualmente pela planilha.",
+        layout: "half",
+      },
+      {
+        src: "/projects/dashboard-leads/gallery/consulta-avancada.png",
+        alt: "Consulta avançada do painel com filtros por período, gestor, origem e produto",
+        title: "Análises por diferentes critérios",
+        description:
+          "A consulta avançada permite combinar período, gestor, origem, produto, situação e checagem, refinando os resultados conforme a necessidade da equipe.",
+        layout: "half",
+      },
+      {
+        src: "/projects/dashboard-leads/gallery/resumo-produto.png",
+        alt: "Resumo do desempenho comercial dos leads por produto",
+        title: "Desempenho por produto",
+        description:
+          "A visualização compara procura, conversão, pendências e alertas entre passagens, pacotes, hospedagens e outros produtos comercializados.",
+        layout: "third",
+      },
+      {
+        src: "/projects/dashboard-leads/gallery/resumo-origem.png",
+        alt: "Resumo dos leads e conversões por canal de origem",
+        title: "Origem dos leads",
+        description:
+          "O painel mostra quais canais geram maior volume e conversão, facilitando a análise de indicações, clientes recorrentes, redes sociais e outras fontes.",
+        layout: "third",
+      },
+      {
+        src: "/projects/dashboard-leads/gallery/resumo-gestor.png",
+        alt: "Resumo anonimizado do acompanhamento comercial por gestor",
+        title: "Acompanhamento por responsável",
+        description:
+          "A distribuição por gestor permite analisar volume, conversões, pendências e alertas por responsável, preservando a privacidade dos dados apresentados.",
+        layout: "third",
+      },
+      {
+        src: "/projects/dashboard-leads/gallery/fechamento-mensal-anonimizado.png",
+        alt: "Visão executiva da reunião mensal do painel de leads",
+        title: "Visão executiva do período",
+        description:
+          "O fechamento mensal reúne os principais indicadores do período, um resumo executivo automático e os dados necessários para orientar a reunião comercial.",
+        layout: "full",
+        sectionTitle: "Reunião mensal e apoio à decisão",
+        sectionDescription:
+          "O painel também consolida os dados do período em uma visão preparada para reuniões mensais, reunindo indicadores, comparações, destaques e pontos que exigem acompanhamento.",
+      },
+      {
+        src: "/projects/dashboard-leads/gallery/comparativo-destaques-anonimizado.png",
+        alt: "Comparativo mensal e pontos de atenção do painel comercial",
+        title: "Comparativo e pontos de atenção",
+        description:
+          "A comparação com o mês anterior permite identificar evolução, quedas e situações que precisam de acompanhamento pela equipe.",
+        layout: "full",
+      },
+      {
+        src: "/projects/dashboard-leads/gallery/reuniao-mensal-distribuicao-anonimizada.png",
+        alt: "Distribuição de resultados por equipe, origem e produto",
+        title: "Distribuição dos resultados",
+        description:
+          "A visão consolidada organiza volume e conversões por responsáveis, canais de aquisição, produtos e demandas recorrentes.",
+        layout: "half",
+      },
+      {
+        src: "/projects/dashboard-leads/gallery/produtos-rotas-anonimizadas.png",
+        alt: "Produtos e rotas recorrentes identificados no painel",
+        title: "Produtos e rotas recorrentes",
+        description:
+          "O painel destaca os produtos mais procurados e os padrões de cotação, apoiando a análise de demanda comercial.",
+        layout: "half",
+      },
+      {
+        src: "/projects/dashboard-leads/gallery/leads-encontrados.png",
+        alt: "Listagem anonimizada dos leads encontrados no período",
+        title: "Base operacional detalhada",
+        description:
+          "A listagem reúne os registros do período com origem, produto, situação e checagem, permitindo localizar rapidamente os atendimentos que precisam de acompanhamento.",
+        layout: "full",
+      },
+    ],
     highlights: [
       "Integração com Google Forms e Sheets.",
       "Indicadores de atendimento e conversão.",
@@ -456,6 +567,8 @@ export const projectCases: ProjectCase[] = [
       "Recorrências tratadas com critérios mais adequados.",
     ],
     stack: ["Google Sheets", "Google Forms", "Google Apps Script", "JavaScript"],
+    confidentialityNote:
+      "Dados demonstrativos e informações sensíveis foram anonimizados para preservar a confidencialidade do projeto.",
   },
   {
     slug: "painel-controle-relatorios-operacionais",
