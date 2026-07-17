@@ -1,5 +1,6 @@
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import { contact } from "@/data/contact";
+import Reveal from "@/components/Reveal";
 
 function GithubIcon() {
   return (
@@ -65,12 +66,14 @@ const socialLinks = [
 export default function Contact() {
   return (
     <section id="contato" className="container-site pb-24">
-      <div className="relative overflow-hidden rounded-[2rem] border border-[#1E3654] bg-[linear-gradient(135deg,#0B2A5B,#123B6D)] p-6 md:p-12">
+      <Reveal duration={700} distance={26} initialScale={0.985}>
+        <div className="relative overflow-hidden rounded-[2rem] border border-[#1E3654] bg-[linear-gradient(135deg,#0B2A5B,#123B6D)] p-6 md:p-12">
         <div className="absolute right-0 top-0 h-72 w-72 translate-x-20 -translate-y-20 rounded-full bg-[#00D9FF]/20 blur-3xl" />
         <div className="absolute bottom-0 left-0 h-56 w-56 -translate-x-20 translate-y-20 rounded-full bg-[#07111F]/40 blur-3xl" />
 
         <div className="tablet-stack relative grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
-          <div>
+          <Reveal direction="left" delay={90} duration={620} distance={22}>
+            <div>
             <div className="mb-4 inline-flex items-center gap-2 text-[#B9F5FF]">
               <Mail className="h-5 w-5" />
 
@@ -112,59 +115,75 @@ export default function Contact() {
                 </a>
               </div>
             </div>
-          </div>
+            </div>
+          </Reveal>
 
           <div className="tablet-action-grid grid gap-3">
-            <a
-              href={contact.whatsapp}
-              target="_blank"
-              rel="noreferrer"
-              className="tech-button inline-flex w-full items-center justify-center rounded-2xl bg-white px-6 py-4 font-semibold text-[#0B2A5B] transition hover:bg-[#E6FAFF]"
-            >
-              Conversar sobre minha ideia
-              <ArrowUpRight className="ml-2 h-5 w-5" />
-            </a>
+            <Reveal stagger={80} index={0} duration={560} distance={18}>
+              <a
+                href={contact.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="tech-button inline-flex w-full items-center justify-center rounded-2xl bg-white px-6 py-4 font-semibold text-[#0B2A5B] transition duration-300 hover:bg-[#E6FAFF]"
+              >
+                Conversar sobre minha ideia
+                <ArrowUpRight className="ml-2 h-5 w-5" />
+              </a>
+            </Reveal>
 
-            <a
-              href={contact.emailHref}
-              className="tech-button inline-flex w-full items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-6 py-4 font-semibold text-white transition hover:bg-white/15"
-            >
-              Enviar e-mail
-              <Mail className="ml-2 h-5 w-5" />
-            </a>
+            <Reveal stagger={80} index={1} duration={560} distance={18}>
+              <a
+                href={contact.emailHref}
+                className="tech-button inline-flex w-full items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-6 py-4 font-semibold text-white transition duration-300 hover:bg-white/15"
+              >
+                Enviar e-mail
+                <Mail className="ml-2 h-5 w-5" />
+              </a>
+            </Reveal>
 
-            <a
-              href={contact.phoneHref}
-              className="tech-button inline-flex w-full items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-6 py-4 font-semibold text-white transition hover:bg-white/15"
-            >
-              Ligar para {contact.phoneDisplay}
-              <Phone className="ml-2 h-5 w-5" />
-            </a>
+            <Reveal stagger={80} index={2} duration={560} distance={18}>
+              <a
+                href={contact.phoneHref}
+                className="tech-button inline-flex w-full items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-6 py-4 font-semibold text-white transition duration-300 hover:bg-white/15"
+              >
+                Ligar para {contact.phoneDisplay}
+                <Phone className="ml-2 h-5 w-5" />
+              </a>
+            </Reveal>
 
             <div className="tablet-social-grid grid gap-3 sm:grid-cols-3">
-              {socialLinks.map((item) => {
+              {socialLinks.map((item, index) => {
                 const Icon = item.icon;
 
                 return (
-                  <a
+                  <Reveal
                     key={item.label}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="tech-button inline-flex w-full items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-4 py-4 text-sm font-bold text-white transition hover:border-[#B9F5FF]/40 hover:bg-white/15 hover:text-[#B9F5FF]"
-                    aria-label={item.label}
+                    stagger={70}
+                    index={index}
+                    delay={240}
+                    duration={520}
+                    distance={14}
                   >
-                    <span className="mr-2 text-[#B9F5FF]">
-                      <Icon />
-                    </span>
-                    {item.label}
-                  </a>
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="tech-button inline-flex w-full items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-4 py-4 text-sm font-bold text-white transition duration-300 hover:border-[#B9F5FF]/40 hover:bg-white/15 hover:text-[#B9F5FF]"
+                      aria-label={item.label}
+                    >
+                      <span className="mr-2 text-[#B9F5FF]">
+                        <Icon />
+                      </span>
+                      {item.label}
+                    </a>
+                  </Reveal>
                 );
               })}
             </div>
           </div>
         </div>
-      </div>
+        </div>
+      </Reveal>
     </section>
   );
 }

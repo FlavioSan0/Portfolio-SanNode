@@ -1,24 +1,37 @@
 import { MESAFLOW_LANDING_URL } from "@/data/project-links";
 
+export type ProjectGalleryItem = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
 export type ProjectCase = {
   slug: string;
   title: string;
   eyebrow: string;
   status: "Publicado" | "Em desenvolvimento" | "Sistema interno" | "MVP funcional";
-  category: "Design" | "Site" | "Sistema";
+  category: "Design" | "Site" | "Sistema" | "Dashboards & Automações";
   summary: string;
   coverImage: string;
   liveUrl?: string;
   liveLabel?: string;
-  livePreview?: boolean;
   tags: string[];
   overview: string;
   challenge: string;
   solution: string;
-  result: string;
   highlights: string[];
+  result: string;
+  results: string[];
   stack: string[];
-  nextSteps?: string[];
+  gallery?: ProjectGalleryItem[];
+  confidentialityNote?: string;
+  seo?: {
+    title: string;
+    description: string;
+    openGraphDescription?: string;
+    twitterDescription?: string;
+  };
 };
 
 export const projectCases: ProjectCase[] = [
@@ -32,27 +45,53 @@ export const projectCases: ProjectCase[] = [
       "Identidade visual e landing page para fortalecer a presença comercial da ABF.",
     coverImage: "/projetos/abf-case/logo-principal.png",
     liveUrl: "https://abf-representacao.vercel.app/#",
+    liveLabel: "Acessar landing page",
     tags: ["Identidade visual", "Landing page", "Marca", "Comercial"],
     overview:
-      "O projeto da ABF Representações nasceu para organizar a presença visual e comercial da marca, criando uma identidade mais sólida, profissional e preparada para aplicação digital.",
+      "A ABF precisava organizar sua apresentação comercial. O trabalho começou pela identidade visual e evoluiu para aplicações digitais e uma landing page institucional.",
     challenge:
-      "O desafio foi construir uma imagem que transmitisse confiança, solidez e crescimento, sem cair em um visual genérico. A marca precisava funcionar tanto em peças institucionais quanto em uma landing page objetiva.",
+      "Construir uma imagem que transmitisse confiança e solidez, funcionasse em diferentes materiais e não parecesse genérica.",
     solution:
-      "A solução combinou identidade visual com aplicação prática em uma landing page institucional. A composição priorizou contraste, presença, hierarquia clara e elementos visuais voltados para comunicação comercial.",
-    result:
-      "A ABF passou a contar com uma presença digital mais consistente, com marca aplicada, página publicada e comunicação visual mais alinhada ao posicionamento da empresa.",
+      "Uma identidade sóbria, com hierarquia clara e aplicações consistentes, conectada a uma landing page objetiva para apresentar a empresa e facilitar o contato.",
     highlights: [
-      "Criação de identidade visual com direção comercial.",
-      "Aplicação da marca em landing page institucional.",
-      "Organização visual para apresentação dos serviços.",
-      "Base preparada para evoluir a comunicação digital.",
+      "Logo principal e variações da marca.",
+      "Paleta de cores e direção visual.",
+      "Aplicações para materiais de contato.",
+      "Organização inicial da presença no Instagram.",
+      "Landing page institucional publicada.",
+    ],
+    result:
+      "A marca passou a contar com uma base visual coerente e uma presença digital pronta para apoiar sua apresentação comercial.",
+    results: [
+      "Identidade aplicada em diferentes pontos de contato.",
+      "Apresentação institucional reunida em uma página.",
+      "Comunicação visual mais consistente.",
     ],
     stack: ["Identidade visual", "UI/UX", "Next.js", "Tailwind CSS"],
-    nextSteps: [
-      "Expandir aplicações da identidade.",
-      "Criar materiais complementares para redes sociais.",
-      "Evoluir conteúdo comercial da landing page.",
+    gallery: [
+      {
+        src: "/projetos/abf-case/conceito.png",
+        alt: "Conceito visual da ABF Representações",
+        caption: "Conceito visual com foco em presença comercial e confiança.",
+      },
+      {
+        src: "/projetos/abf-case/cartao-visita.png",
+        alt: "Cartão de visita da ABF Representações",
+        caption: "Identidade aplicada ao material de contato.",
+      },
+      {
+        src: "/projetos/abf-case/instagram-perfil.png",
+        alt: "Perfil do Instagram da ABF Representações",
+        caption: "Organização inicial da presença digital da marca.",
+      },
     ],
+    seo: {
+      title: "ABF Representações | Identidade Visual e Landing Page",
+      description:
+        "Case da SanNode para a ABF Representações: identidade visual, presença digital e landing page institucional publicada.",
+      openGraphDescription:
+        "Identidade visual, presença digital e landing page institucional desenvolvidas para a ABF Representações.",
+    },
   },
   {
     slug: "site-casamento",
@@ -64,27 +103,60 @@ export const projectCases: ProjectCase[] = [
       "Convite digital com experiência para convidados e painel administrativo para organização do evento.",
     coverImage: "/projetos/site-casamento/mobile-home.png",
     liveUrl: "https://site-casamento-chi.vercel.app",
+    liveLabel: "Acessar projeto",
     tags: ["RSVP", "Painel", "Lista de presentes", "Evento"],
     overview:
-      "O site de casamento foi criado para transformar o convite em uma experiência digital completa, com informações do evento, confirmação de presença, lista de presentes, cotas e área administrativa.",
+      "O projeto transformou o convite de casamento em uma experiência digital com informações do evento, confirmação de presença, presentes e uma área reservada para o casal.",
     challenge:
-      "O desafio foi unir emoção, organização e funcionalidade em uma solução simples para convidados e útil para o casal. Além do visual, o projeto precisava ajudar na gestão real do evento.",
+      "Unir emoção e praticidade em uma interface simples para os convidados, sem deixar de atender às necessidades reais de organização do casal.",
     solution:
-      "A solução foi uma landing page com experiência mobile, seções claras, RSVP, presentes, PIX, galeria e painel administrativo para acompanhar confirmações e organização.",
-    result:
-      "O evento ganhou um ambiente digital próprio, facilitando o acesso dos convidados às informações e dando ao casal uma ferramenta prática de acompanhamento.",
+      "Um site responsivo com convite, RSVP, lista de presentes e informações essenciais, apoiado por um painel para acompanhar confirmações e administrar o conteúdo.",
     highlights: [
       "Convite digital responsivo.",
       "Confirmação de presença com acompanhantes.",
       "Lista de presentes e cotas.",
-      "Painel administrativo para gestão do evento.",
+      "Informações do evento em uma navegação direta.",
+      "Painel administrativo para o casal.",
+    ],
+    result:
+      "O evento ganhou um ambiente digital próprio, facilitando o acesso dos convidados e centralizando parte da organização para o casal.",
+    results: [
+      "Informações do evento reunidas em um único endereço.",
+      "Confirmações acessíveis pelo painel.",
+      "Experiência adaptada a celulares e computadores.",
     ],
     stack: ["Next.js", "React", "TypeScript", "Supabase", "Tailwind CSS"],
-    nextSteps: [
-      "Aprimorar modelos comercializáveis.",
-      "Criar variações visuais por estilo de evento.",
-      "Expandir recursos administrativos.",
+    gallery: [
+      {
+        src: "/projetos/site-casamento/painel-login.png",
+        alt: "Tela de acesso ao painel do site de casamento",
+        caption: "Acesso reservado à área administrativa.",
+      },
+      {
+        src: "/projetos/site-casamento/painel-dashboard.png",
+        alt: "Dashboard administrativo do site de casamento",
+        caption: "Visão geral para acompanhar a organização do evento.",
+      },
+      {
+        src: "/projetos/site-casamento/painel-presentes.png",
+        alt: "Gestão de presentes no painel do site de casamento",
+        caption: "Cadastro e organização da lista de presentes.",
+      },
+      {
+        src: "/projetos/site-casamento/painel-confirmacoes.png",
+        alt: "Lista de confirmações no painel do site de casamento",
+        caption: "Acompanhamento das confirmações de presença.",
+      },
     ],
+    seo: {
+      title: "Site de Casamento | Convite Digital com RSVP e Painel",
+      description:
+        "Case de site de casamento com convite digital, confirmação de presença, lista de presentes, painel administrativo e experiência mobile.",
+      openGraphDescription:
+        "Projeto de convite digital com confirmação de presença, lista de presentes, painel administrativo e estrutura responsiva.",
+      twitterDescription:
+        "Case de site com RSVP, lista de presentes, painel administrativo e experiência mobile.",
+    },
   },
   {
     slug: "paroquia-santuario",
@@ -97,26 +169,26 @@ export const projectCases: ProjectCase[] = [
     coverImage: "/projetos/paroquia-santuario/home.png",
     tags: ["Site institucional", "UI/UX", "Responsivo", "Comunidade"],
     overview:
-      "O projeto da Paróquia / Santuário nasceu com o objetivo de transformar a comunicação institucional em uma experiência digital mais clara, acolhedora e acessível. A proposta é reunir em um único ambiente informações importantes como horários de missas, eventos, pastorais, localização, contatos e conteúdos de apoio para os fiéis.",
+      "O site reúne horários, eventos, pastorais, localização, contatos e conteúdos de apoio em um ambiente acolhedor e acessível para a comunidade.",
     challenge:
-      "O principal desafio é equilibrar tradição, espiritualidade e modernidade sem descaracterizar a identidade religiosa. O site precisa ser bonito, organizado e emocional, mas também funcional para pessoas de diferentes idades e níveis de familiaridade com tecnologia.",
+      "Equilibrar tradição e modernidade em uma experiência clara para pessoas de diferentes idades e níveis de familiaridade com tecnologia.",
     solution:
-      "A solução está sendo construída com uma arquitetura de página clara, seções bem divididas, hierarquia visual forte e elementos acolhedores. A interface prioriza leitura fácil, navegação simples, chamadas objetivas e uso de imagens institucionais para aproximar a comunidade da paróquia.",
-    result:
-      "Mesmo em desenvolvimento, o projeto já funciona como uma base sólida para fortalecer a presença digital da paróquia, facilitar o acesso às informações e transmitir mais profissionalismo na comunicação com os fiéis.",
+      "Uma arquitetura simples, com leitura confortável, seções bem definidas, chamadas objetivas e imagens institucionais que aproximam a comunidade.",
     highlights: [
-      "Página inicial com apresentação institucional clara.",
-      "Organização de horários de missas e informações recorrentes.",
-      "Estrutura para eventos, pastorais e comunicados.",
-      "Visual acolhedor, responsivo e alinhado ao público religioso.",
+      "Apresentação institucional clara.",
+      "Organização dos horários de missas.",
+      "Espaço para eventos e comunicados.",
+      "Estrutura para pastorais e contatos.",
+      "Navegação responsiva e acessível.",
+    ],
+    result:
+      "Ainda em desenvolvimento, o projeto já estabelece uma base organizada para fortalecer a comunicação e facilitar o acesso às informações recorrentes.",
+    results: [
+      "Conteúdo institucional reunido em uma estrutura única.",
+      "Informações recorrentes mais fáceis de consultar.",
+      "Base preparada para publicação e atualização.",
     ],
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "UI/UX"],
-    nextSteps: [
-      "Finalizar organização das fotos institucionais.",
-      "Polir animações e microinterações.",
-      "Revisar textos finais com a paróquia.",
-      "Preparar versão responsiva final para publicação.",
-    ],
   },
   {
     slug: "banda-praise",
@@ -129,26 +201,26 @@ export const projectCases: ProjectCase[] = [
     coverImage: "/projetos/banda-praise/home.png",
     tags: ["Site artístico", "Momentos", "Vídeos", "Identidade"],
     overview:
-      "O site da Banda Praise está sendo desenvolvido para transformar a presença digital da banda em uma experiência mais profissional, emocional e organizada. A ideia é apresentar quem são, registrar momentos importantes, destacar vídeos, fotos, agenda e facilitar o contato para convites e apresentações.",
+      "A Banda Praise precisava de um espaço próprio para apresentar sua identidade, registrar momentos importantes e facilitar o acesso a vídeos, fotos, agenda e contatos.",
     challenge:
-      "O desafio do projeto é criar um site que tenha energia visual e emoção sem ficar poluído. Como a banda trabalha com música, fé e eventos, a experiência precisa transmitir presença, movimento e verdade, usando fotos e vídeos reais como parte central da narrativa.",
+      "Transmitir energia e emoção sem poluir a navegação, mantendo fotos e vídeos reais como parte central da experiência.",
     solution:
-      "A estrutura foi pensada com foco em impacto visual, organização de momentos e valorização da identidade da banda. As seções trabalham com imagens, vídeos, capas personalizadas, cards e chamadas diretas para criar uma navegação viva, bonita e fácil de consumir.",
-    result:
-      "O projeto está em desenvolvimento e já aponta para uma presença digital mais forte, com melhor apresentação dos conteúdos da banda e uma base preparada para futuras atualizações de agenda, mídia e contato.",
+      "Uma estrutura visual direta, com destaque para mídia, capas personalizadas e chamadas claras, organizada para receber novos conteúdos ao longo do tempo.",
     highlights: [
-      "Página inicial com apresentação da banda.",
+      "Apresentação da banda na página inicial.",
       "Seção de momentos com fotos e vídeos.",
-      "Capas visuais personalizadas para vídeos.",
-      "Interface emocional, moderna e responsiva.",
+      "Capas personalizadas para conteúdos em vídeo.",
+      "Espaço para agenda e contatos.",
+      "Interface responsiva.",
+    ],
+    result:
+      "O projeto em desenvolvimento cria uma presença digital mais organizada e uma base preparada para atualizações de agenda, mídia e contato.",
+    results: [
+      "Conteúdos da banda reunidos em um só ambiente.",
+      "Maior destaque para registros visuais.",
+      "Estrutura pronta para receber novas publicações.",
     ],
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "UI/UX"],
-    nextSteps: [
-      "Tratar e organizar fotos finais.",
-      "Inserir vídeos e capas oficiais.",
-      "Refinar hierarquia visual da seção de momentos.",
-      "Finalizar responsividade mobile.",
-    ],
   },
   {
     slug: "vem-voando",
@@ -161,26 +233,26 @@ export const projectCases: ProjectCase[] = [
     coverImage: "/projetos/vem-voando/home.png",
     tags: ["Landing page", "Conversão", "Responsivo", "Viagens"],
     overview:
-      "A landing page da Vem Voando está sendo desenvolvida para apresentar a marca de forma objetiva, profissional e comercial. A proposta é criar uma página clara, visualmente atrativa e preparada para direcionar o visitante para uma ação, seja contato, orçamento, atendimento ou interesse em serviços relacionados a viagens.",
+      "A landing page foi pensada para apresentar a Vem Voando de forma objetiva, explicar sua proposta e direcionar o visitante para orçamento ou atendimento.",
     challenge:
-      "O desafio do projeto é transformar uma ideia comercial em uma página simples de entender e forte o suficiente para gerar confiança rapidamente. A página precisa comunicar valor, evitar excesso de informação e conduzir o usuário para o contato sem parecer genérica.",
+      "Comunicar valor e gerar confiança rapidamente, sem excesso de informação ou uma apresentação comercial genérica.",
     solution:
-      "A solução foi pensada com uma estrutura de landing page direta: hero com proposta forte, blocos de benefício, seções explicativas, chamadas de ação e layout responsivo. O visual prioriza clareza, contraste, boa hierarquia e uma experiência fluida tanto no desktop quanto no mobile.",
-    result:
-      "O projeto está em desenvolvimento e já serve como base para posicionar a Vem Voando com mais presença digital, melhorar a apresentação comercial e preparar a marca para captar oportunidades online.",
+      "Uma página direta, com proposta principal, benefícios, conteúdo explicativo e chamadas para contato, apoiada por uma hierarquia visual responsiva.",
     highlights: [
-      "Hero com proposta clara e chamada de ação.",
-      "Estrutura objetiva para apresentar serviços e benefícios.",
-      "Layout responsivo com foco em navegação rápida.",
-      "Base preparada para publicação e evolução comercial.",
+      "Proposta principal apresentada no hero.",
+      "Seções objetivas para serviços e benefícios.",
+      "Chamadas de ação ao longo da página.",
+      "Navegação responsiva.",
+      "Estrutura pronta para publicação.",
+    ],
+    result:
+      "O projeto em desenvolvimento estabelece uma base mais clara para a apresentação comercial da marca e para a captação de oportunidades online.",
+    results: [
+      "Mensagem comercial organizada em uma única página.",
+      "Caminho de contato mais visível.",
+      "Experiência adaptada a diferentes telas.",
     ],
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "UI/UX"],
-    nextSteps: [
-      "Inserir imagens finais da marca.",
-      "Revisar textos comerciais.",
-      "Ajustar CTAs para WhatsApp ou canal principal de contato.",
-      "Finalizar responsividade e validação antes do deploy.",
-    ],
   },
   {
     slug: "controle-estoque-mecanica",
@@ -191,21 +263,29 @@ export const projectCases: ProjectCase[] = [
     summary:
       "Sistema privado para organizar produtos, entradas, saídas e movimentações em uma rotina real de oficina.",
     coverImage: "/projetos/estoque-case/dashboard.png",
+    liveUrl: "https://controle-de-estoque-mecanica.vercel.app",
+    liveLabel: "Acessar sistema",
     tags: ["Estoque", "Dashboard", "Fornecedores", "Movimentações"],
     overview:
-      "O sistema de controle de estoque para mecânica foi desenvolvido para organizar produtos, entradas, saídas, fornecedores e movimentações em uma rotina operacional real.",
+      "O sistema foi desenvolvido para concentrar produtos, fornecedores, entradas, saídas e movimentações em uma rotina operacional de oficina.",
     challenge:
-      "O principal desafio foi substituir controles soltos por uma base mais confiável, com histórico, filtros, dashboard e registros claros para consulta.",
+      "Substituir controles dispersos por registros mais claros, com histórico, filtros e uma visão rápida do estoque disponível.",
     solution:
-      "A solução foi construída com uma arquitetura separada entre frontend, API e banco de dados, permitindo evolução modular e criação de novos módulos sem recomeçar o projeto.",
-    result:
-      "O projeto criou uma base operacional para gestão de estoque e abriu caminho para evolução futura em clientes, veículos, ordens de serviço, financeiro, agenda e relatórios.",
+      "Uma aplicação web com dashboard, cadastros e fluxos de movimentação conectados a uma base de dados, organizada para receber novos módulos.",
     highlights: [
-      "Dashboard inicial para visão rápida.",
-      "Cadastro e detalhe de produtos.",
-      "Controle de entradas e saídas.",
+      "Dashboard com visão geral do estoque.",
+      "Cadastro e consulta de produtos.",
+      "Registro de entradas e saídas.",
       "Histórico de movimentações.",
-      "Base preparada para expansão modular.",
+      "Cadastro de fornecedores.",
+      "Relatórios para consulta.",
+    ],
+    result:
+      "A operação passou a contar com uma base central para consultar o estoque e registrar movimentações, mantendo espaço para ampliar o sistema.",
+    results: [
+      "Produtos e movimentações reunidos em uma aplicação.",
+      "Histórico disponível para consulta.",
+      "Estrutura preparada para novos módulos.",
     ],
     stack: [
       "Next.js",
@@ -215,12 +295,47 @@ export const projectCases: ProjectCase[] = [
       "Express",
       "Supabase",
     ],
-    nextSteps: [
-      "Estabilizar funcionalidades atuais.",
-      "Adicionar clientes e veículos.",
-      "Evoluir para ordens de serviço.",
-      "Integrar financeiro, agenda e relatórios.",
+    gallery: [
+      {
+        src: "/projetos/estoque-case/login.png",
+        alt: "Tela de acesso do sistema de estoque",
+        caption: "Acesso reservado ao sistema.",
+      },
+      {
+        src: "/projetos/estoque-case/produtos.png",
+        alt: "Tela de produtos do sistema de estoque",
+        caption: "Cadastro e consulta de produtos.",
+      },
+      {
+        src: "/projetos/estoque-case/entradas.png",
+        alt: "Tela de entradas do sistema de estoque",
+        caption: "Registro de entradas no estoque.",
+      },
+      {
+        src: "/projetos/estoque-case/saidas.png",
+        alt: "Tela de saídas do sistema de estoque",
+        caption: "Registro de saídas do estoque.",
+      },
+      {
+        src: "/projetos/estoque-case/movimentacoes.png",
+        alt: "Histórico de movimentações do sistema de estoque",
+        caption: "Histórico centralizado de movimentações.",
+      },
+      {
+        src: "/projetos/estoque-case/relatorios.png",
+        alt: "Tela de relatórios do sistema de estoque",
+        caption: "Relatórios para apoiar a consulta operacional.",
+      },
     ],
+    seo: {
+      title: "Controle de Estoque Mecânica | Sistema Web Privado",
+      description:
+        "Case de sistema web privado para oficina mecânica, com dashboard, produtos, entradas, saídas, movimentações, relatórios e acesso restrito.",
+      openGraphDescription:
+        "Sistema web para controle operacional de estoque em oficina mecânica, com dashboard, movimentações, relatórios e evolução para gestão mecânica.",
+      twitterDescription:
+        "Case de sistema web privado com dashboard, produtos, movimentações, relatórios e acesso restrito.",
+    },
   },
   {
     slug: "mesaflow-sistema-garcom",
@@ -233,32 +348,27 @@ export const projectCases: ProjectCase[] = [
     coverImage: "/projetos/mesaflow/dashboard.png",
     liveUrl: MESAFLOW_LANDING_URL,
     liveLabel: "Ver landing page oficial",
-    livePreview: true,
-    tags: [
-      "SaaS",
-      "MVP funcional",
-      "Cardápio digital",
-      "Delivery",
-      "Garçom",
-      "Gestão",
-    ],
+    tags: ["SaaS", "Cardápio digital", "Pedidos", "Gestão"],
     overview:
-      "O MesaFlow é um sistema web desenvolvido para organizar o fluxo de pedidos, atendimento, balcão, delivery, mesas e gestão operacional de pequenos estabelecimentos como lanchonetes, hamburguerias, docerias, marmitarias, açaíterias, espetinhos, pizzarias e restaurantes.",
+      "O MesaFlow organiza cardápio, pedidos, balcão, delivery, mesas e atendimento em uma plataforma voltada à rotina de pequenos estabelecimentos gastronômicos.",
     challenge:
-      "Pequenos negócios do ramo alimentício ainda dependem de comandas em papel, pedidos espalhados pelo WhatsApp, planilhas improvisadas ou sistemas caros demais para a operação real. O desafio foi criar uma solução simples de vender, fácil de usar e flexível o bastante para diferentes tipos de estabelecimento.",
+      "Substituir comandas, mensagens e controles dispersos por uma solução simples de usar e flexível para diferentes tipos de operação.",
     solution:
-      "A solução foi estruturar um MVP funcional com cardápio digital personalizado, pedidos por balcão, delivery e mesas, atendimento por garçom, setores de preparo, gestão de produtos, categorias, adicionais, usuários por função, impressão de comprovantes, filtros operacionais e painel administrativo para o dono ou gerente.",
-    result:
-      "O MesaFlow saiu da fase de protótipo e chegou a uma base funcional para apresentação comercial, testes com clientes reais e evolução como produto SaaS. A plataforma já permite demonstrar fluxo completo de atendimento e validar módulos, preço e posicionamento com pequenos estabelecimentos.",
+      "Um MVP com cardápio digital, canais de pedido, setores de preparo, controle de mesas e painel administrativo para produtos, usuários e configurações.",
     highlights: [
-      "Cardápio digital público com identidade do estabelecimento.",
-      "Pedidos por delivery, balcão, mesas e atendimento por garçom.",
-      "Gestão de produtos, categorias, adicionais, promoções e disponibilidade.",
-      "Organização por setores como cozinha, bar, copa, churrasqueira e preparo.",
-      "Controle de mesas, contas abertas, status dos pedidos e impressão de comprovantes.",
-      "Painel administrativo com usuários, permissões por função e configurações da operação.",
-      "Estrutura preparada para multiempresa, slug público, relatórios, fechamento de caixa e auditoria.",
-      "Layout responsivo para uso em desktop, tablet e celular.",
+      "Cardápio digital com identidade do estabelecimento.",
+      "Pedidos por delivery, balcão, mesas e garçom.",
+      "Gestão de produtos, adicionais e disponibilidade.",
+      "Organização por setores de preparo.",
+      "Controle de mesas, contas e status dos pedidos.",
+      "Usuários e permissões por função.",
+    ],
+    result:
+      "O produto saiu do protótipo e chegou a uma base funcional para demonstração, testes com clientes e evolução como serviço.",
+    results: [
+      "Fluxo completo de atendimento demonstrável.",
+      "Módulos centrais reunidos em uma plataforma.",
+      "Base pronta para validar produto e operação.",
     ],
     stack: [
       "Next.js",
@@ -272,13 +382,6 @@ export const projectCases: ProjectCase[] = [
       "Playwright",
       "Git/GitHub",
     ],
-    nextSteps: [
-      "Validar o MVP com negócios reais e coletar feedback operacional.",
-      "Refinar relatórios, fechamento de caixa, auditoria e permissões avançadas.",
-      "Evoluir notificações segmentadas por função, módulo e setor.",
-      "Fortalecer segurança, LGPD, backups e preparação para escala multiempresa.",
-      "Ajustar o posicionamento comercial conforme os primeiros testes de venda.",
-    ],
   },
   {
     slug: "gestao-financeira",
@@ -291,20 +394,25 @@ export const projectCases: ProjectCase[] = [
     coverImage: "/projetos/gestao-financeira/dashboard.png",
     tags: ["Finanças", "Dashboard", "Mobile", "Contas", "Cartões"],
     overview:
-      "O sistema de Gestão Financeira foi criado para organizar a rotina financeira familiar com mais clareza, separando contas, cartões, lançamentos, despesas fixas, entradas e visão mensal. A proposta é transformar o controle manual em uma interface prática, visual e confiável.",
+      "O sistema reúne contas, cartões, lançamentos, despesas fixas, entradas e visão mensal para tornar o acompanhamento financeiro familiar mais claro.",
     challenge:
-      "O desafio foi criar uma experiência que funcionasse bem no uso real do dia a dia, principalmente no mobile. Além de registrar entradas e saídas, o sistema precisava lidar com contas recorrentes, cartões, status de pagamento, responsáveis e filtros sem deixar a interface pesada ou confusa.",
+      "Atender ao uso diário, principalmente no celular, sem tornar confusos os registros recorrentes, cartões, pagamentos, responsáveis e filtros.",
     solution:
-      "A solução foi estruturada com uma interface escura, responsiva e organizada, usando dashboard, formulários, filtros por sheet no mobile, controle de contas e cartões, lançamentos fixos, edição de registros e separação entre quem lançou e quem alterou o status de pagamento.",
-    result:
-      "O projeto está em desenvolvimento e já consolida uma base forte para gestão financeira pessoal/familiar, com foco em usabilidade, organização de dados e evolução futura para recursos como família, múltiplos usuários, notificações e integrações.",
+      "Uma interface responsiva com dashboard, formulários, filtros, controle de contas e cartões, lançamentos fixos e edição de registros.",
     highlights: [
-      "Dashboard financeiro com visão organizada.",
-      "Controle de contas, cartões e lançamentos.",
-      "Despesas fixas, recorrentes e parceladas.",
-      "Filtros mobile padronizados em sheet inferior.",
-      "Planejamento para lembretes próximos ao vencimento.",
-      "Base preparada para evolução com autenticação e família.",
+      "Dashboard com visão financeira organizada.",
+      "Controle de contas e cartões.",
+      "Registro de entradas e despesas.",
+      "Lançamentos fixos, recorrentes e parcelados.",
+      "Filtros adaptados ao uso no celular.",
+      "Status e responsáveis pelos registros.",
+    ],
+    result:
+      "O projeto em desenvolvimento já consolida uma base para acompanhar a rotina financeira e ampliar o acesso a mais pessoas da família.",
+    results: [
+      "Informações financeiras reunidas em uma interface.",
+      "Consulta mensal mais organizada.",
+      "Base preparada para autenticação e múltiplos usuários.",
     ],
     stack: [
       "Next.js",
@@ -315,13 +423,74 @@ export const projectCases: ProjectCase[] = [
       "Neon",
       "PostgreSQL",
     ],
-    nextSteps: [
-      "Finalizar edição de contas, cartões e lançamentos.",
-      "Polir responsividade mobile.",
-      "Implementar entradas fixas.",
-      "Melhorar lógica de lançamentos recorrentes.",
-      "Preparar autenticação, família e permissões em etapa futura.",
+  },
+  {
+    slug: "dashboard-comercial-leads-vem-voando",
+    title: "Dashboard Comercial de Leads — Vem Voando",
+    eyebrow: "Inteligência comercial integrada",
+    status: "Sistema interno",
+    category: "Dashboards & Automações",
+    summary:
+      "Dashboard integrado ao Google Forms e Sheets que transforma registros de atendimento em indicadores, filtros e análises comerciais.",
+    coverImage: "/projects/dashboard-leads-vem-voando.webp",
+    tags: ["Leads", "Conversões", "Gestores", "Dashboard"],
+    overview:
+      "A Vem Voando já registrava os atendimentos no Google Forms e armazenava as respostas em uma planilha. O projeto aproveitou esse fluxo sem exigir migração.",
+    challenge:
+      "A equipe precisava percorrer muitas linhas para acompanhar conversões, origens e períodos, preparar reuniões e diferenciar recorrência de duplicidade.",
+    solution:
+      "Um dashboard conectado à planilha, com indicadores e filtros por período, gestor, origem, produto e conversão. A análise de duplicidade combina cliente, produto e cotação.",
+    highlights: [
+      "Integração com Google Forms e Sheets.",
+      "Indicadores de atendimento e conversão.",
+      "Filtros por período, gestor, origem e produto.",
+      "Consulta de registros individuais.",
+      "Controle de leads convertidos e não convertidos.",
+      "Sinalização de possíveis duplicidades por critérios combinados.",
     ],
+    result:
+      "A base de respostas passou a funcionar como ferramenta de acompanhamento, apoiando consultas, reuniões mensais e a identificação de pontos de atenção.",
+    results: [
+      "Leitura do período reunida em um painel.",
+      "Preparação das reuniões apoiada por filtros.",
+      "Recorrências tratadas com critérios mais adequados.",
+    ],
+    stack: ["Google Sheets", "Google Forms", "Google Apps Script", "JavaScript"],
+  },
+  {
+    slug: "painel-controle-relatorios-operacionais",
+    title: "Painel de Controle de Relatórios Operacionais",
+    eyebrow: "Automação documental e rastreabilidade",
+    status: "Sistema interno",
+    category: "Dashboards & Automações",
+    summary:
+      "Painel integrado ao ecossistema Google para centralizar a conferência, organização e rastreabilidade de relatórios operacionais.",
+    coverImage: "/projects/painel-relatorios-operacionais.webp",
+    tags: ["Relatórios", "Documentos", "Google Drive", "Automação"],
+    overview:
+      "Formulários, planilhas, documentos e pastas reuniam as informações do processo. O painel conecta essas fontes para apoiar a conferência e a organização documental.",
+    challenge:
+      "A conferência exigia buscas manuais por responsáveis, registros e arquivos, dificultando a identificação de pendências e o acompanhamento das observações.",
+    solution:
+      "Um painel integrado ao Google Forms, Sheets e Drive, com pesquisa, filtros, status de conferência, observações e organização automatizada dos arquivos relacionados.",
+    highlights: [
+      "Pesquisa de registros por número e ano.",
+      "Filtros por grupos e responsáveis.",
+      "Consulta rápida ou sincronização completa.",
+      "Controle de envio, conferência e pendências.",
+      "Cadastro de responsáveis ainda sem relatórios.",
+      "Acesso e organização dos documentos relacionados.",
+    ],
+    result:
+      "A solução reduziu consultas manuais e reuniu as informações necessárias para uma conferência mais organizada e rastreável.",
+    results: [
+      "Pendências reunidas em uma visão central.",
+      "Observações vinculadas aos registros.",
+      "Documentos relacionados mais fáceis de localizar.",
+    ],
+    stack: ["Google Sheets", "Google Forms", "Google Drive", "Google Apps Script"],
+    confidentialityNote:
+      "Esta apresentação utiliza dados demonstrativos para preservar a confidencialidade das informações.",
   },
 ];
 

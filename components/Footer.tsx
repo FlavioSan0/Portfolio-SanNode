@@ -1,5 +1,6 @@
 import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
 import { contact } from "@/data/contact";
+import Reveal from "@/components/Reveal";
 
 function GithubIcon() {
   return (
@@ -65,7 +66,8 @@ const footerLinks = [
 export default function Footer() {
   return (
     <footer className="border-t border-[#1E3654] bg-[#07111F]">
-      <div className="container-site py-10">
+      <Reveal duration={560} distance={16}>
+        <div className="container-site py-10">
         <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center">
           <div>
             <p className="text-2xl font-black text-[#F5FBFF]">
@@ -126,7 +128,8 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </div>
+        </div>
+      </Reveal>
     </footer>
   );
 }

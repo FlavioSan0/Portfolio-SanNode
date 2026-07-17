@@ -6,10 +6,9 @@ import { useEffect, useState } from "react";
 import { contact } from "@/data/contact";
 
 const navItems = [
-  { label: "O que resolvo", href: "#problemas", id: "problemas" },
+  { label: "Frentes", href: "#servicos", id: "servicos" },
   { label: "Projetos", href: "#projetos", id: "projetos" },
-  { label: "Processo", href: "#processo", id: "processo" },
-  { label: "Serviços", href: "#servicos", id: "servicos" },
+  { label: "Sobre", href: "#sobre", id: "sobre" },
   { label: "Contato", href: "#contato", id: "contato" },
 ];
 
@@ -124,9 +123,7 @@ export default function Header() {
         </nav>
 
         <a
-          href={contact.whatsapp}
-          target="_blank"
-          rel="noreferrer"
+          href="#contato"
           className="tech-button hidden rounded-2xl border border-[#00D9FF]/20 bg-[#0B2A5B]/88 px-5 py-3 text-sm font-semibold text-white shadow-[0_16px_45px_rgba(11,42,91,0.24)] transition hover:border-[#00D9FF]/50 hover:bg-[#2563EB] lg:inline-flex"
         >
           Fale comigo
@@ -168,9 +165,7 @@ export default function Header() {
             })}
 
             <a
-              href={contact.whatsapp}
-              target="_blank"
-              rel="noreferrer"
+              href="#contato"
               onClick={closeMenu}
               className="mt-2 inline-flex items-center justify-center rounded-2xl bg-[#0B2A5B] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#2563EB]"
             >

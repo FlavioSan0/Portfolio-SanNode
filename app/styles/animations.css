@@ -37,3 +37,87 @@
     opacity: 0;
   }
 }
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance), 0)
+    scale(var(--reveal-initial-scale));
+  transition-property: opacity, transform;
+  transition-duration: var(--reveal-duration);
+  transition-delay: 0ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal[data-reveal-direction="down"] {
+  transform: translate3d(0, calc(-1 * var(--reveal-distance)), 0)
+    scale(var(--reveal-initial-scale));
+}
+
+.scroll-reveal[data-reveal-direction="left"] {
+  transform: translate3d(var(--reveal-distance), 0, 0)
+    scale(var(--reveal-initial-scale));
+}
+
+.scroll-reveal[data-reveal-direction="right"] {
+  transform: translate3d(calc(-1 * var(--reveal-distance)), 0, 0)
+    scale(var(--reveal-initial-scale));
+}
+
+.scroll-reveal[data-reveal-direction="none"] {
+  transform: scale(var(--reveal-initial-scale));
+}
+
+.scroll-reveal[data-reveal-state="visible"] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition-delay: var(--reveal-delay);
+}
+
+.scroll-reveal[data-reveal-state="exited"] {
+  opacity: 0;
+  transform: translate3d(0, calc(-1 * var(--reveal-exit-distance)), 0)
+    scale(0.985);
+  transition-duration: var(--reveal-exit-duration);
+}
+
+.scroll-reveal[data-reveal-state="exited"][data-reveal-direction="down"] {
+  transform: translate3d(0, var(--reveal-exit-distance), 0) scale(0.985);
+}
+
+.scroll-reveal[data-reveal-state="exited"][data-reveal-direction="left"] {
+  transform: translate3d(calc(-1 * var(--reveal-exit-distance)), 0, 0)
+    scale(0.985);
+}
+
+.scroll-reveal[data-reveal-state="exited"][data-reveal-direction="right"] {
+  transform: translate3d(var(--reveal-exit-distance), 0, 0) scale(0.985);
+}
+
+.scroll-reveal[data-reveal-state="exited"][data-reveal-direction="none"] {
+  transform: scale(0.985);
+}
+
+@media (max-width: 767px) {
+  .scroll-reveal[data-reveal-direction="left"],
+  .scroll-reveal[data-reveal-direction="right"] {
+    transform: translate3d(0, var(--reveal-distance), 0)
+      scale(var(--reveal-initial-scale));
+  }
+
+  .scroll-reveal[data-reveal-state="visible"] {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .scroll-reveal[data-reveal-state="exited"] {
+    transform: translate3d(0, calc(-1 * var(--reveal-exit-distance)), 0)
+      scale(0.985);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
