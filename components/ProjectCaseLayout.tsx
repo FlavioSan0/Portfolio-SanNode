@@ -1,10 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
 import CaseImageGallery from "@/components/CaseImageGallery";
+import { CaseImageLightbox, ExpandableImage } from "@/components/CaseImageLightbox";
 import Reveal from "@/components/Reveal";
-import type { ProjectCase } from "@/data/project-cases";
+import {
+  getProjectCoverMedia,
+  getProjectMedia,
+  type ProjectCase,
+} from "@/data/project-cases";
 
 type ProjectCaseLayoutProps = {
   project: ProjectCase;
@@ -17,10 +21,11 @@ export default function ProjectCaseLayout({
   previousProject,
   nextProject,
 }: ProjectCaseLayoutProps) {
-  const coverFit = project.coverFit ?? (project.category === "Design" ? "contain" : "cover");
+  const cover = getProjectCoverMedia(project);
 
   return (
-    <main className="relative z-10 overflow-hidden bg-[#040B14] text-[#F5FBFF]">
+    <CaseImageLightbox items={getProjectMedia(project)}>
+      <main className="relative z-10 overflow-hidden bg-[#040B14] text-[#F5FBFF]">
       <section className="relative border-b border-[#1E3654]/25">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_8%,rgba(0,217,255,0.08),transparent_30%)]" />
 
@@ -86,30 +91,17 @@ export default function ProjectCaseLayout({
             </div>
 
             <Reveal direction="right" delay={120} distance={30} initialScale={0.985}>
-              <div
-                className={`overflow-hidden rounded-[1.5rem] border sm:rounded-[2rem] ${
+              <ExpandableImage
+                item={cover}
+                preload
+                sizes="(max-width: 1024px) 100vw, 58vw"
+                className={`rounded-[1.5rem] border sm:rounded-[2rem] ${
                   project.coverFit === "contain"
                     ? "border-[#00D9FF]/20 bg-[#0F1B3D] p-3 shadow-[0_18px_45px_rgba(0,0,0,0.22)]"
                     : "border-[#1E3654]/50 bg-[#07111F]"
-                }`}
-              >
-                <div
-                  className={`relative ${
-                    project.coverFit === "contain" ? "aspect-video" : "aspect-[4/3] sm:aspect-[16/10]"
-                  }`}
-                >
-                  <Image
-                    src={project.coverImage}
-                    alt={`Imagem principal do projeto ${project.title}`}
-                    fill
-                    preload
-                    sizes="(max-width: 1024px) 100vw, 58vw"
-                    className={`${coverFit === "contain" ? "object-contain" : "object-cover"} ${
-                      project.category === "Design" ? "p-8 sm:p-12" : ""
-                    }`}
-                  />
-                </div>
-              </div>
+                } ${project.coverFit === "contain" ? "aspect-video" : "aspect-[4/3] sm:aspect-[16/10]"}`}
+                imageClassName={`object-contain ${project.category === "Design" ? "p-8 sm:p-12" : ""}`}
+              />
             </Reveal>
           </div>
         </div>
@@ -152,13 +144,13 @@ export default function ProjectCaseLayout({
         </div>
       </section>
 
-      {project.gallerySection && project.gallery?.length ? (
+      {project.gallery?.length ? (
         <section className="border-y border-[#1E3654]/25 bg-[#07111F]/55 py-16 md:py-24">
           <div className="container-site">
             <SectionHeading
               label="Interface"
-              title={project.gallerySection.title}
-              description={project.gallerySection.description}
+              title={project.gallerySection?.title ?? "Detalhes da solução"}
+              description={project.gallerySection?.description ?? "Telas e aplicações que mostram o projeto em uso."}
             />
 
             <CaseImageGallery items={project.gallery} />
@@ -170,45 +162,6 @@ export default function ProjectCaseLayout({
                 </p>
               </Reveal>
             ) : null}
-          </div>
-        </section>
-      ) : project.gallery?.length ? (
-        <section className="border-y border-[#1E3654]/25 bg-[#07111F]/55 py-16 md:py-24">
-          <div className="container-site">
-            <SectionHeading
-              label="Interface"
-              title="Detalhes da solução"
-              description="Telas e aplicações que mostram o projeto em uso."
-            />
-
-            <div className="mt-10 grid gap-8 md:grid-cols-2 md:gap-10">
-              {project.gallery.map((item, index) => (
-                <Reveal
-                  key={item.src}
-                  delay={index * 80}
-                  distance={24}
-                  initialScale={0.985}
-                  className={project.gallery?.length === 3 && index === 0 ? "md:col-span-2" : ""}
-                >
-                  <figure>
-                    <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-[#1E3654]/40 bg-[#040B14]">
-                      <Image
-                        src={item.src}
-                        alt={item.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-contain"
-                      />
-                    </div>
-                    {item.caption ? (
-                      <figcaption className="mt-3 text-sm leading-6 text-[#7F96AD]">
-                        {item.caption}
-                      </figcaption>
-                    ) : null}
-                  </figure>
-                </Reveal>
-              ))}
-            </div>
           </div>
         </section>
       ) : null}
@@ -292,7 +245,8 @@ export default function ProjectCaseLayout({
           </div>
         </nav>
       </Reveal>
-    </main>
+      </main>
+    </CaseImageLightbox>
   );
 }
 

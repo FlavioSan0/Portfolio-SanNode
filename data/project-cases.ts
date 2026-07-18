@@ -1,12 +1,18 @@
 import { MESAFLOW_LANDING_URL } from "@/data/project-links";
 
-export type ProjectGalleryItem = {
+export type ProjectMedia = {
   src: string;
   alt: string;
+  width: number;
+  height: number;
   caption?: string;
   title?: string;
   description?: string;
+  expandable?: boolean;
   layout?: "full" | "half" | "third";
+};
+
+export type ProjectGalleryItem = ProjectMedia & {
   sectionTitle?: string;
   sectionDescription?: string;
 };
@@ -24,6 +30,9 @@ export type ProjectCase = {
   category: "Design" | "Site" | "Sistema" | "Dashboards & Automações";
   summary: string;
   coverImage: string;
+  coverWidth: number;
+  coverHeight: number;
+  coverExpandable?: boolean;
   coverFit?: "cover" | "contain";
   liveUrl?: string;
   liveLabel?: string;
@@ -56,6 +65,8 @@ export const projectCases: ProjectCase[] = [
     summary:
       "Identidade visual e landing page para fortalecer a presença comercial da ABF.",
     coverImage: "/projetos/abf-case/logo-principal.png",
+    coverWidth: 4001,
+    coverHeight: 3001,
     liveUrl: "https://abf-representacao.vercel.app/#",
     liveLabel: "Acessar landing page",
     tags: ["Identidade visual", "Landing page", "Marca", "Comercial"],
@@ -83,16 +94,23 @@ export const projectCases: ProjectCase[] = [
     gallery: [
       {
         src: "/projetos/abf-case/conceito.png",
+        width: 4001,
+        height: 3001,
+        layout: "full",
         alt: "Conceito visual da ABF Representações",
         caption: "Conceito visual com foco em presença comercial e confiança.",
       },
       {
         src: "/projetos/abf-case/cartao-visita.png",
+        width: 4001,
+        height: 3001,
         alt: "Cartão de visita da ABF Representações",
         caption: "Identidade aplicada ao material de contato.",
       },
       {
         src: "/projetos/abf-case/instagram-perfil.png",
+        width: 1080,
+        height: 2400,
         alt: "Perfil do Instagram da ABF Representações",
         caption: "Organização inicial da presença digital da marca.",
       },
@@ -114,6 +132,8 @@ export const projectCases: ProjectCase[] = [
     summary:
       "Convite digital com experiência para convidados e painel administrativo para organização do evento.",
     coverImage: "/projetos/site-casamento/mobile-home.png",
+    coverWidth: 1080,
+    coverHeight: 2953,
     liveUrl: "https://site-casamento-chi.vercel.app",
     liveLabel: "Acessar projeto",
     tags: ["RSVP", "Painel", "Lista de presentes", "Evento"],
@@ -141,21 +161,29 @@ export const projectCases: ProjectCase[] = [
     gallery: [
       {
         src: "/projetos/site-casamento/painel-login.png",
+        width: 1872,
+        height: 921,
         alt: "Tela de acesso ao painel do site de casamento",
         caption: "Acesso reservado à área administrativa.",
       },
       {
         src: "/projetos/site-casamento/painel-dashboard.png",
+        width: 1856,
+        height: 916,
         alt: "Dashboard administrativo do site de casamento",
         caption: "Visão geral para acompanhar a organização do evento.",
       },
       {
         src: "/projetos/site-casamento/painel-presentes.png",
+        width: 1849,
+        height: 921,
         alt: "Gestão de presentes no painel do site de casamento",
         caption: "Cadastro e organização da lista de presentes.",
       },
       {
         src: "/projetos/site-casamento/painel-confirmacoes.png",
+        width: 1856,
+        height: 931,
         alt: "Lista de confirmações no painel do site de casamento",
         caption: "Acompanhamento das confirmações de presença.",
       },
@@ -179,6 +207,8 @@ export const projectCases: ProjectCase[] = [
     summary:
       "Site institucional para organizar informações da paróquia, horários, eventos, pastorais e comunicação com a comunidade.",
     coverImage: "/projetos/paroquia-santuario/home.png",
+    coverWidth: 1862,
+    coverHeight: 921,
     tags: ["Site institucional", "UI/UX", "Responsivo", "Comunidade"],
     overview:
       "O site reúne horários, eventos, pastorais, localização, contatos e conteúdos de apoio em um ambiente acolhedor e acessível para a comunidade.",
@@ -211,6 +241,8 @@ export const projectCases: ProjectCase[] = [
     summary:
       "Site para apresentar a identidade da Banda Praise, seus momentos, vídeos, fotos, agenda e presença musical.",
     coverImage: "/projetos/banda-praise/home.png",
+    coverWidth: 1862,
+    coverHeight: 933,
     tags: ["Site artístico", "Momentos", "Vídeos", "Identidade"],
     overview:
       "A Banda Praise precisava de um espaço próprio para apresentar sua identidade, registrar momentos importantes e facilitar o acesso a vídeos, fotos, agenda e contatos.",
@@ -243,6 +275,8 @@ export const projectCases: ProjectCase[] = [
     summary:
       "Landing page para apresentar a Vem Voando com clareza, impacto visual e foco em conversão.",
     coverImage: "/projetos/vem-voando/home.png",
+    coverWidth: 1857,
+    coverHeight: 928,
     tags: ["Landing page", "Conversão", "Responsivo", "Viagens"],
     overview:
       "A landing page foi pensada para apresentar a Vem Voando de forma objetiva, explicar sua proposta e direcionar o visitante para orçamento ou atendimento.",
@@ -275,6 +309,8 @@ export const projectCases: ProjectCase[] = [
     summary:
       "Sistema privado para organizar produtos, entradas, saídas e movimentações em uma rotina real de oficina.",
     coverImage: "/projetos/estoque-case/dashboard.png",
+    coverWidth: 1871,
+    coverHeight: 921,
     liveUrl: "https://controle-de-estoque-mecanica.vercel.app",
     liveLabel: "Acessar sistema",
     tags: ["Estoque", "Dashboard", "Fornecedores", "Movimentações"],
@@ -310,31 +346,43 @@ export const projectCases: ProjectCase[] = [
     gallery: [
       {
         src: "/projetos/estoque-case/login.png",
+        width: 1874,
+        height: 913,
         alt: "Tela de acesso do sistema de estoque",
         caption: "Acesso reservado ao sistema.",
       },
       {
         src: "/projetos/estoque-case/produtos.png",
+        width: 1857,
+        height: 919,
         alt: "Tela de produtos do sistema de estoque",
         caption: "Cadastro e consulta de produtos.",
       },
       {
         src: "/projetos/estoque-case/entradas.png",
+        width: 1858,
+        height: 924,
         alt: "Tela de entradas do sistema de estoque",
         caption: "Registro de entradas no estoque.",
       },
       {
         src: "/projetos/estoque-case/saidas.png",
+        width: 1855,
+        height: 922,
         alt: "Tela de saídas do sistema de estoque",
         caption: "Registro de saídas do estoque.",
       },
       {
         src: "/projetos/estoque-case/movimentacoes.png",
+        width: 1856,
+        height: 921,
         alt: "Histórico de movimentações do sistema de estoque",
         caption: "Histórico centralizado de movimentações.",
       },
       {
         src: "/projetos/estoque-case/relatorios.png",
+        width: 1872,
+        height: 919,
         alt: "Tela de relatórios do sistema de estoque",
         caption: "Relatórios para apoiar a consulta operacional.",
       },
@@ -358,6 +406,8 @@ export const projectCases: ProjectCase[] = [
     summary:
       "Sistema web para pequenos estabelecimentos organizarem cardápio digital, pedidos, balcão, delivery, mesas, atendimento por garçom e gestão operacional em uma única plataforma.",
     coverImage: "/projetos/mesaflow/dashboard.png",
+    coverWidth: 1864,
+    coverHeight: 933,
     liveUrl: MESAFLOW_LANDING_URL,
     liveLabel: "Ver landing page oficial",
     tags: ["SaaS", "Cardápio digital", "Pedidos", "Gestão"],
@@ -404,6 +454,8 @@ export const projectCases: ProjectCase[] = [
     summary:
       "Sistema para organizar lançamentos, contas, cartões, entradas, despesas fixas e rotina financeira familiar.",
     coverImage: "/projetos/gestao-financeira/dashboard.png",
+    coverWidth: 1866,
+    coverHeight: 937,
     tags: ["Finanças", "Dashboard", "Mobile", "Contas", "Cartões"],
     overview:
       "O sistema reúne contas, cartões, lançamentos, despesas fixas, entradas e visão mensal para tornar o acompanhamento financeiro familiar mais claro.",
@@ -445,6 +497,8 @@ export const projectCases: ProjectCase[] = [
     summary:
       "Dashboard integrado ao Google Forms e Sheets que transforma registros de atendimento em indicadores, filtros e análises comerciais.",
     coverImage: "/projects/dashboard-leads/gallery/visao-geral.png",
+    coverWidth: 1672,
+    coverHeight: 941,
     coverFit: "contain",
     tags: ["Leads", "Conversões", "Gestores", "Dashboard"],
     overview:
@@ -461,6 +515,8 @@ export const projectCases: ProjectCase[] = [
     gallery: [
       {
         src: "/projects/dashboard-leads/gallery/visao-geral.png",
+        width: 1672,
+        height: 941,
         alt: "Visão geral do painel comercial de leads da Vem Voando",
         title: "Visão centralizada da operação",
         description:
@@ -469,6 +525,8 @@ export const projectCases: ProjectCase[] = [
       },
       {
         src: "/projects/dashboard-leads/gallery/indicadores-filtros.png",
+        width: 1672,
+        height: 941,
         alt: "Indicadores comerciais e filtros rápidos por situação dos leads",
         title: "Situação atual dos leads",
         description:
@@ -477,6 +535,8 @@ export const projectCases: ProjectCase[] = [
       },
       {
         src: "/projects/dashboard-leads/gallery/consulta-avancada.png",
+        width: 1672,
+        height: 941,
         alt: "Consulta avançada do painel com filtros por período, gestor, origem e produto",
         title: "Análises por diferentes critérios",
         description:
@@ -485,6 +545,8 @@ export const projectCases: ProjectCase[] = [
       },
       {
         src: "/projects/dashboard-leads/gallery/resumo-produto.png",
+        width: 1672,
+        height: 941,
         alt: "Resumo do desempenho comercial dos leads por produto",
         title: "Desempenho por produto",
         description:
@@ -493,6 +555,8 @@ export const projectCases: ProjectCase[] = [
       },
       {
         src: "/projects/dashboard-leads/gallery/resumo-origem.png",
+        width: 1672,
+        height: 941,
         alt: "Resumo dos leads e conversões por canal de origem",
         title: "Origem dos leads",
         description:
@@ -501,6 +565,8 @@ export const projectCases: ProjectCase[] = [
       },
       {
         src: "/projects/dashboard-leads/gallery/resumo-gestor.png",
+        width: 1672,
+        height: 941,
         alt: "Resumo anonimizado do acompanhamento comercial por gestor",
         title: "Acompanhamento por responsável",
         description:
@@ -509,6 +575,8 @@ export const projectCases: ProjectCase[] = [
       },
       {
         src: "/projects/dashboard-leads/gallery/fechamento-mensal-anonimizado.png",
+        width: 1636,
+        height: 831,
         alt: "Visão executiva da reunião mensal do painel de leads",
         title: "Visão executiva do período",
         description:
@@ -520,6 +588,8 @@ export const projectCases: ProjectCase[] = [
       },
       {
         src: "/projects/dashboard-leads/gallery/comparativo-destaques-anonimizado.png",
+        width: 1624,
+        height: 892,
         alt: "Comparativo mensal e pontos de atenção do painel comercial",
         title: "Comparativo e pontos de atenção",
         description:
@@ -528,6 +598,8 @@ export const projectCases: ProjectCase[] = [
       },
       {
         src: "/projects/dashboard-leads/gallery/reuniao-mensal-distribuicao-anonimizada.png",
+        width: 1636,
+        height: 909,
         alt: "Distribuição de resultados por equipe, origem e produto",
         title: "Distribuição dos resultados",
         description:
@@ -536,6 +608,8 @@ export const projectCases: ProjectCase[] = [
       },
       {
         src: "/projects/dashboard-leads/gallery/produtos-rotas-anonimizadas.png",
+        width: 1620,
+        height: 897,
         alt: "Produtos e rotas recorrentes identificados no painel",
         title: "Produtos e rotas recorrentes",
         description:
@@ -544,6 +618,8 @@ export const projectCases: ProjectCase[] = [
       },
       {
         src: "/projects/dashboard-leads/gallery/leads-encontrados.png",
+        width: 1672,
+        height: 941,
         alt: "Listagem anonimizada dos leads encontrados no período",
         title: "Base operacional detalhada",
         description:
@@ -579,6 +655,8 @@ export const projectCases: ProjectCase[] = [
     summary:
       "Painel integrado ao ecossistema Google para centralizar a conferência, organização e rastreabilidade de relatórios operacionais.",
     coverImage: "/projects/painel-relatorios-operacionais.webp",
+    coverWidth: 1568,
+    coverHeight: 1003,
     tags: ["Relatórios", "Documentos", "Google Drive", "Automação"],
     overview:
       "Formulários, planilhas, documentos e pastas reuniam as informações do processo. O painel conecta essas fontes para apoiar a conferência e a organização documental.",
@@ -609,4 +687,33 @@ export const projectCases: ProjectCase[] = [
 
 export function getProjectCaseBySlug(slug: string) {
   return projectCases.find((project) => project.slug === slug);
+}
+
+export function getProjectCoverMedia(project: ProjectCase): ProjectMedia {
+  return {
+    src: project.coverImage,
+    alt: `Imagem principal do projeto ${project.title}`,
+    title: project.title,
+    description: project.summary,
+    width: project.coverWidth,
+    height: project.coverHeight,
+    expandable: project.coverExpandable,
+  };
+}
+
+export function getProjectMedia(project: ProjectCase): ProjectMedia[] {
+  const items: ProjectMedia[] = [
+    getProjectCoverMedia(project),
+    ...(project.gallery ?? []).map((item) => ({
+      ...item,
+      title: item.title ?? item.caption ?? item.alt,
+      description: item.description ?? item.caption,
+    })),
+  ];
+
+  return items.filter(
+    (item, index) =>
+      item.expandable !== false &&
+      items.findIndex((candidate) => candidate.src === item.src) === index,
+  );
 }
