@@ -87,9 +87,16 @@ export default function ProjectEditorial() {
           {projectGroups.map((group) => (
             <div key={group.label}>
               <Reveal duration={560} distance={20}>
-                <h3 className="mb-7 border-b border-[#1E3654]/35 pb-4 text-sm font-semibold uppercase tracking-[0.24em] text-[#74C7FF]">
-                  {group.label}
-                </h3>
+                <div className="mb-7 flex items-center justify-between gap-4 border-b border-[#1E3654]/35 pb-4">
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-[#74C7FF]">
+                    {group.label}
+                  </h3>
+                  {group.projects.length > 1 ? (
+                    <span className="shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[#6F879F] sm:hidden">
+                      Deslize →
+                    </span>
+                  ) : null}
+                </div>
               </Reveal>
 
               <CasesSliderSanNode

@@ -26,7 +26,7 @@ export default function CasesSliderSanNode({
   projects,
 }: CasesSliderSanNodeProps) {
   return (
-    <div className="grid gap-6 overflow-visible sm:grid-cols-2 lg:gap-8 xl:grid-cols-3">
+    <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-4 pb-5 scroll-px-4 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:gap-8 xl:grid-cols-3">
       {projects.map((project, index) => (
         <Reveal
           key={project.slug}
@@ -35,9 +35,10 @@ export default function CasesSliderSanNode({
           duration={650}
           distance={26}
           initialScale={0.98}
+          className="h-auto w-[84vw] min-w-[17.5rem] max-w-[22rem] flex-none snap-start sm:h-full sm:w-auto sm:min-w-0 sm:max-w-none sm:snap-none"
         >
-          <div className="px-2 sm:px-3 lg:px-4">
-            <article className="group flex min-w-0 flex-col rounded-2xl border border-[#1E3654]/20 transition-[transform,border-color,box-shadow,opacity] duration-300 active:border-[#00D9FF]/30 active:opacity-95 [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1.5 [@media(hover:hover)_and_(pointer:fine)]:hover:border-[#00D9FF]/30 [@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_18px_50px_rgba(0,217,255,0.07)]">
+          <div className="h-full px-0 sm:px-3 lg:px-4">
+            <article className="group flex h-full min-w-0 flex-col rounded-2xl border border-[#1E3654]/20 transition-[transform,border-color,box-shadow,opacity] duration-300 active:border-[#00D9FF]/30 active:opacity-95 [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1.5 [@media(hover:hover)_and_(pointer:fine)]:hover:border-[#00D9FF]/30 [@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_18px_50px_rgba(0,217,255,0.07)]">
               <Link
                 href={`/projetos/${project.slug}`}
                 className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-[#1E3654]/25 bg-[#07111F] transition duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00D9FF] [@media(hover:hover)_and_(pointer:fine)]:group-hover:border-[#00D9FF]/35"
@@ -56,7 +57,7 @@ export default function CasesSliderSanNode({
                     src={project.coverImage}
                     alt={`Imagem do projeto ${project.title}`}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 84vw, (max-width: 1280px) 50vw, 33vw"
                     className={[
                       "object-cover transition-transform duration-300 [@media(hover:hover)_and_(pointer:fine)]:group-hover:scale-[1.03]",
                       project.imageMode === "brand" ? "p-8 object-contain" : "",
