@@ -321,3 +321,42 @@
     animation: none !important;
   }
 }
+
+/* Trilho de projetos: prioridade para o gesto horizontal nativo no mobile */
+@media (max-width: 639px) {
+  .mobile-project-rail {
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
+    touch-action: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto;
+    isolation: isolate;
+  }
+
+  .mobile-project-rail > * {
+    pointer-events: auto;
+  }
+}
+
+
+.mobile-project-nav-button--next:not(:disabled) {
+  animation: mobile-project-nav-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes mobile-project-nav-pulse {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.24);
+  }
+  50% {
+    transform: translate3d(0.18rem, 0, 0);
+    box-shadow: 0 10px 32px rgba(0, 194, 255, 0.16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-project-nav-button--next {
+    animation: none !important;
+  }
+}

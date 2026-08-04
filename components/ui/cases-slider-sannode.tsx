@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, MoveHorizontal } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, MoveHorizontal } from "lucide-react";
 import {
   useCallback,
   useEffect,
@@ -51,6 +51,7 @@ export default function CasesSliderSanNode({
   const suppressClickRef = useRef(false);
   const [isDragging, setIsDragging] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [showLeftControl, setShowLeftControl] = useState(false);
   const [showRightHint, setShowRightHint] = useState(projects.length > 1);
 
   const updateRailState = useCallback(() => {
@@ -58,6 +59,7 @@ export default function CasesSliderSanNode({
     if (!rail) return;
 
     const remaining = rail.scrollWidth - rail.clientWidth - rail.scrollLeft;
+    setShowLeftControl(rail.scrollLeft > 12);
     setShowRightHint(projects.length > 1 && remaining > 12);
   }, [projects.length]);
 
@@ -74,7 +76,7 @@ export default function CasesSliderSanNode({
   }, [updateRailState]);
 
   function handlePointerDown(event: ReactPointerEvent<HTMLDivElement>) {
-    if (!event.isPrimary) return;
+    if (!event.isPrimary || event.pointerType !== "mouse") return;
 
     const rail = railRef.current;
     if (!rail) return;
@@ -92,7 +94,12 @@ export default function CasesSliderSanNode({
     const drag = dragRef.current;
     const rail = railRef.current;
 
-    if (!drag || !rail || drag.pointerId !== event.pointerId) return;
+    if (
+      event.pointerType !== "mouse" ||
+      !drag ||
+      !rail ||
+      drag.pointerId !== event.pointerId
+    ) return;
 
     const deltaX = event.clientX - drag.startX;
     const deltaY = event.clientY - drag.startY;
@@ -142,6 +149,17 @@ export default function CasesSliderSanNode({
     updateRailState();
   }
 
+  function scrollRail(direction: "previous" | "next") {
+    const rail = railRef.current;
+    if (!rail) return;
+
+    setHasInteracted(true);
+    rail.scrollBy({
+      left: (direction === "next" ? 1 : -1) * rail.clientWidth * 0.86,
+      behavior: "smooth",
+    });
+  }
+
   return (
     <div className="relative">
       <div
@@ -163,9 +181,9 @@ export default function CasesSliderSanNode({
         onDragStart={(event) => event.preventDefault()}
         style={{
           WebkitOverflowScrolling: "touch",
-          touchAction: "pan-y pinch-zoom",
+          touchAction: "auto",
         }}
-        className={`-mx-4 flex snap-x snap-proximity gap-4 overflow-x-auto overscroll-x-contain px-4 pb-5 scroll-px-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:gap-8 xl:grid-cols-3 ${
+        className={`mobile-project-rail relative z-20 -mx-4 flex snap-x snap-proximity gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain px-4 pb-5 scroll-px-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:gap-8 xl:grid-cols-3 ${
           isDragging
             ? "cursor-grabbing select-none"
             : "cursor-grab"
@@ -256,9 +274,32 @@ export default function CasesSliderSanNode({
 
       {projects.length > 1 && showRightHint ? (
         <div
-          className="pointer-events-none absolute bottom-5 right-0 top-0 w-12 bg-gradient-to-l from-[#040B14] via-[#040B14]/45 to-transparent sm:hidden"
+          className="pointer-events-none absolute bottom-14 right-0 top-0 w-12 bg-gradient-to-l from-[#040B14] via-[#040B14]/45 to-transparent sm:hidden"
           aria-hidden="true"
         />
+      ) : null}
+
+      {projects.length > 1 ? (
+        <div className="relative z-30 mt-1 flex items-center justify-end gap-2 sm:hidden">
+          <button
+            type="button"
+            onClick={() => scrollRail("previous")}
+            disabled={!showLeftControl}
+            aria-label={`Ver projetos anteriores de ${groupLabel}`}
+            className="mobile-project-nav-button grid size-10 place-items-center rounded-full border border-[#1E3654]/70 bg-[#07111F]/92 text-[#D9F4FF] shadow-[0_10px_28px_rgba(0,0,0,0.24)] transition disabled:cursor-not-allowed disabled:opacity-30"
+          >
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollRail("next")}
+            disabled={!showRightHint}
+            aria-label={`Ver mais projetos de ${groupLabel}`}
+            className="mobile-project-nav-button mobile-project-nav-button--next grid size-10 place-items-center rounded-full border border-[#00D9FF]/30 bg-[#07192A]/95 text-[#3FE3FF] shadow-[0_10px_28px_rgba(0,0,0,0.24)] transition disabled:cursor-not-allowed disabled:opacity-30"
+          >
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
+          </button>
+        </div>
       ) : null}
     </div>
   );

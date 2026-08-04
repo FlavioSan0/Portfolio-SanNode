@@ -162,7 +162,7 @@ export default function LiveProjectPreview({
     <div
       className={
         isCard
-          ? "relative h-full w-full overflow-hidden rounded-[1.05rem] bg-[radial-gradient(circle_at_top,rgba(0,217,255,0.16),transparent_42%),linear-gradient(180deg,rgba(15,27,61,0.96),rgba(7,17,31,0.98))] p-2.5"
+          ? "pointer-events-none relative h-full w-full overflow-hidden rounded-[1.05rem] bg-[radial-gradient(circle_at_top,rgba(0,217,255,0.16),transparent_42%),linear-gradient(180deg,rgba(15,27,61,0.96),rgba(7,17,31,0.98))] p-2.5"
           : "rounded-[1.5rem] border border-[#00D9FF]/20 bg-[radial-gradient(circle_at_top,rgba(0,217,255,0.16),transparent_38%),linear-gradient(180deg,rgba(15,27,61,0.92),rgba(7,17,31,0.96))] p-3 shadow-[0_18px_45px_rgba(0,0,0,0.22)] sm:rounded-[2rem]"
       }
     >

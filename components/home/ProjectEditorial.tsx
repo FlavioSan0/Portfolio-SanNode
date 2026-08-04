@@ -75,7 +75,7 @@ export default function ProjectEditorial() {
     >
       <Tech3DDecor
         variant="core"
-        className="-right-14 top-16 h-40 w-40 opacity-[0.22] sm:h-48 sm:w-48 lg:-right-20 lg:top-24 lg:h-72 lg:w-72 lg:opacity-[0.38] xl:right-[1%]"
+        className="-right-14 top-16 hidden h-40 w-40 opacity-[0.22] sm:grid sm:h-48 sm:w-48 lg:-right-20 lg:top-24 lg:h-72 lg:w-72 lg:opacity-[0.38] xl:right-[1%]"
       />
 
       <div className="container-site relative z-10 py-20 md:py-28">
