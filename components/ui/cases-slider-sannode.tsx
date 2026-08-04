@@ -2,14 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ChevronLeft, ChevronRight, MoveHorizontal } from "lucide-react";
 import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type PointerEvent as ReactPointerEvent,
-} from "react";
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+  MoveHorizontal,
+} from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import LiveProjectPreview from "@/components/LiveProjectPreview";
 import Reveal from "@/components/Reveal";
@@ -32,35 +31,28 @@ type CasesSliderSanNodeProps = {
   groupLabel?: string;
 };
 
-type DragState = {
-  pointerId: number;
-  startX: number;
-  startY: number;
-  startScrollLeft: number;
-  dragging: boolean;
-};
-
-const DRAG_THRESHOLD = 8;
+const MOBILE_CARD_GAP = 16;
 
 export default function CasesSliderSanNode({
   projects,
   groupLabel = "projetos",
 }: CasesSliderSanNodeProps) {
   const railRef = useRef<HTMLDivElement>(null);
-  const dragRef = useRef<DragState | null>(null);
-  const suppressClickRef = useRef(false);
-  const [isDragging, setIsDragging] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [showLeftControl, setShowLeftControl] = useState(false);
-  const [showRightHint, setShowRightHint] = useState(projects.length > 1);
+  const [showRightControl, setShowRightControl] = useState(projects.length > 1);
 
   const updateRailState = useCallback(() => {
     const rail = railRef.current;
     if (!rail) return;
 
-    const remaining = rail.scrollWidth - rail.clientWidth - rail.scrollLeft;
-    setShowLeftControl(rail.scrollLeft > 12);
-    setShowRightHint(projects.length > 1 && remaining > 12);
+    const maxScrollLeft = Math.max(0, rail.scrollWidth - rail.clientWidth);
+    const tolerance = 8;
+
+    setShowLeftControl(rail.scrollLeft > tolerance);
+    setShowRightControl(
+      projects.length > 1 && rail.scrollLeft < maxScrollLeft - tolerance,
+    );
   }, [projects.length]);
 
   useEffect(() => {
@@ -75,77 +67,8 @@ export default function CasesSliderSanNode({
     return () => resizeObserver.disconnect();
   }, [updateRailState]);
 
-  function handlePointerDown(event: ReactPointerEvent<HTMLDivElement>) {
-    if (!event.isPrimary || event.pointerType !== "mouse") return;
-
-    const rail = railRef.current;
-    if (!rail) return;
-
-    dragRef.current = {
-      pointerId: event.pointerId,
-      startX: event.clientX,
-      startY: event.clientY,
-      startScrollLeft: rail.scrollLeft,
-      dragging: false,
-    };
-  }
-
-  function handlePointerMove(event: ReactPointerEvent<HTMLDivElement>) {
-    const drag = dragRef.current;
-    const rail = railRef.current;
-
-    if (
-      event.pointerType !== "mouse" ||
-      !drag ||
-      !rail ||
-      drag.pointerId !== event.pointerId
-    ) return;
-
-    const deltaX = event.clientX - drag.startX;
-    const deltaY = event.clientY - drag.startY;
-
-    if (!drag.dragging) {
-      const isHorizontalGesture =
-        Math.abs(deltaX) > DRAG_THRESHOLD &&
-        Math.abs(deltaX) > Math.abs(deltaY);
-
-      if (!isHorizontalGesture) return;
-
-      drag.dragging = true;
-      suppressClickRef.current = true;
-      setIsDragging(true);
-      setHasInteracted(true);
-      rail.setPointerCapture?.(event.pointerId);
-    }
-
-    event.preventDefault();
-    rail.scrollLeft = drag.startScrollLeft - deltaX;
-    updateRailState();
-  }
-
-  function finishPointerInteraction(event: ReactPointerEvent<HTMLDivElement>) {
-    const drag = dragRef.current;
-    const rail = railRef.current;
-
-    if (!drag || drag.pointerId !== event.pointerId) return;
-
-    const wasDragging = drag.dragging;
-    dragRef.current = null;
-
-    if (wasDragging) {
-      if (rail?.hasPointerCapture?.(event.pointerId)) {
-        rail.releasePointerCapture(event.pointerId);
-      }
-
-      setIsDragging(false);
-      window.setTimeout(() => {
-        suppressClickRef.current = false;
-      }, 0);
-    }
-  }
-
   function handleScroll() {
-    if (!hasInteracted) setHasInteracted(true);
+    setHasInteracted(true);
     updateRailState();
   }
 
@@ -153,41 +76,31 @@ export default function CasesSliderSanNode({
     const rail = railRef.current;
     if (!rail) return;
 
+    const firstCard = rail.querySelector<HTMLElement>("[data-project-slide]");
+    const cardWidth = firstCard?.getBoundingClientRect().width ?? rail.clientWidth * 0.84;
+    const distance = cardWidth + MOBILE_CARD_GAP;
+
     setHasInteracted(true);
     rail.scrollBy({
-      left: (direction === "next" ? 1 : -1) * rail.clientWidth * 0.86,
+      left: direction === "next" ? distance : -distance,
       behavior: "smooth",
     });
   }
 
   return (
-    <div className="relative">
+    <div className="relative min-w-0">
       <div
         ref={railRef}
         role="region"
+        aria-roledescription="carrossel"
         aria-label={`Lista horizontal de ${groupLabel}. Deslize para ver mais projetos.`}
         tabIndex={0}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={finishPointerInteraction}
-        onPointerCancel={finishPointerInteraction}
-        onLostPointerCapture={finishPointerInteraction}
         onScroll={handleScroll}
-        onClickCapture={(event) => {
-          if (!suppressClickRef.current) return;
-          event.preventDefault();
-          event.stopPropagation();
-        }}
-        onDragStart={(event) => event.preventDefault()}
         style={{
           WebkitOverflowScrolling: "touch",
           touchAction: "auto",
         }}
-        className={`mobile-project-rail relative z-20 -mx-4 flex snap-x snap-proximity gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain px-4 pb-5 scroll-px-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:gap-8 xl:grid-cols-3 ${
-          isDragging
-            ? "cursor-grabbing select-none"
-            : "cursor-grab"
-        }`}
+        className="mobile-project-rail relative z-20 -mx-4 flex min-w-0 snap-x snap-proximity gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain px-4 pb-5 scroll-px-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:gap-8 xl:grid-cols-3"
       >
         {projects.map((project, index) => (
           <Reveal
@@ -199,7 +112,7 @@ export default function CasesSliderSanNode({
             initialScale={0.98}
             className="h-auto w-[84vw] min-w-[17.5rem] max-w-[22rem] flex-none snap-start sm:h-full sm:w-auto sm:min-w-0 sm:max-w-none sm:snap-none"
           >
-            <div className="h-full px-0 sm:px-3 lg:px-4">
+            <div data-project-slide className="h-full px-0 sm:px-3 lg:px-4">
               <article className="group flex h-full min-w-0 flex-col rounded-2xl border border-[#1E3654]/20 transition-[transform,border-color,box-shadow,opacity] duration-300 active:border-[#00D9FF]/30 active:opacity-95 [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1.5 [@media(hover:hover)_and_(pointer:fine)]:hover:border-[#00D9FF]/30 [@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_18px_50px_rgba(0,217,255,0.07)]">
                 <Link
                   href={`/projetos/${project.slug}`}
@@ -262,7 +175,7 @@ export default function CasesSliderSanNode({
         ))}
       </div>
 
-      {projects.length > 1 && showRightHint && !hasInteracted ? (
+      {projects.length > 1 && showRightControl && !hasInteracted ? (
         <div
           className="mobile-project-swipe-hint pointer-events-none absolute right-1 top-[4.75rem] z-30 flex items-center gap-2 rounded-full border border-[#00D9FF]/25 bg-[#040B14]/88 px-3 py-2 text-[0.6rem] font-bold uppercase tracking-[0.16em] text-[#CDEEFF] shadow-[0_10px_35px_rgba(0,0,0,0.3)] backdrop-blur-md sm:hidden"
           aria-hidden="true"
@@ -272,7 +185,7 @@ export default function CasesSliderSanNode({
         </div>
       ) : null}
 
-      {projects.length > 1 && showRightHint ? (
+      {projects.length > 1 && showRightControl ? (
         <div
           className="pointer-events-none absolute bottom-14 right-0 top-0 w-12 bg-gradient-to-l from-[#040B14] via-[#040B14]/45 to-transparent sm:hidden"
           aria-hidden="true"
@@ -293,7 +206,7 @@ export default function CasesSliderSanNode({
           <button
             type="button"
             onClick={() => scrollRail("next")}
-            disabled={!showRightHint}
+            disabled={!showRightControl}
             aria-label={`Ver mais projetos de ${groupLabel}`}
             className="mobile-project-nav-button mobile-project-nav-button--next grid size-10 place-items-center rounded-full border border-[#00D9FF]/30 bg-[#07192A]/95 text-[#3FE3FF] shadow-[0_10px_28px_rgba(0,0,0,0.24)] transition disabled:cursor-not-allowed disabled:opacity-30"
           >

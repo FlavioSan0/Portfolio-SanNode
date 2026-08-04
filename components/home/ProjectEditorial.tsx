@@ -92,9 +92,9 @@ export default function ProjectEditorial() {
           </Reveal>
         </div>
 
-        <div className="grid gap-20">
+        <div className="grid min-w-0 grid-cols-1 gap-20">
           {projectGroups.map((group) => (
-            <div key={group.label}>
+            <div key={group.label} className="min-w-0">
               <Reveal duration={560} distance={20}>
                 <div className="mb-7 flex items-center justify-between gap-4 border-b border-[#1E3654]/35 pb-4">
                   <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-[#74C7FF]">
