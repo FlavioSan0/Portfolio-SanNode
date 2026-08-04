@@ -283,3 +283,41 @@
   }
 }
 
+
+/* Indicação de gesto horizontal nos projetos mobile */
+.mobile-project-swipe-hint {
+  animation: mobile-project-hint 2.2s ease-in-out 0.45s 3 both;
+}
+
+.mobile-project-swipe-icon {
+  animation: mobile-project-swipe 1.25s cubic-bezier(0.22, 1, 0.36, 1) 0.6s infinite;
+}
+
+@keyframes mobile-project-hint {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: translate3d(0, 0, 0);
+  }
+  45% {
+    opacity: 1;
+    transform: translate3d(-0.35rem, 0, 0);
+  }
+}
+
+@keyframes mobile-project-swipe {
+  0%,
+  100% {
+    transform: translate3d(0.22rem, 0, 0);
+  }
+  50% {
+    transform: translate3d(-0.22rem, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-project-swipe-hint,
+  .mobile-project-swipe-icon {
+    animation: none !important;
+  }
+}

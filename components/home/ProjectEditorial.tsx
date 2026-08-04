@@ -100,15 +100,11 @@ export default function ProjectEditorial() {
                   <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-[#74C7FF]">
                     {group.label}
                   </h3>
-                  {group.projects.length > 1 ? (
-                    <span className="shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[#6F879F] sm:hidden">
-                      Deslize →
-                    </span>
-                  ) : null}
                 </div>
               </Reveal>
 
               <CasesSliderSanNode
+                groupLabel={group.label}
                 projects={group.projects.map((item) => {
                   const project = getProjectCaseBySlug(item.slug)!;
                   const imageMode =
