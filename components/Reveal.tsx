@@ -49,7 +49,7 @@ function getSharedObserver() {
           entry.boundingClientRect.height >= viewportHeight * 0.75;
         const entered =
           entry.isIntersecting &&
-          (isLargeElement || entry.intersectionRatio >= 0.16);
+          (isLargeElement || entry.intersectionRatio >= 0.08);
 
         if (entered) {
           registration.update(true);
@@ -58,14 +58,14 @@ function getSharedObserver() {
             sharedObserver?.unobserve(entry.target);
             registrations.delete(entry.target);
           }
-        } else if (!entry.isIntersecting) {
+        } else if (registration.repeat && !entry.isIntersecting) {
           registration.update(false);
         }
       }
     },
     {
-      threshold: [0, 0.16],
-      rootMargin: "-4% 0px -10% 0px",
+      threshold: [0, 0.08],
+      rootMargin: "0px 0px -8% 0px",
     },
   );
 
@@ -76,15 +76,16 @@ export default function Reveal({
   children,
   direction = "up",
   delay = 0,
-  duration = 650,
-  distance = 28,
+  duration = 580,
+  distance = 22,
   initialScale = 1,
   stagger = 0,
   index = 0,
-  repeat = true,
+  repeat = false,
   className = "",
 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
+  const visibilityRef = useRef(false);
   const [phase, setPhase] = useState<RevealPhase>("before");
 
   useEffect(() => {
@@ -98,7 +99,10 @@ export default function Reveal({
     const observer = getSharedObserver();
 
     if (reducedMotion || !observer) {
-      const immediateTimer = window.setTimeout(() => setPhase("visible"), 0);
+      const immediateTimer = window.setTimeout(() => {
+        visibilityRef.current = true;
+        setPhase("visible");
+      }, 0);
 
       return () => window.clearTimeout(immediateTimer);
     }
@@ -109,6 +113,10 @@ export default function Reveal({
       repeat,
       update: (isVisible) => {
         observerReported = true;
+
+        if (visibilityRef.current === isVisible) return;
+
+        visibilityRef.current = isVisible;
         setPhase((current) =>
           isVisible ? "visible" : current === "before" ? current : "exited",
         );
@@ -117,8 +125,13 @@ export default function Reveal({
     observer.observe(element);
 
     const fallbackTimer = window.setTimeout(() => {
-      if (!observerReported) setPhase("visible");
-    }, 1500);
+      if (observerReported || visibilityRef.current) return;
+
+      visibilityRef.current = true;
+      setPhase("visible");
+      observer.unobserve(element);
+      registrations.delete(element);
+    }, 1200);
 
     return () => {
       window.clearTimeout(fallbackTimer);
@@ -130,9 +143,9 @@ export default function Reveal({
   const style = {
     "--reveal-delay": `${delay + stagger * index}ms`,
     "--reveal-duration": `${duration}ms`,
-    "--reveal-exit-duration": `${Math.min(duration, 420)}ms`,
+    "--reveal-exit-duration": `${Math.min(duration, 360)}ms`,
     "--reveal-distance": `${distance}px`,
-    "--reveal-exit-distance": `${Math.min(14, distance * 0.45)}px`,
+    "--reveal-exit-distance": `${Math.min(12, distance * 0.4)}px`,
     "--reveal-initial-scale": initialScale,
   } as CSSProperties;
 

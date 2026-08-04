@@ -95,11 +95,18 @@ export default function LiveProjectPreview({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) return;
-        setShouldLoad(true);
-        observer.disconnect();
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          return;
+        }
+
+        setShouldLoad(false);
+        setPreviewState("idle");
       },
-      { rootMargin: "320px 0px" },
+      {
+        rootMargin: "240px 0px",
+        threshold: 0.01,
+      },
     );
 
     observer.observe(element);
@@ -225,8 +232,17 @@ export default function LiveProjectPreview({
           ) : null}
 
           {previewState === "idle" || previewState === "loading" ? (
-            <div className="pointer-events-none absolute inset-0 z-10 grid place-items-center bg-[#030812]/88 backdrop-blur-sm">
-              <div className="flex items-center gap-2 rounded-full border border-[#00D9FF]/15 bg-[#07192A]/90 px-4 py-2 text-xs font-semibold text-[#CDEEFF]">
+            <div className="pointer-events-none absolute inset-0 z-10 grid place-items-center overflow-hidden bg-[#030812]/88 backdrop-blur-sm">
+              <Image
+                src={fallbackImage}
+                alt=""
+                fill
+                aria-hidden="true"
+                sizes={isCard ? "33vw" : "58vw"}
+                className="object-cover object-top opacity-20"
+              />
+              <div className="absolute inset-0 bg-[#030812]/72" />
+              <div className="relative flex items-center gap-2 rounded-full border border-[#00D9FF]/15 bg-[#07192A]/90 px-4 py-2 text-xs font-semibold text-[#CDEEFF]">
                 <LoaderCircle className="h-4 w-4 animate-spin text-[#00D9FF] motion-reduce:animate-none" />
                 Carregando projeto
               </div>

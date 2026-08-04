@@ -1,0 +1,380 @@
+.tech-3d {
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  contain: layout paint style;
+  transform: translateZ(0);
+}
+
+.tech-3d__float {
+  height: 100%;
+  width: 100%;
+  animation: tech-3d-float 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+.tech-3d__scene,
+.tech-3d__prism-scene {
+  position: relative;
+  display: grid;
+  place-items: center;
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+/* Cubo wireframe */
+.tech-3d__cube {
+  position: relative;
+  height: 42%;
+  width: 42%;
+  transform-style: preserve-3d;
+  animation: tech-3d-cube-rotate 18s linear infinite;
+  will-change: transform;
+}
+
+.tech-3d__cube-face {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(63, 227, 255, 0.42);
+  background: linear-gradient(
+    145deg,
+    rgba(30, 144, 255, 0.1),
+    rgba(0, 217, 255, 0.018)
+  );
+  box-shadow:
+    inset 0 0 22px rgba(0, 194, 255, 0.06),
+    0 0 18px rgba(0, 194, 255, 0.08);
+  backface-visibility: visible;
+}
+
+.tech-3d__cube-face--front {
+  transform: translateZ(2.8rem);
+}
+
+.tech-3d__cube-face--back {
+  transform: rotateY(180deg) translateZ(2.8rem);
+}
+
+.tech-3d__cube-face--right {
+  transform: rotateY(90deg) translateZ(2.8rem);
+}
+
+.tech-3d__cube-face--left {
+  transform: rotateY(-90deg) translateZ(2.8rem);
+}
+
+.tech-3d__cube-face--top {
+  transform: rotateX(90deg) translateZ(2.8rem);
+}
+
+.tech-3d__cube-face--bottom {
+  transform: rotateX(-90deg) translateZ(2.8rem);
+}
+
+.tech-3d__shadow {
+  position: absolute;
+  bottom: 10%;
+  height: 12%;
+  width: 52%;
+  border-radius: 999px;
+  background: rgba(0, 194, 255, 0.14);
+  filter: blur(16px);
+  transform: rotateX(70deg);
+}
+
+/* Órbita */
+.tech-3d__orbital {
+  position: relative;
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+}
+
+.tech-3d__orbit {
+  position: absolute;
+  height: 62%;
+  width: 62%;
+  border-radius: 50%;
+  border: 1px solid rgba(63, 227, 255, 0.32);
+  box-shadow: 0 0 18px rgba(0, 194, 255, 0.06);
+}
+
+.tech-3d__orbit--one {
+  transform: rotateX(68deg) rotateZ(12deg);
+  animation: tech-3d-orbit-one 13s linear infinite;
+}
+
+.tech-3d__orbit--two {
+  transform: rotateY(68deg) rotateZ(-18deg);
+  animation: tech-3d-orbit-two 16s linear infinite reverse;
+}
+
+.tech-3d__orbit--three {
+  height: 42%;
+  width: 42%;
+  border-color: rgba(30, 144, 255, 0.28);
+  transform: rotateX(58deg) rotateY(48deg);
+  animation: tech-3d-orbit-three 11s linear infinite;
+}
+
+.tech-3d__orbital-core {
+  height: 17%;
+  width: 17%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #d9f4ff, #00c2ff 35%, #0b2a5b 74%);
+  box-shadow:
+    0 0 22px rgba(63, 227, 255, 0.42),
+    0 0 58px rgba(0, 194, 255, 0.16);
+}
+
+.tech-3d__orbital-node {
+  position: absolute;
+  height: 5%;
+  width: 5%;
+  border-radius: 50%;
+  background: #3fe3ff;
+  box-shadow: 0 0 12px rgba(63, 227, 255, 0.75);
+}
+
+.tech-3d__orbital-node--one {
+  left: 19%;
+  top: 31%;
+}
+
+.tech-3d__orbital-node--two {
+  bottom: 24%;
+  right: 21%;
+  background: #1e90ff;
+}
+
+/* Núcleo 3D */
+.tech-3d__core {
+  position: relative;
+  display: grid;
+  place-items: center;
+  perspective: 700px;
+  transform-style: preserve-3d;
+}
+
+.tech-3d__core-shell {
+  position: absolute;
+  border-radius: 34%;
+  border: 1px solid rgba(63, 227, 255, 0.26);
+  background: linear-gradient(145deg, rgba(30, 144, 255, 0.055), transparent);
+  box-shadow: inset 0 0 26px rgba(0, 194, 255, 0.045);
+}
+
+.tech-3d__core-shell--one {
+  height: 54%;
+  width: 54%;
+  transform: rotateX(58deg) rotateZ(42deg);
+  animation: tech-3d-core-one 15s linear infinite;
+}
+
+.tech-3d__core-shell--two {
+  height: 40%;
+  width: 40%;
+  transform: rotateY(64deg) rotateZ(-30deg);
+  animation: tech-3d-core-two 12s linear infinite reverse;
+}
+
+.tech-3d__core-shell--three {
+  height: 67%;
+  width: 67%;
+  border-style: dashed;
+  border-color: rgba(30, 144, 255, 0.18);
+  transform: rotateX(66deg) rotateY(28deg);
+  animation: tech-3d-core-three 22s linear infinite;
+}
+
+.tech-3d__core-center {
+  height: 14%;
+  width: 14%;
+  transform: rotate(45deg);
+  border: 1px solid rgba(217, 244, 255, 0.52);
+  background: linear-gradient(135deg, rgba(63, 227, 255, 0.42), rgba(11, 42, 91, 0.72));
+  box-shadow: 0 0 28px rgba(0, 194, 255, 0.36);
+}
+
+.tech-3d__core-point {
+  position: absolute;
+  height: 4.5%;
+  width: 4.5%;
+  border-radius: 50%;
+  background: #3fe3ff;
+  box-shadow: 0 0 12px rgba(63, 227, 255, 0.65);
+}
+
+.tech-3d__core-point--one {
+  left: 16%;
+  top: 28%;
+}
+
+.tech-3d__core-point--two {
+  right: 18%;
+  top: 20%;
+}
+
+.tech-3d__core-point--three {
+  bottom: 17%;
+  left: 42%;
+  background: #1e90ff;
+}
+
+/* Prisma em camadas */
+.tech-3d__prism {
+  position: relative;
+  height: 48%;
+  width: 48%;
+  transform-style: preserve-3d;
+  transform: rotateX(60deg) rotateZ(-35deg);
+  animation: tech-3d-prism-rotate 19s linear infinite;
+  will-change: transform;
+}
+
+.tech-3d__prism-layer {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(217, 244, 255, 0.26);
+  border-radius: 22%;
+  background: linear-gradient(
+    145deg,
+    rgba(63, 227, 255, 0.12),
+    rgba(30, 144, 255, 0.025)
+  );
+  box-shadow:
+    inset 0 0 22px rgba(63, 227, 255, 0.04),
+    0 0 18px rgba(0, 194, 255, 0.055);
+}
+
+.tech-3d__prism-layer--one {
+  transform: translateZ(0);
+}
+
+.tech-3d__prism-layer--two {
+  transform: translateZ(1.4rem) scale(0.88);
+}
+
+.tech-3d__prism-layer--three {
+  transform: translateZ(2.8rem) scale(0.76);
+}
+
+.tech-3d__prism-layer--four {
+  transform: translateZ(4.2rem) scale(0.64);
+  border-color: rgba(63, 227, 255, 0.46);
+  background: rgba(0, 194, 255, 0.08);
+}
+
+.tech-3d__prism-line {
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  width: 78%;
+  background: linear-gradient(90deg, transparent, rgba(63, 227, 255, 0.62), transparent);
+  box-shadow: 0 0 12px rgba(63, 227, 255, 0.42);
+  transform: rotate(-35deg);
+}
+
+@keyframes tech-3d-float {
+  0%,
+  100% {
+    transform: translate3d(0, -3%, 0);
+  }
+  50% {
+    transform: translate3d(0, 4%, 0);
+  }
+}
+
+@keyframes tech-3d-cube-rotate {
+  from {
+    transform: rotateX(-18deg) rotateY(0deg) rotateZ(12deg);
+  }
+  to {
+    transform: rotateX(342deg) rotateY(360deg) rotateZ(12deg);
+  }
+}
+
+@keyframes tech-3d-orbit-one {
+  from {
+    transform: rotateX(68deg) rotateZ(12deg) rotate(0deg);
+  }
+  to {
+    transform: rotateX(68deg) rotateZ(12deg) rotate(360deg);
+  }
+}
+
+@keyframes tech-3d-orbit-two {
+  from {
+    transform: rotateY(68deg) rotateZ(-18deg) rotate(0deg);
+  }
+  to {
+    transform: rotateY(68deg) rotateZ(-18deg) rotate(360deg);
+  }
+}
+
+@keyframes tech-3d-orbit-three {
+  from {
+    transform: rotateX(58deg) rotateY(48deg) rotate(0deg);
+  }
+  to {
+    transform: rotateX(58deg) rotateY(48deg) rotate(360deg);
+  }
+}
+
+@keyframes tech-3d-core-one {
+  from {
+    transform: rotateX(58deg) rotateZ(42deg) rotate(0deg);
+  }
+  to {
+    transform: rotateX(58deg) rotateZ(42deg) rotate(360deg);
+  }
+}
+
+@keyframes tech-3d-core-two {
+  from {
+    transform: rotateY(64deg) rotateZ(-30deg) rotate(0deg);
+  }
+  to {
+    transform: rotateY(64deg) rotateZ(-30deg) rotate(360deg);
+  }
+}
+
+@keyframes tech-3d-core-three {
+  from {
+    transform: rotateX(66deg) rotateY(28deg) rotate(0deg);
+  }
+  to {
+    transform: rotateX(66deg) rotateY(28deg) rotate(360deg);
+  }
+}
+
+@keyframes tech-3d-prism-rotate {
+  from {
+    transform: rotateX(60deg) rotateZ(-35deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(60deg) rotateZ(325deg) rotateY(360deg);
+  }
+}
+
+@media (max-width: 767px) {
+  .tech-3d {
+    opacity: 0.38;
+  }
+
+  .tech-3d__float {
+    animation-duration: 9s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-3d__float,
+  .tech-3d__cube,
+  .tech-3d__orbit,
+  .tech-3d__core-shell,
+  .tech-3d__prism {
+    animation: none !important;
+  }
+}

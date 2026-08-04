@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import AnimatedSiteBackground from "@/components/AnimatedSiteBackground";
+import SanNodeIntro from "@/components/SanNodeIntro";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -97,6 +98,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className="bg-[#040B14] text-[#F5FBFF]">
+        <SanNodeIntro />
         <AnimatedSiteBackground />
 
         <div className="relative z-10 min-h-screen">{children}</div>

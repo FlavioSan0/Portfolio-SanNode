@@ -3,6 +3,9 @@
 /* ============================= */
 
 .sannode-falling-pattern {
+  top: calc(var(--sannode-pattern-size) * -3);
+  height: calc(100% + var(--sannode-pattern-size) * 6);
+
   background-image:
     radial-gradient(
       2px 90px at 24px 120px,
@@ -36,37 +39,36 @@
 
   animation: sannode-falling-pattern var(--sannode-pattern-duration) linear
     infinite;
-  will-change: background-position;
-  transform: translateZ(0);
+  contain: strict;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 @keyframes sannode-falling-pattern {
   from {
-    background-position:
-      0 0,
-      80px -120px,
-      -60px -40px,
-      40px 20px;
+    transform: translate3d(0, 0, 0);
   }
 
   to {
-    background-position:
-      0 1200px,
-      80px 980px,
-      -60px 1080px,
-      40px 820px;
+    transform: translate3d(
+      0,
+      calc(var(--sannode-pattern-size) * 3),
+      0
+    );
   }
 }
 
 @media (max-width: 768px) {
   .sannode-falling-pattern {
-    animation-duration: calc(var(--sannode-pattern-duration) * 1.45);
-    opacity: 0.42 !important;
+    animation-duration: calc(var(--sannode-pattern-duration) * 1.65);
+    opacity: 0.36 !important;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .sannode-falling-pattern {
     animation: none;
+    transform: none;
+    will-change: auto;
   }
 }

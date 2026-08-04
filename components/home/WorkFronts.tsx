@@ -1,4 +1,5 @@
 import Reveal from "@/components/Reveal";
+import Tech3DDecor from "@/components/Tech3DDecor";
 
 const fronts = [
   {
@@ -17,8 +18,16 @@ const fronts = [
 
 export default function WorkFronts() {
   return (
-    <section id="servicos" className="border-y border-[#1E3654]/25">
-      <div className="container-site py-16 md:py-20">
+    <section
+      id="servicos"
+      className="relative overflow-hidden border-y border-[#1E3654]/25"
+    >
+      <Tech3DDecor
+        variant="orbital"
+        className="-right-14 top-1/2 hidden h-56 w-56 -translate-y-1/2 opacity-[0.45] md:grid lg:right-[2%]"
+      />
+
+      <div className="container-site relative z-10 py-16 md:py-20">
         <Reveal>
           <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#00D9FF]">
             Frentes de trabalho

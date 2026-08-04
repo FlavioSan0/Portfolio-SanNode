@@ -36,7 +36,7 @@ export function FallingPattern({
       {...props}
     >
       <div
-        className="sannode-falling-pattern absolute inset-0"
+        className="sannode-falling-pattern absolute left-0 right-0"
         style={
           {
             "--sannode-pattern-color": color,

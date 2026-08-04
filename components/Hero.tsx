@@ -3,11 +3,17 @@
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import ProfileCard from "@/components/ProfileCard";
 import Reveal from "@/components/Reveal";
+import Tech3DDecor from "@/components/Tech3DDecor";
 
 export default function Hero() {
   return (
     <section id="inicio" className="relative overflow-hidden bg-transparent">
-      <div className="container-site relative grid gap-14 pb-20 pt-28 md:grid-cols-[1.08fr_0.55fr] md:items-center md:pb-24 md:pt-36 lg:gap-20">
+      <Tech3DDecor
+        variant="cube"
+        className="right-[2%] top-24 hidden h-56 w-56 opacity-[0.55] lg:grid xl:right-[5%] xl:h-64 xl:w-64"
+      />
+
+      <div className="container-site relative z-10 grid gap-14 pb-20 pt-28 md:grid-cols-[1.08fr_0.55fr] md:items-center md:pb-24 md:pt-36 lg:gap-20">
         <div className="relative z-10 flex flex-col justify-center">
           <Reveal direction="none" duration={520} repeat={false}>
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.28em] text-[#00D9FF]">

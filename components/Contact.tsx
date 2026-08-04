@@ -1,6 +1,7 @@
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import { contact } from "@/data/contact";
 import Reveal from "@/components/Reveal";
+import Tech3DDecor from "@/components/Tech3DDecor";
 
 function GithubIcon() {
   return (
@@ -68,10 +69,14 @@ export default function Contact() {
     <section id="contato" className="container-site pb-24">
       <Reveal duration={700} distance={26} initialScale={0.985}>
         <div className="relative overflow-hidden rounded-[2rem] border border-[#1E3654] bg-[linear-gradient(135deg,#0B2A5B,#123B6D)] p-6 md:p-12">
+        <Tech3DDecor
+          variant="prism"
+          className="-right-16 -top-16 hidden h-72 w-72 opacity-[0.55] md:grid lg:right-0 lg:top-0"
+        />
         <div className="absolute right-0 top-0 h-72 w-72 translate-x-20 -translate-y-20 rounded-full bg-[#00D9FF]/20 blur-3xl" />
         <div className="absolute bottom-0 left-0 h-56 w-56 -translate-x-20 translate-y-20 rounded-full bg-[#07111F]/40 blur-3xl" />
 
-        <div className="tablet-stack relative grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+        <div className="tablet-stack relative z-10 grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
           <Reveal direction="left" delay={90} duration={620} distance={22}>
             <div>
             <div className="mb-4 inline-flex items-center gap-2 text-[#B9F5FF]">

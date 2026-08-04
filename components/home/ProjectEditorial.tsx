@@ -1,4 +1,5 @@
 import Reveal from "@/components/Reveal";
+import Tech3DDecor from "@/components/Tech3DDecor";
 import CasesSliderSanNode from "@/components/ui/cases-slider-sannode";
 import {
   getProjectCaseBySlug,
@@ -68,8 +69,16 @@ const projectGroups = [
 
 export default function ProjectEditorial() {
   return (
-    <section id="projetos" className="relative border-b border-[#1E3654]/25">
-      <div className="container-site py-20 md:py-28">
+    <section
+      id="projetos"
+      className="relative overflow-hidden border-b border-[#1E3654]/25"
+    >
+      <Tech3DDecor
+        variant="core"
+        className="-right-14 top-16 h-40 w-40 opacity-[0.22] sm:h-48 sm:w-48 lg:-right-20 lg:top-24 lg:h-72 lg:w-72 lg:opacity-[0.38] xl:right-[1%]"
+      />
+
+      <div className="container-site relative z-10 py-20 md:py-28">
         <div className="mb-14 max-w-2xl">
           <Reveal direction="none" duration={520}>
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#00D9FF]">
