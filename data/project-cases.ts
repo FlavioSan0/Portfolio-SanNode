@@ -153,8 +153,8 @@ export const projectCases: ProjectCase[] = [
     liveUrl: "https://convite-casamento-chi.vercel.app/evento/flavio-ana",
     liveLabel: "Acessar projeto",
     livePreview: {
-      viewportWidth: 768,
-      viewportHeight: 480,
+      viewportWidth: 1440,
+      viewportHeight: 900,
       offsetX: 0,
       offsetY: 0,
       zoom: 1,
