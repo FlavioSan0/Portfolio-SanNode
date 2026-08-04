@@ -1,6 +1,9 @@
 import Reveal from "@/components/Reveal";
 import CasesSliderSanNode from "@/components/ui/cases-slider-sannode";
-import { getProjectCaseBySlug } from "@/data/project-cases";
+import {
+  getProjectCaseBySlug,
+  shouldUsePublishedScreenPreview,
+} from "@/data/project-cases";
 
 const projectGroups = [
   {
@@ -16,10 +19,14 @@ const projectGroups = [
   {
     label: "Sites",
     projects: [
-      { slug: "site-casamento", category: "Site + painel" },
+      {
+        slug: "portfolio-daniel-felix",
+        category: "Portfólio audiovisual • Publicado",
+      },
+      { slug: "site-casamento", category: "Site + painel • Publicado" },
       {
         slug: "paroquia-santuario",
-        category: "Site institucional • Em desenvolvimento",
+        category: "Site institucional • Publicado",
       },
       {
         slug: "banda-praise",
@@ -27,13 +34,17 @@ const projectGroups = [
       },
       {
         slug: "vem-voando",
-        category: "Landing page • Em desenvolvimento",
+        category: "Landing page • Publicado",
       },
     ],
   },
   {
     label: "Sistemas",
     projects: [
+      {
+        slug: "painel-do-dia",
+        category: "Aplicativo desktop • MVP funcional",
+      },
       {
         slug: "mesaflow-sistema-garcom",
         category: "Sistema SaaS • MVP funcional",
@@ -82,10 +93,20 @@ export default function ProjectEditorial() {
               </Reveal>
 
               <CasesSliderSanNode
-                projects={group.projects.map((item) => ({
-                  ...getProjectCaseBySlug(item.slug)!,
-                  ...item,
-                }))}
+                projects={group.projects.map((item) => {
+                  const project = getProjectCaseBySlug(item.slug)!;
+                  const imageMode =
+                    ("imageMode" in item ? item.imageMode : undefined) ??
+                    (shouldUsePublishedScreenPreview(project) && project.liveUrl
+                      ? "screen"
+                      : undefined);
+
+                  return {
+                    ...project,
+                    ...item,
+                    imageMode,
+                  };
+                })}
               />
             </div>
           ))}

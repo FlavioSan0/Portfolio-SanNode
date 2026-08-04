@@ -22,6 +22,15 @@ export type ProjectGallerySection = {
   description: string;
 };
 
+export type LivePreviewConfig = {
+  previewUrl?: string;
+  viewportWidth?: number;
+  viewportHeight?: number;
+  offsetX?: number;
+  offsetY?: number;
+  zoom?: number;
+};
+
 export type ProjectCase = {
   slug: string;
   title: string;
@@ -32,10 +41,14 @@ export type ProjectCase = {
   coverImage: string;
   coverWidth: number;
   coverHeight: number;
+  publishedPreviewImage?: string;
+  publishedPreviewWidth?: number;
+  publishedPreviewHeight?: number;
   coverExpandable?: boolean;
   coverFit?: "cover" | "contain";
   liveUrl?: string;
   liveLabel?: string;
+  livePreview?: LivePreviewConfig;
   tags: string[];
   overview: string;
   challenge: string;
@@ -134,8 +147,18 @@ export const projectCases: ProjectCase[] = [
     coverImage: "/projetos/site-casamento/mobile-home.png",
     coverWidth: 1080,
     coverHeight: 2953,
-    liveUrl: "https://site-casamento-chi.vercel.app",
+    publishedPreviewImage: "/projetos/site-casamento/mobile-home.png",
+    publishedPreviewWidth: 1080,
+    publishedPreviewHeight: 2953,
+    liveUrl: "https://convite-casamento-chi.vercel.app/evento/flavio-ana",
     liveLabel: "Acessar projeto",
+    livePreview: {
+      viewportWidth: 768,
+      viewportHeight: 480,
+      offsetX: 0,
+      offsetY: 0,
+      zoom: 1,
+    },
     tags: ["RSVP", "Painel", "Lista de presentes", "Evento"],
     overview:
       "O projeto transformou o convite de casamento em uma experiência digital com informações do evento, confirmação de presença, presentes e uma área reservada para o casal.",
@@ -199,16 +222,81 @@ export const projectCases: ProjectCase[] = [
     },
   },
   {
+    slug: "portfolio-daniel-felix",
+    title: "Portfólio Daniel Félix",
+    eyebrow: "Portfólio audiovisual e presença profissional",
+    status: "Publicado",
+    category: "Site",
+    summary:
+      "Portfólio responsivo para apresentar trabalhos de captação e produção audiovisual com uma experiência visual mais cinematográfica.",
+    coverImage: "/projetos/daniel-felix/home.png",
+    coverWidth: 1600,
+    coverHeight: 1000,
+    publishedPreviewImage: "/projetos/daniel-felix/home.png",
+    publishedPreviewWidth: 1600,
+    publishedPreviewHeight: 1000,
+    liveUrl: "https://portfolio-daniel-felix.vercel.app/#inicio",
+    liveLabel: "Acessar portfólio",
+    livePreview: {
+      viewportWidth: 1440,
+      viewportHeight: 900,
+      offsetX: 0,
+      offsetY: 0,
+      zoom: 1,
+    },
+    tags: ["Portfólio", "Audiovisual", "Responsivo", "Direção visual"],
+    overview:
+      "Daniel precisava de um espaço próprio para apresentar seus trabalhos, explicar sua atuação e transformar registros audiovisuais em uma apresentação profissional acessível pelo celular e pelo computador.",
+    challenge:
+      "Construir uma experiência com identidade cinematográfica sem esconder o conteúdo, evitar uma sequência excessiva de cards e manter a navegação objetiva principalmente no mobile.",
+    solution:
+      "Um portfólio editorial com hierarquia forte, destaque para imagens e vídeos, seções organizadas por contexto e uma adaptação mobile pensada para reduzir rolagem sem perder a leitura dos projetos.",
+    highlights: [
+      "Apresentação profissional do videomaker.",
+      "Projetos organizados com foco no conteúdo visual.",
+      "Experiência responsiva com ajustes específicos para mobile.",
+      "Direção visual inspirada no universo audiovisual.",
+      "Textos ajustados para eventos, empresas e diferentes produções.",
+      "Chamadas diretas para contato e contratação.",
+    ],
+    result:
+      "O projeto transformou o trabalho de Daniel em uma presença digital própria, com narrativa visual consistente e uma estrutura pronta para apresentar novos projetos.",
+    results: [
+      "Trabalhos reunidos em um único endereço profissional.",
+      "Apresentação mais clara dos serviços e áreas de atuação.",
+      "Experiência adaptada para navegação em diferentes telas.",
+    ],
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "UI/UX"],
+    seo: {
+      title: "Portfólio Daniel Félix | Site Audiovisual",
+      description:
+        "Case de portfólio audiovisual responsivo para apresentar projetos, serviços e trabalhos de Daniel Félix com direção visual cinematográfica.",
+      openGraphDescription:
+        "Portfólio audiovisual com experiência responsiva, apresentação de projetos e direção visual construída para Daniel Félix.",
+      twitterDescription:
+        "Case de portfólio audiovisual responsivo com projetos, serviços e direção visual cinematográfica.",
+    },
+  },
+  {
     slug: "paroquia-santuario",
     title: "Paróquia / Santuário",
     eyebrow: "Site institucional religioso",
-    status: "Em desenvolvimento",
+    status: "Publicado",
     category: "Site",
     summary:
-      "Site institucional para organizar informações da paróquia, horários, eventos, pastorais e comunicação com a comunidade.",
+      "Site institucional publicado para organizar informações do Santuário, horários, celebrações, pastorais e comunicação com a comunidade.",
     coverImage: "/projetos/paroquia-santuario/home.png",
     coverWidth: 1862,
     coverHeight: 921,
+    liveUrl: "https://santuario-nossa-senhora-de-fatima.vercel.app",
+    liveLabel: "Acessar site do Santuário",
+    livePreview: {
+      viewportWidth: 1440,
+      viewportHeight: 900,
+      offsetX: 0,
+      offsetY: 0,
+      zoom: 1,
+    },
     tags: ["Site institucional", "UI/UX", "Responsivo", "Comunidade"],
     overview:
       "O site reúne horários, eventos, pastorais, localização, contatos e conteúdos de apoio em um ambiente acolhedor e acessível para a comunidade.",
@@ -222,13 +310,14 @@ export const projectCases: ProjectCase[] = [
       "Espaço para eventos e comunicados.",
       "Estrutura para pastorais e contatos.",
       "Navegação responsiva e acessível.",
+      "Site publicado com estrutura preparada para evolução contínua.",
     ],
     result:
-      "Ainda em desenvolvimento, o projeto já estabelece uma base organizada para fortalecer a comunicação e facilitar o acesso às informações recorrentes.",
+      "O site foi publicado e passou a oferecer uma base digital organizada para fortalecer a comunicação do Santuário e facilitar o acesso às informações recorrentes da comunidade.",
     results: [
       "Conteúdo institucional reunido em uma estrutura única.",
       "Informações recorrentes mais fáceis de consultar.",
-      "Base preparada para publicação e atualização.",
+      "Site disponível publicamente e preparado para novas atualizações.",
     ],
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "UI/UX"],
   },
@@ -270,13 +359,22 @@ export const projectCases: ProjectCase[] = [
     slug: "vem-voando",
     title: "Vem Voando",
     eyebrow: "Landing page comercial",
-    status: "Em desenvolvimento",
+    status: "Publicado",
     category: "Site",
     summary:
-      "Landing page para apresentar a Vem Voando com clareza, impacto visual e foco em conversão.",
+      "Landing page publicada para apresentar a Vem Voando com clareza, impacto visual e foco em conversão.",
     coverImage: "/projetos/vem-voando/home.png",
     coverWidth: 1857,
     coverHeight: 928,
+    liveUrl: "https://vem-voando.vercel.app",
+    liveLabel: "Acessar landing page",
+    livePreview: {
+      viewportWidth: 1366,
+      viewportHeight: 854,
+      offsetX: 0,
+      offsetY: 0,
+      zoom: 1,
+    },
     tags: ["Landing page", "Conversão", "Responsivo", "Viagens"],
     overview:
       "A landing page foi pensada para apresentar a Vem Voando de forma objetiva, explicar sua proposta e direcionar o visitante para orçamento ou atendimento.",
@@ -289,14 +387,14 @@ export const projectCases: ProjectCase[] = [
       "Seções objetivas para serviços e benefícios.",
       "Chamadas de ação ao longo da página.",
       "Navegação responsiva.",
-      "Estrutura pronta para publicação.",
+      "Landing page publicada e preparada para evolução contínua.",
     ],
     result:
-      "O projeto em desenvolvimento estabelece uma base mais clara para a apresentação comercial da marca e para a captação de oportunidades online.",
+      "A landing page foi publicada e passou a funcionar como uma base comercial para apresentar a marca, organizar sua proposta e direcionar oportunidades para atendimento e orçamento.",
     results: [
       "Mensagem comercial organizada em uma única página.",
       "Caminho de contato mais visível.",
-      "Experiência adaptada a diferentes telas.",
+      "Projeto disponível publicamente e adaptado a diferentes telas.",
     ],
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "UI/UX"],
   },
@@ -444,6 +542,50 @@ export const projectCases: ProjectCase[] = [
       "Playwright",
       "Git/GitHub",
     ],
+  },
+  {
+    slug: "painel-do-dia",
+    title: "Painel do Dia",
+    eyebrow: "Aplicativo desktop integrado ao Google Agenda",
+    status: "MVP funcional",
+    category: "Sistema",
+    summary:
+      "Aplicativo para Windows que reúne compromissos do dia e calendário mensal em uma visualização fixa e rápida no computador.",
+    coverImage: "/projetos/painel-do-dia/dashboard.png",
+    coverWidth: 1600,
+    coverHeight: 1000,
+    tags: ["Desktop", "Google Agenda", "Produtividade", "Automação"],
+    overview:
+      "O Painel do Dia foi criado para reduzir a necessidade de abrir diferentes telas durante a rotina e manter compromissos e prioridades visíveis em um único ambiente no computador.",
+    challenge:
+      "Consultar a agenda repetidamente interrompia o fluxo de trabalho. A solução também precisava iniciar com o Windows, preservar a configuração local e funcionar como um widget sem ficar sobrepondo os outros aplicativos.",
+    solution:
+      "Um aplicativo desktop com interface em React, integração com o Google Calendar e estrutura em Tauri, exibindo atividades do dia, visão mensal e configurações persistentes para uso recorrente.",
+    highlights: [
+      "Integração com compromissos do Google Calendar.",
+      "Resumo visual das atividades do dia.",
+      "Calendário mensal integrado ao painel.",
+      "Inicialização automática com o Windows.",
+      "Configuração local preservada entre execuções.",
+      "Comportamento pensado para uso como widget desktop.",
+    ],
+    result:
+      "O aplicativo chegou a uma versão funcional para uso diário, centralizando compromissos e reduzindo consultas manuais à agenda durante o trabalho.",
+    results: [
+      "Agenda diária disponível diretamente no desktop.",
+      "Menos alternância entre navegador, calendário e tarefas.",
+      "Base preparada para novos recursos de produtividade.",
+    ],
+    stack: ["Tauri", "Rust", "React", "TypeScript", "Google Calendar API"],
+    seo: {
+      title: "Painel do Dia | Aplicativo Desktop com Google Agenda",
+      description:
+        "Case de aplicativo desktop para Windows com atividades diárias, calendário mensal e integração com o Google Calendar.",
+      openGraphDescription:
+        "Aplicativo desktop integrado ao Google Agenda para visualizar compromissos, calendário e prioridades do dia.",
+      twitterDescription:
+        "Case de aplicativo desktop com Google Agenda, calendário mensal e visão das atividades do dia.",
+    },
   },
   {
     slug: "gestao-financeira",
@@ -689,6 +831,29 @@ export function getProjectCaseBySlug(slug: string) {
   return projectCases.find((project) => project.slug === slug);
 }
 
+export function shouldUsePublishedScreenPreview(
+  project: Pick<ProjectCase, "category" | "status">,
+) {
+  return (
+    (project.category === "Site" || project.category === "Sistema") &&
+    project.status === "Publicado"
+  );
+}
+
+export function getProjectPublishedPreviewMedia(
+  project: ProjectCase,
+): ProjectMedia {
+  return {
+    src: project.publishedPreviewImage ?? project.coverImage,
+    alt: `Preview publicado do projeto ${project.title}`,
+    title: project.title,
+    description: project.summary,
+    width: project.publishedPreviewWidth ?? project.coverWidth,
+    height: project.publishedPreviewHeight ?? project.coverHeight,
+    expandable: project.coverExpandable,
+  };
+}
+
 export function getProjectCoverMedia(project: ProjectCase): ProjectMedia {
   return {
     src: project.coverImage,
@@ -702,8 +867,12 @@ export function getProjectCoverMedia(project: ProjectCase): ProjectMedia {
 }
 
 export function getProjectMedia(project: ProjectCase): ProjectMedia[] {
+  const heroMedia = shouldUsePublishedScreenPreview(project)
+    ? getProjectPublishedPreviewMedia(project)
+    : getProjectCoverMedia(project);
+
   const items: ProjectMedia[] = [
-    getProjectCoverMedia(project),
+    heroMedia,
     ...(project.gallery ?? []).map((item) => ({
       ...item,
       title: item.title ?? item.caption ?? item.alt,
