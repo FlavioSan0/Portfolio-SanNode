@@ -5,6 +5,7 @@ import {
   type ProjectCase,
 } from "@/data/project-cases";
 import { agendaNodeCase, oficinaNodeCase } from "@/data/product-cases";
+import { matheusAlexandreCase, mesaFlowCurrentCase } from "@/data/current-cases";
 
 type FeaturedProject = {
   slug: string;
@@ -21,6 +22,8 @@ type FeaturedProjectGroup = {
 const supplementalCases = new Map<string, ProjectCase>([
   [oficinaNodeCase.slug, oficinaNodeCase],
   [agendaNodeCase.slug, agendaNodeCase],
+  [mesaFlowCurrentCase.slug, mesaFlowCurrentCase],
+  [matheusAlexandreCase.slug, matheusAlexandreCase],
 ]);
 
 function resolveProject(slug: string) {
@@ -44,8 +47,6 @@ const projectGroups: FeaturedProjectGroup[] = [
       {
         slug: "mesaflow-sistema-garcom",
         category: "Gestão para alimentação • Em evolução",
-        summary:
-          "Gestão para estabelecimentos de alimentação, evoluindo de pedidos e atendimento para precificação, estoque, caixa, despesas e visão financeira.",
       },
     ],
   },
@@ -53,6 +54,11 @@ const projectGroups: FeaturedProjectGroup[] = [
     label: "Sites",
     projects: [
       { slug: "vem-voando", category: "Landing page comercial • Publicado" },
+      {
+        slug: "matheus-alexandre",
+        category: "Site profissional • Publicado",
+        imageMode: "brand",
+      },
       { slug: "portfolio-daniel-felix", category: "Portfólio audiovisual • Publicado" },
       { slug: "paroquia-santuario", category: "Site institucional • Publicado" },
       { slug: "site-casamento", category: "Site + painel • Publicado" },
