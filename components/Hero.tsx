@@ -1,76 +1,69 @@
-"use client";
+import { ArrowRight, MessageCircle } from "lucide-react";
 
-import { ArrowUpRight, MessageCircle } from "lucide-react";
-import ProfileCard from "@/components/ProfileCard";
-import Reveal from "@/components/Reveal";
-import Tech3DDecor from "@/components/Tech3DDecor";
+import { contact } from "@/data/contact";
+
+const process = [
+  ["01", "Entender", "Mapeamos a necessidade, a rotina e o que realmente precisa ser resolvido."],
+  ["02", "Construir", "Transformamos o diagnóstico em uma solução clara, responsiva e utilizável."],
+  ["03", "Colocar em uso", "Validamos, publicamos e deixamos uma base preparada para continuar evoluindo."],
+] as const;
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden bg-transparent">
-      <Tech3DDecor
-        variant="cube"
-        className="right-[2%] top-24 hidden h-56 w-56 opacity-[0.55] lg:grid xl:right-[5%] xl:h-64 xl:w-64"
-      />
+    <section id="inicio" className="relative overflow-hidden">
+      <div className="container-site grid gap-14 pb-20 pt-24 md:grid-cols-[1.1fr_0.9fr] md:items-center md:pb-28 md:pt-32 lg:gap-20">
+        <div>
+          <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#3FE3FF]">
+            San_Node • Soluções digitais
+          </p>
 
-      <div className="container-site relative z-10 grid gap-14 pb-20 pt-28 md:grid-cols-[1.08fr_0.55fr] md:items-center md:pb-24 md:pt-36 lg:gap-20">
-        <div className="relative z-10 flex flex-col justify-center">
-          <Reveal direction="none" duration={520} repeat={false}>
-            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.28em] text-[#00D9FF]">
-              SanNode por Flávio Oliveira
-            </p>
-          </Reveal>
+          <h1 className="mt-5 max-w-4xl text-[clamp(2.75rem,5.2vw,5.35rem)] font-extrabold leading-[0.98] tracking-[-0.055em] text-[#F7FBFF] text-balance">
+            Sites, sistemas e automações para
+            <span className="block text-[#3FE3FF]">organizar a operação e vender melhor.</span>
+          </h1>
 
-          <Reveal delay={60} duration={650} repeat={false}>
-            <h1 className="max-w-4xl text-[clamp(2.7rem,4.5vw,4.15rem)] font-black leading-[1.02] tracking-[-0.055em] text-[#F5FBFF] text-balance">
-              Organizo ideias e transformo em{" "}
-              <span className="bg-gradient-to-r from-[#D9F4FF] via-[#6DB9FF] to-[#00D9FF] bg-clip-text text-transparent">
-                soluções digitais reais.
-              </span>
-            </h1>
-          </Reveal>
-
-          <Reveal delay={140} duration={620} repeat={false}>
-            <p className="mt-6 max-w-xl text-base leading-7 text-[#A9BDD3] md:text-lg md:leading-8">
-              Crio identidades, sites, sistemas e automações que organizam ideias
-              e processos em experiências digitais claras e funcionais.
-            </p>
-          </Reveal>
+          <p className="mt-7 max-w-2xl text-base leading-8 text-[#B7C5D9] md:text-lg">
+            A San_Node desenvolve presença digital e ferramentas sob medida para
+            negócios que precisam sair do improviso, centralizar processos e
+            trabalhar com mais clareza.
+          </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Reveal delay={210} duration={560} repeat={false}>
-              <a
-                href="#projetos"
-                className="tech-button group inline-flex w-full items-center justify-center rounded-2xl bg-[#0B2A5B] px-6 py-4 font-semibold text-white transition hover:bg-[#2563EB] sm:w-auto"
-              >
-                Ver projetos
-                <ArrowUpRight className="ml-2 h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </a>
-            </Reveal>
-
-            <Reveal delay={280} duration={560} repeat={false}>
-              <a
-                href="#contato"
-                className="tech-button group inline-flex w-full items-center justify-center rounded-2xl border border-[#00D9FF]/35 bg-[#07111F]/68 px-6 py-4 font-semibold text-[#F5FBFF] transition hover:border-[#00D9FF] hover:text-[#00D9FF] sm:w-auto"
-              >
-                Entrar em contato
-                <MessageCircle className="ml-2 h-5 w-5" />
-              </a>
-            </Reveal>
+            <a
+              href="#servicos"
+              className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#1E90FF] px-6 py-3 font-bold text-white transition hover:bg-[#1679D8]"
+            >
+              Ver soluções
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
+            <a
+              href={contact.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 items-center justify-center rounded-xl border border-[#3FE3FF]/35 bg-[#0F1B3D]/70 px-6 py-3 font-bold text-[#F7FBFF] transition hover:border-[#3FE3FF] hover:text-[#3FE3FF]"
+            >
+              Conversar sobre meu projeto
+              <MessageCircle className="ml-2 h-5 w-5" />
+            </a>
           </div>
         </div>
 
-        <Reveal
-          direction="right"
-          delay={120}
-          duration={700}
-          distance={32}
-          initialScale={0.98}
-          repeat={false}
-          className="relative z-10 flex items-center justify-center md:justify-end"
-        >
-          <ProfileCard />
-        </Reveal>
+        <aside className="border-l border-[#243B5A] pl-6 sm:pl-8 lg:pl-10">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#7F93AD]">
+            Do diagnóstico ao deploy
+          </p>
+          <div className="mt-6 divide-y divide-[#243B5A]/70 border-y border-[#243B5A]/70">
+            {process.map(([number, title, description]) => (
+              <div key={number} className="grid grid-cols-[auto_1fr] gap-4 py-6">
+                <span className="text-xs font-bold tabular-nums text-[#3FE3FF]">{number}</span>
+                <div>
+                  <h2 className="text-lg font-bold text-[#F7FBFF]">{title}</h2>
+                  <p className="mt-2 text-sm leading-6 text-[#9EADC2]">{description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </aside>
       </div>
     </section>
   );

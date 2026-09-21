@@ -1,21 +1,20 @@
 :root {
-  --font-sans: Inter, Arial, Helvetica, sans-serif;
-  --font-display: "Space Grotesk", Inter, Arial, Helvetica, sans-serif;
+  --font-sans: var(--font-oxanium), Arial, Helvetica, sans-serif;
+  --font-display: var(--font-oxanium), Arial, Helvetica, sans-serif;
 
-  --background: #07111f;
-  --foreground: #f5fbff;
+  --background: #0a1020;
+  --background-soft: #0f1b3d;
+  --surface: #101a31;
+  --surface-2: #13213d;
+  --surface-3: #172947;
 
-  --surface: #0c1b2e;
-  --surface-2: #10233b;
-  --surface-3: #132943;
+  --border: #243b5a;
 
-  --border: #1e3654;
+  --blue: #1e90ff;
+  --cyan: #3fe3ff;
+  --electric: #00c2ff;
 
-  --navy: #0b2a5b;
-  --blue: #2563eb;
-  --cyan: #00d9ff;
-
-  --text-main: #f5fbff;
-  --text-soft: #a9bdd3;
-  --text-muted: #7f96ad;
+  --text-main: #f7fbff;
+  --text-soft: #b7c5d9;
+  --text-muted: #7f93ad;
 }

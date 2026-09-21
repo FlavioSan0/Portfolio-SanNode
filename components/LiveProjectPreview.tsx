@@ -2,13 +2,7 @@
 
 import Image from "next/image";
 import { ArrowUpRight, LoaderCircle, RefreshCw } from "lucide-react";
-import {
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type CSSProperties,
-} from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
 import type { LivePreviewConfig } from "@/data/project-cases";
 
@@ -20,17 +14,9 @@ type LiveProjectPreviewProps = {
   config?: LivePreviewConfig;
 };
 
-type PreviewState = "idle" | "loading" | "loaded" | "failed";
+type PreviewState = "loading" | "loaded" | "failed";
 
-type PreviewSize = {
-  width: number;
-  height: number;
-};
-
-const DEFAULT_VIEWPORT = {
-  width: 1440,
-  height: 900,
-};
+const DEFAULT_VIEWPORT = { width: 1440, height: 900 };
 
 function getProjectHostname(url: string) {
   try {
@@ -47,19 +33,13 @@ export default function LiveProjectPreview({
   variant,
   config,
 }: LiveProjectPreviewProps) {
+  const isCard = variant === "card";
   const previewAreaRef = useRef<HTMLDivElement>(null);
-  const [previewState, setPreviewState] = useState<PreviewState>(
-    variant === "hero" ? "loading" : "idle",
-  );
-  const [shouldLoad, setShouldLoad] = useState(variant === "hero");
+  const [previewState, setPreviewState] = useState<PreviewState>("loading");
   const [reloadKey, setReloadKey] = useState(0);
-  const [previewSize, setPreviewSize] = useState<PreviewSize>({
-    width: 0,
-    height: 0,
-  });
+  const [previewSize, setPreviewSize] = useState({ width: 0, height: 0 });
 
   const hostname = useMemo(() => getProjectHostname(url), [url]);
-  const isCard = variant === "card";
   const previewUrl = config?.previewUrl ?? url;
   const viewportWidth = config?.viewportWidth ?? DEFAULT_VIEWPORT.width;
   const viewportHeight = config?.viewportHeight ?? DEFAULT_VIEWPORT.height;
@@ -68,6 +48,8 @@ export default function LiveProjectPreview({
   const offsetY = config?.offsetY ?? 0;
 
   useEffect(() => {
+    if (isCard) return;
+
     const element = previewAreaRef.current;
     if (!element) return;
 
@@ -77,238 +59,169 @@ export default function LiveProjectPreview({
     };
 
     updateSize();
-
     const observer = new ResizeObserver(updateSize);
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isCard) {
-      setShouldLoad(true);
-      return;
-    }
-
-    const element = previewAreaRef.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShouldLoad(true);
-          return;
-        }
-
-        setShouldLoad(false);
-        setPreviewState("idle");
-      },
-      {
-        rootMargin: "240px 0px",
-        threshold: 0.01,
-      },
-    );
-
     observer.observe(element);
     return () => observer.disconnect();
   }, [isCard]);
 
   useEffect(() => {
-    if (!shouldLoad) return;
-
-    setPreviewState("loading");
+    if (isCard) return;
 
     const timeout = window.setTimeout(() => {
-      setPreviewState((current) =>
-        current === "loading" ? "failed" : current,
-      );
-    }, 12000);
+      setPreviewState((current) => (current === "loading" ? "failed" : current));
+    }, 10000);
 
     return () => window.clearTimeout(timeout);
-  }, [previewUrl, reloadKey, shouldLoad]);
+  }, [isCard, previewUrl, reloadKey]);
 
   const iframeStyle = useMemo<CSSProperties>(() => {
     if (!previewSize.width) {
-      return {
-        width: viewportWidth,
-        height: viewportHeight,
-        opacity: 0,
-      };
+      return { width: viewportWidth, height: viewportHeight, opacity: 0 };
     }
 
     const baseScale = previewSize.width / viewportWidth;
     const appliedScale = baseScale * zoom;
     const scaledWidth = viewportWidth * appliedScale;
-    const left = (previewSize.width - scaledWidth) / 2 + offsetX * baseScale;
-    const top = offsetY * baseScale;
 
     return {
       width: viewportWidth,
       height: viewportHeight,
-      left,
-      top,
+      left: (previewSize.width - scaledWidth) / 2 + offsetX * baseScale,
+      top: offsetY * baseScale,
       transform: `scale(${appliedScale})`,
       transformOrigin: "top left",
     };
   }, [offsetX, offsetY, previewSize.width, viewportHeight, viewportWidth, zoom]);
 
-  function reloadPreview() {
-    setPreviewState("loading");
-    setShouldLoad(true);
-    setReloadKey((current) => current + 1);
+  if (isCard) {
+    return (
+      <div className="relative h-full w-full overflow-hidden bg-[#0A1020]">
+        <Image
+          src={fallbackImage}
+          alt={`Preview do projeto ${title}`}
+          fill
+          sizes="33vw"
+          className="object-cover object-top"
+        />
+      </div>
+    );
   }
 
   return (
-    <div
-      className={
-        isCard
-          ? "pointer-events-none relative h-full w-full overflow-hidden rounded-[1.05rem] bg-[radial-gradient(circle_at_top,rgba(0,217,255,0.16),transparent_42%),linear-gradient(180deg,rgba(15,27,61,0.96),rgba(7,17,31,0.98))] p-2.5"
-          : "rounded-[1.5rem] border border-[#00D9FF]/20 bg-[radial-gradient(circle_at_top,rgba(0,217,255,0.16),transparent_38%),linear-gradient(180deg,rgba(15,27,61,0.92),rgba(7,17,31,0.96))] p-3 shadow-[0_18px_45px_rgba(0,0,0,0.22)] sm:rounded-[2rem]"
-      }
-    >
-      <div
-        className={
-          isCard
-            ? "flex h-full flex-col overflow-hidden rounded-[0.95rem] border border-[#2A3E58]/70 bg-[#030812] shadow-[0_18px_45px_rgba(0,0,0,0.28)]"
-            : "overflow-hidden rounded-[1.1rem] border border-[#2A3E58]/70 bg-[#030812] shadow-[0_20px_45px_rgba(0,0,0,0.3)] sm:rounded-[1.4rem]"
-        }
-      >
-        <div
-          className={`flex shrink-0 items-center gap-2 border-b border-white/6 bg-[#09111B] ${
-            isCard ? "h-9 px-3.5" : "h-11 px-4"
-          }`}
-        >
-          <div className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]/80" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]/80" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]/80" />
+    <div className="rounded-[1.5rem] border border-[#3FE3FF]/20 bg-[#0F1B3D] p-3 shadow-[0_18px_45px_rgba(0,0,0,0.22)] sm:rounded-[2rem]">
+      <div className="overflow-hidden rounded-[1.1rem] border border-[#243B5A] bg-[#08101F] sm:rounded-[1.4rem]">
+        <div className="flex h-11 items-center gap-2 border-b border-[#243B5A]/70 bg-[#101A31] px-4">
+          <div className="flex items-center gap-1.5" aria-hidden="true">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]/75" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]/75" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]/75" />
           </div>
-
-          <div
-            className={`min-w-0 flex-1 rounded-full border border-white/6 bg-white/[0.04] font-semibold uppercase text-[#91A6BC] ${
-              isCard
-                ? "px-3 py-1 text-[0.52rem] tracking-[0.16em]"
-                : "px-3 py-1 text-[0.58rem] tracking-[0.18em]"
-            }`}
-          >
-            <span className="block truncate">{hostname}</span>
-          </div>
-
-          <span
-            className={`shrink-0 rounded-full border border-[#00D9FF]/20 bg-[#00D9FF]/8 font-bold uppercase text-[#A9EEFF] ${
-              isCard
-                ? "hidden px-2 py-1 text-[0.52rem] tracking-[0.16em] sm:inline-flex"
-                : "inline-flex px-2.5 py-1 text-[0.58rem] tracking-[0.16em]"
-            }`}
-          >
+          <span className="min-w-0 flex-1 truncate rounded-full border border-white/6 bg-white/[0.04] px-3 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.16em] text-[#8FA1B9]">
+            {hostname}
+          </span>
+          <span className="rounded-full border border-[#3FE3FF]/20 bg-[#3FE3FF]/8 px-2.5 py-1 text-[0.58rem] font-bold uppercase tracking-[0.14em] text-[#9DEEFF]">
             Ao vivo
           </span>
         </div>
 
         <div
           ref={previewAreaRef}
-          className={`relative overflow-hidden bg-[#07111F] ${
-            isCard ? "min-h-0 flex-1" : "aspect-[16/10]"
-          }`}
+          className="relative aspect-[16/10] overflow-hidden bg-[#0A1020]"
         >
-          {shouldLoad && previewState !== "failed" ? (
+          {previewState !== "failed" ? (
             <iframe
               key={`${previewUrl}-${reloadKey}`}
               src={previewUrl}
               title={`Preview ao vivo do projeto ${title}`}
-              loading={isCard ? "lazy" : "eager"}
-              referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals allow-downloads"
-              allow="fullscreen; clipboard-read; clipboard-write"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+              allow="fullscreen"
               allowFullScreen
-              tabIndex={isCard ? -1 : 0}
               onLoad={() => setPreviewState("loaded")}
               onError={() => setPreviewState("failed")}
               className={`absolute border-0 bg-white transition-opacity duration-300 ${
-                isCard ? "pointer-events-none" : "pointer-events-auto"
-              } ${previewState === "loaded" ? "opacity-100" : "opacity-0"}`}
+                previewState === "loaded" ? "opacity-100" : "opacity-0"
+              }`}
               style={iframeStyle}
             />
           ) : null}
 
-          {previewState === "idle" || previewState === "loading" ? (
-            <div className="pointer-events-none absolute inset-0 z-10 grid place-items-center overflow-hidden bg-[#030812]/88 backdrop-blur-sm">
+          {previewState === "loading" ? (
+            <div className="pointer-events-none absolute inset-0 z-10 grid place-items-center overflow-hidden bg-[#08101F]/92">
               <Image
                 src={fallbackImage}
                 alt=""
                 fill
                 aria-hidden="true"
-                sizes={isCard ? "33vw" : "58vw"}
+                sizes="58vw"
                 className="object-cover object-top opacity-20"
               />
-              <div className="absolute inset-0 bg-[#030812]/72" />
-              <div className="relative flex items-center gap-2 rounded-full border border-[#00D9FF]/15 bg-[#07192A]/90 px-4 py-2 text-xs font-semibold text-[#CDEEFF]">
-                <LoaderCircle className="h-4 w-4 animate-spin text-[#00D9FF] motion-reduce:animate-none" />
+              <div className="absolute inset-0 bg-[#08101F]/72" />
+              <div className="relative flex items-center gap-2 rounded-full border border-[#3FE3FF]/15 bg-[#0F1B3D]/95 px-4 py-2 text-xs font-semibold text-[#DFF9FF]">
+                <LoaderCircle className="h-4 w-4 animate-spin text-[#3FE3FF] motion-reduce:animate-none" />
                 Carregando projeto
               </div>
             </div>
           ) : null}
 
           {previewState === "failed" ? (
-            <div className="absolute inset-0 z-20 overflow-hidden bg-[#030812]">
+            <div className="absolute inset-0 z-20 overflow-hidden bg-[#08101F]">
               <Image
                 src={fallbackImage}
-                alt={`Capa de fallback do projeto ${title}`}
+                alt={`Capa do projeto ${title}`}
                 fill
-                sizes={isCard ? "33vw" : "58vw"}
-                className="object-cover object-top opacity-35"
+                sizes="58vw"
+                className="object-cover object-top opacity-30"
               />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,18,0.42),rgba(3,8,18,0.96))]" />
-
+              <div className="absolute inset-0 bg-[#08101F]/82" />
               <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-                <p className="text-sm font-bold text-[#F5FBFF]">
+                <p className="text-sm font-bold text-[#F7FBFF]">
                   Preview indisponível neste navegador
                 </p>
-                <p className="mt-2 max-w-sm text-xs leading-5 text-[#91A6BC]">
+                <p className="mt-2 max-w-sm text-xs leading-5 text-[#8FA1B9]">
                   O projeto continua publicado. Abra em uma nova aba ou tente carregar novamente.
                 </p>
-
-                {!isCard ? (
-                  <div className="mt-4 flex flex-wrap justify-center gap-2">
-                    <button
-                      type="button"
-                      onClick={reloadPreview}
-                      className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-[#1E3654] bg-[#07192A] px-4 py-2 text-xs font-bold text-[#D9F4FF] transition hover:border-[#00D9FF]/35 hover:text-[#00D9FF]"
-                    >
-                      <RefreshCw className="h-3.5 w-3.5" />
-                      Tentar novamente
-                    </button>
-                    <a
-                      href={url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-[#0B2A5B] px-4 py-2 text-xs font-bold text-white transition hover:bg-[#124084]"
-                    >
-                      Abrir projeto
-                      <ArrowUpRight className="h-3.5 w-3.5" />
-                    </a>
-                  </div>
-                ) : null}
+                <div className="mt-4 flex flex-wrap justify-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setPreviewState("loading");
+                      setReloadKey((current) => current + 1);
+                    }}
+                    className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-[#243B5A] bg-[#101A31] px-4 py-2 text-xs font-bold text-[#DFF9FF] hover:border-[#3FE3FF]/40"
+                  >
+                    <RefreshCw className="h-3.5 w-3.5" />
+                    Tentar novamente
+                  </button>
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-[#1E90FF] px-4 py-2 text-xs font-bold text-white hover:bg-[#1679D8]"
+                  >
+                    Abrir projeto
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                </div>
               </div>
             </div>
           ) : null}
 
-          {!isCard ? (
-            <div className="absolute inset-x-0 bottom-0 z-30 flex items-center justify-between gap-3 border-t border-white/8 bg-[#030812]/82 px-3 py-2 backdrop-blur-md sm:px-4">
-              <p className="truncate text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-[#91A6BC]">
-                Preview interativo
-              </p>
-              <a
-                href={url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex shrink-0 items-center gap-1.5 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-[#D9F4FF] transition hover:text-[#00D9FF]"
-              >
-                Abrir em nova aba
-                <ArrowUpRight className="h-3.5 w-3.5" />
-              </a>
-            </div>
-          ) : null}
+          <div className="absolute inset-x-0 bottom-0 z-30 flex items-center justify-between gap-3 border-t border-white/8 bg-[#08101F]/88 px-4 py-2 backdrop-blur-md">
+            <p className="truncate text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-[#8FA1B9]">
+              Preview interativo
+            </p>
+            <a
+              href={url}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex shrink-0 items-center gap-1.5 text-[0.65rem] font-bold uppercase tracking-[0.1em] text-[#DFF9FF] hover:text-[#3FE3FF]"
+            >
+              Abrir em nova aba
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          </div>
         </div>
       </div>
     </div>

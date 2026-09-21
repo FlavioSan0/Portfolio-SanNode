@@ -3,10 +3,12 @@
 import Image from "next/image";
 import { Menu, MessageCircle, X } from "lucide-react";
 import { useEffect, useState } from "react";
+
 import { contact } from "@/data/contact";
 
 const navItems = [
-  { label: "Frentes", href: "#servicos", id: "servicos" },
+  { label: "Soluções", href: "#servicos", id: "servicos" },
+  { label: "Produtos", href: "#produtos", id: "produtos" },
   { label: "Projetos", href: "#projetos", id: "projetos" },
   { label: "Sobre", href: "#sobre", id: "sobre" },
   { label: "Contato", href: "#contato", id: "contato" },
@@ -16,10 +18,6 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("inicio");
   const [hasScrolled, setHasScrolled] = useState(false);
-
-  function closeMenu() {
-    setIsOpen(false);
-  }
 
   useEffect(() => {
     function updateHeaderState() {
@@ -34,27 +32,17 @@ export default function Header() {
         return;
       }
 
-      const sectionIds = ["inicio", ...navItems.map((item) => item.id)];
-
       let currentSection = "inicio";
 
-      for (const id of sectionIds) {
+      for (const id of ["inicio", ...navItems.map((item) => item.id)]) {
         const element = document.getElementById(id);
-
-        if (!element) continue;
-
-        const sectionTop = element.offsetTop;
-
-        if (scrollPosition >= sectionTop) {
-          currentSection = id;
-        }
+        if (element && scrollPosition >= element.offsetTop) currentSection = id;
       }
 
       setActiveSection(currentSection);
     }
 
     updateHeaderState();
-
     window.addEventListener("scroll", updateHeaderState, { passive: true });
     window.addEventListener("resize", updateHeaderState);
 
@@ -67,73 +55,61 @@ export default function Header() {
   return (
     <header
       className={[
-        "sticky top-0 z-50 transition-all duration-300",
+        "sticky top-0 z-50 border-b transition-all duration-300",
         hasScrolled
-          ? "border-b border-[#1E3654]/45 bg-[#040B14]/72 shadow-[0_18px_60px_rgba(0,0,0,0.26)] backdrop-blur-2xl"
-          : "border-b border-[#1E3654]/20 bg-[#040B14]/42 backdrop-blur-xl",
+          ? "border-[#243B5A]/70 bg-[#0A1020]/88 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl"
+          : "border-[#243B5A]/35 bg-[#0A1020]/68 backdrop-blur-lg",
       ].join(" ")}
     >
       <div className="container-site flex items-center justify-between py-4">
-        <a
-          href="#inicio"
-          className="group flex items-center gap-3"
-          onClick={closeMenu}
-        >
-          <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl border border-[#1E3654]/80 bg-[#07111F]/85 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] transition group-hover:border-[#00D9FF]/60">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,217,255,0.22),transparent_38%)] opacity-70" />
-
+        <a href="#inicio" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
+          <div className="relative h-11 w-11 overflow-hidden rounded-xl border border-[#243B5A] bg-[#0F1B3D]">
             <Image
               src="/logo-sannode.png"
-              alt="Logo SanNode"
-              width={44}
-              height={44}
-              className="relative h-full w-full object-cover"
+              alt="Logo San_Node"
+              fill
+              sizes="44px"
+              className="object-cover"
               priority
             />
           </div>
-
           <div className="leading-tight">
-            <p className="font-bold tracking-tight text-[#F5FBFF]">
-              {contact.brand}
-            </p>
-
-            <p className="text-xs text-[#9DB2C7]">{contact.role}</p>
+            <p className="font-bold text-[#F7FBFF]">{contact.brand}</p>
+            <p className="text-xs text-[#7F93AD]">{contact.role}</p>
           </div>
         </a>
 
-        <nav className="hidden items-center gap-1 rounded-full border border-[#1E3654]/55 bg-[#07111F]/58 p-1 backdrop-blur-xl lg:flex">
-          {navItems.map((item) => {
-            const isActive = activeSection === item.id;
-
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className={[
-                  "rounded-full px-4 py-2 text-sm font-medium transition",
-                  isActive
-                    ? "bg-[#00D9FF]/12 text-[#00D9FF] shadow-[0_0_24px_rgba(0,217,255,0.1)]"
-                    : "text-[#A9BDD3] hover:bg-white/[0.04] hover:text-[#F5FBFF]",
-                ].join(" ")}
-              >
-                {item.label}
-              </a>
-            );
-          })}
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegação principal">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className={[
+                "rounded-lg px-3 py-2 text-sm font-semibold transition",
+                activeSection === item.id
+                  ? "bg-[#3FE3FF]/8 text-[#3FE3FF]"
+                  : "text-[#AFC0D6] hover:bg-white/[0.04] hover:text-white",
+              ].join(" ")}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         <a
-          href="#contato"
-          className="tech-button hidden rounded-2xl border border-[#00D9FF]/20 bg-[#0B2A5B]/88 px-5 py-3 text-sm font-semibold text-white shadow-[0_16px_45px_rgba(11,42,91,0.24)] transition hover:border-[#00D9FF]/50 hover:bg-[#2563EB] lg:inline-flex"
+          href={contact.whatsapp}
+          target="_blank"
+          rel="noreferrer"
+          className="hidden items-center rounded-xl bg-[#1E90FF] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#1679D8] lg:inline-flex"
         >
-          Fale comigo
+          Falar com a San_Node
           <MessageCircle className="ml-2 h-4 w-4" />
         </a>
 
         <button
           type="button"
           onClick={() => setIsOpen((value) => !value)}
-          className="rounded-2xl border border-[#1E3654]/70 bg-[#07111F]/80 p-3 text-[#F5FBFF] backdrop-blur transition hover:border-[#00D9FF]/50 lg:hidden"
+          className="rounded-xl border border-[#243B5A] bg-[#0F1B3D] p-3 text-white lg:hidden"
           aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
           aria-expanded={isOpen}
         >
@@ -141,40 +117,32 @@ export default function Header() {
         </button>
       </div>
 
-      {isOpen && (
-        <div className="max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-[#1E3654]/45 bg-[#040B14]/95 backdrop-blur-2xl lg:hidden">
-          <nav className="container-site flex flex-col gap-1 py-4">
-            {navItems.map((item) => {
-              const isActive = activeSection === item.id;
-
-              return (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={closeMenu}
-                  className={[
-                    "rounded-2xl px-4 py-3 text-sm font-medium transition",
-                    isActive
-                      ? "bg-[#00D9FF]/10 text-[#00D9FF]"
-                      : "text-[#A9BDD3] hover:bg-[#0C1B2E]/80 hover:text-[#F5FBFF]",
-                  ].join(" ")}
-                >
-                  {item.label}
-                </a>
-              );
-            })}
-
+      {isOpen ? (
+        <div className="border-t border-[#243B5A]/60 bg-[#0A1020]/96 backdrop-blur-xl lg:hidden">
+          <nav className="container-site flex flex-col gap-1 py-4" aria-label="Navegação mobile">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="rounded-xl px-4 py-3 text-sm font-semibold text-[#B7C5D9] hover:bg-[#0F1B3D] hover:text-white"
+              >
+                {item.label}
+              </a>
+            ))}
             <a
-              href="#contato"
-              onClick={closeMenu}
-              className="mt-2 inline-flex items-center justify-center rounded-2xl bg-[#0B2A5B] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#2563EB]"
+              href={contact.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setIsOpen(false)}
+              className="mt-2 inline-flex items-center justify-center rounded-xl bg-[#1E90FF] px-4 py-3 text-sm font-bold text-white"
             >
-              Fale comigo no WhatsApp
+              Falar no WhatsApp
               <MessageCircle className="ml-2 h-4 w-4" />
             </a>
           </nav>
         </div>
-      )}
+      ) : null}
     </header>
   );
 }
