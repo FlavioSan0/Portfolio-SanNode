@@ -1,21 +1,27 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+
 const products = [
   {
     name: "OficinaNode",
     description:
       "Gestão para oficinas de carro e moto, reunindo ordem de serviço, financeiro, estoque, clientes, veículos e rotina operacional.",
     status: "Produto próprio em evolução",
+    href: "/projetos/oficinanode",
   },
   {
     name: "AgendaNode",
     description:
       "Agendamento online para negócios de atendimento, com serviços, profissionais, disponibilidade e comunicação integrada.",
     status: "Produto próprio em evolução",
+    href: "/projetos/agendanode",
   },
   {
     name: "MesaFlow",
     description:
       "Pedidos e gestão para alimentação, evoluindo para ficha técnica, precificação, estoque e visão financeira do estabelecimento.",
     status: "Produto próprio em evolução",
+    href: "/projetos/mesaflow-sistema-garcom",
   },
 ] as const;
 
@@ -39,9 +45,18 @@ export default function Products() {
             <span className="text-xs font-bold tabular-nums text-[#3FE3FF]">0{index + 1}</span>
             <h3 className="text-xl font-extrabold text-[#F7FBFF]">{product.name}</h3>
             <p className="text-sm leading-7 text-[#A8B6CC]">{product.description}</p>
-            <span className="w-fit rounded-full border border-[#3FE3FF]/25 bg-[#3FE3FF]/6 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#9DEEFF]">
-              {product.status}
-            </span>
+            <div className="flex flex-col items-start gap-3 md:items-end">
+              <span className="w-fit rounded-full border border-[#3FE3FF]/25 bg-[#3FE3FF]/6 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#9DEEFF]">
+                {product.status}
+              </span>
+              <Link
+                href={product.href}
+                className="inline-flex items-center text-sm font-bold text-[#DFF9FF] transition hover:text-[#3FE3FF]"
+              >
+                Ver case
+                <ArrowUpRight className="ml-1.5 h-4 w-4" />
+              </Link>
+            </div>
           </article>
         ))}
       </div>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">AgendaNode</title>
+  <desc id="desc">Capa do AgendaNode, plataforma de agenda e gestão para negócios de beleza.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#020617"/>
+      <stop offset="1" stop-color="#07152F"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22D3EE"/>
+      <stop offset="0.55" stop-color="#0F7BFF"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" rx="56" fill="url(#bg)"/>
+  <circle cx="1320" cy="160" r="300" fill="#0F7BFF" opacity="0.12"/>
+  <circle cx="180" cy="840" r="260" fill="#22D3EE" opacity="0.08"/>
+
+  <g transform="translate(120 130)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 74h78l38 38" fill="none" stroke="url(#brand)" stroke-width="13"/>
+    <path d="M0 142h82" fill="none" stroke="url(#brand)" stroke-width="13"/>
+    <path d="M0 210h78l38-38" fill="none" stroke="url(#brand)" stroke-width="13"/>
+    <circle cx="0" cy="74" r="16" fill="#020617" stroke="url(#brand)" stroke-width="12"/>
+    <circle cx="0" cy="142" r="16" fill="#020617" stroke="url(#brand)" stroke-width="12"/>
+    <circle cx="0" cy="210" r="16" fill="#020617" stroke="url(#brand)" stroke-width="12"/>
+
+    <rect x="98" y="26" width="230" height="230" rx="38" fill="#071326" stroke="url(#brand)" stroke-width="12"/>
+    <path d="M138 86h150" stroke="#22D3EE" stroke-width="10"/>
+    <path d="M162 0v52M264 0v52" stroke="#F8FAFC" stroke-width="14"/>
+    <g>
+      <rect x="146" y="126" width="42" height="42" rx="8" fill="#24324F"/>
+      <rect x="202" y="126" width="42" height="42" rx="8" fill="#24324F"/>
+      <rect x="258" y="126" width="42" height="42" rx="8" fill="#22D3EE"/>
+      <rect x="146" y="182" width="42" height="42" rx="8" fill="#24324F"/>
+      <rect x="202" y="182" width="42" height="42" rx="8" fill="#24324F"/>
+      <rect x="258" y="182" width="42" height="42" rx="8" fill="#24324F"/>
+    </g>
+  </g>
+
+  <text x="510" y="280" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="112" font-weight="800" letter-spacing="-5">Agenda</text>
+  <text x="918" y="280" fill="url(#brand)" font-family="Inter, Arial, sans-serif" font-size="112" font-weight="800" letter-spacing="-5">Node</text>
+  <text x="516" y="348" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="500" letter-spacing="4">AGENDE. ORGANIZE. AUTOMATIZE.</text>
+
+  <g transform="translate(120 540)" font-family="Inter, Arial, sans-serif">
+    <rect x="0" y="0" width="1360" height="282" rx="32" fill="#071326" stroke="#1E3A5F"/>
+    <g fill="#0B1930" stroke="#234B72">
+      <rect x="36" y="36" width="286" height="92" rx="22"/>
+      <rect x="344" y="36" width="286" height="92" rx="22"/>
+      <rect x="652" y="36" width="286" height="92" rx="22"/>
+      <rect x="960" y="36" width="364" height="92" rx="22"/>
+      <rect x="36" y="150" width="394" height="92" rx="22"/>
+      <rect x="452" y="150" width="394" height="92" rx="22"/>
+      <rect x="868" y="150" width="456" height="92" rx="22"/>
+    </g>
+    <g fill="#F8FAFC" font-size="28" font-weight="700">
+      <text x="70" y="93">Agendamentos</text>
+      <text x="378" y="93">Profissionais</text>
+      <text x="686" y="93">Serviços</text>
+      <text x="994" y="93">Clientes</text>
+      <text x="70" y="207">Caixa</text>
+      <text x="486" y="207">Estoque</text>
+      <text x="902" y="207">Relatórios e módulos</text>
+    </g>
+    <g fill="#22D3EE">
+      <circle cx="286" cy="82" r="7"/>
+      <circle cx="594" cy="82" r="7"/>
+      <circle cx="902" cy="82" r="7"/>
+      <circle cx="1288" cy="82" r="7"/>
+      <circle cx="394" cy="196" r="7"/>
+      <circle cx="810" cy="196" r="7"/>
+      <circle cx="1288" cy="196" r="7"/>
+    </g>
+  </g>
+
+  <text x="120" y="908" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="24" letter-spacing="4">SAN_NODE • PRODUTO PRÓPRIO</text>
+</svg>
