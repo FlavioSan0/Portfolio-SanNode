@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: America/Fortaleza
+    open-pull-requests-limit: 5
+    groups:
+      nextjs:
+        patterns:
+          - next
+          - eslint-config-next
+          - "@next/*"
+      frontend:
+        patterns:
+          - react
+          - react-dom
+          - framer-motion
+          - lucide-react
