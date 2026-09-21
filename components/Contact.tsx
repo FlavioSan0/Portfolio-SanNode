@@ -71,7 +71,7 @@ export default function Contact() {
         <div className="relative overflow-hidden rounded-[2rem] border border-[#1E3654] bg-[linear-gradient(135deg,#0B2A5B,#123B6D)] p-6 md:p-12">
           <Tech3DDecor
             variant="prism"
-            className="-right-16 -top-16 hidden h-72 w-72 opacity-[0.55] md:grid lg:right-0 lg:top-0"
+            className="absolute -right-16 -top-16 hidden h-72 w-72 opacity-[0.55] md:grid lg:right-0 lg:top-0"
           />
           <div className="absolute right-0 top-0 h-72 w-72 translate-x-20 -translate-y-20 rounded-full bg-[#00D9FF]/20 blur-3xl" />
           <div className="absolute bottom-0 left-0 h-56 w-56 -translate-x-20 translate-y-20 rounded-full bg-[#07111F]/40 blur-3xl" />
