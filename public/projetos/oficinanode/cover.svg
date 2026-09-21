@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">OficinaNode</title>
+  <desc id="desc">Capa conceitual do OficinaNode, sistema de gestão para oficinas.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F59E0B"/>
+      <stop offset="1" stop-color="#FB923C"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" rx="56" fill="url(#bg)"/>
+  <circle cx="1350" cy="160" r="260" fill="#F59E0B" opacity="0.08"/>
+  <circle cx="180" cy="880" r="280" fill="#2563EB" opacity="0.08"/>
+
+  <g transform="translate(120 128)">
+    <rect x="0" y="0" width="124" height="124" rx="28" fill="#171F2E" stroke="#334155"/>
+    <path d="M34 64h56M62 36v56" stroke="url(#accent)" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="62" cy="64" r="34" fill="none" stroke="#F8FAFC" stroke-width="8" opacity="0.9"/>
+  </g>
+
+  <text x="120" y="360" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="112" font-weight="800" letter-spacing="-5">Oficina</text>
+  <text x="535" y="360" fill="url(#accent)" font-family="Inter, Arial, sans-serif" font-size="112" font-weight="800" letter-spacing="-5">Node</text>
+  <text x="126" y="430" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="500">Gestão para oficinas de carro e moto</text>
+
+  <g transform="translate(120 540)" font-family="Inter, Arial, sans-serif">
+    <rect x="0" y="0" width="1360" height="282" rx="32" fill="#0F172A" stroke="#263244"/>
+    <g fill="#172033" stroke="#334155">
+      <rect x="36" y="36" width="286" height="92" rx="22"/>
+      <rect x="344" y="36" width="286" height="92" rx="22"/>
+      <rect x="652" y="36" width="286" height="92" rx="22"/>
+      <rect x="960" y="36" width="364" height="92" rx="22"/>
+      <rect x="36" y="150" width="394" height="92" rx="22"/>
+      <rect x="452" y="150" width="394" height="92" rx="22"/>
+      <rect x="868" y="150" width="456" height="92" rx="22"/>
+    </g>
+    <g fill="#F8FAFC" font-size="28" font-weight="700">
+      <text x="70" y="93">Ordens de serviço</text>
+      <text x="378" y="93">Financeiro</text>
+      <text x="686" y="93">Estoque</text>
+      <text x="994" y="93">Clientes e veículos</text>
+      <text x="70" y="207">Agenda</text>
+      <text x="486" y="207">Compras</text>
+      <text x="902" y="207">Relatórios e operação</text>
+    </g>
+    <g fill="#F59E0B">
+      <circle cx="286" cy="82" r="7"/>
+      <circle cx="594" cy="82" r="7"/>
+      <circle cx="902" cy="82" r="7"/>
+      <circle cx="1288" cy="82" r="7"/>
+      <circle cx="394" cy="196" r="7"/>
+      <circle cx="810" cy="196" r="7"/>
+      <circle cx="1288" cy="196" r="7"/>
+    </g>
+  </g>
+
+  <text x="120" y="908" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="24" letter-spacing="4">SAN_NODE • PRODUTO PRÓPRIO</text>
+</svg>
