@@ -31,9 +31,16 @@ export const metadata: Metadata = {
 export default function MatheusAlexandrePage() {
   const nextProject = getProjectCaseBySlug("vem-voando")!;
 
+  // O site publicado bloqueia incorporação por X-Frame-Options: DENY.
+  // Mantemos o link externo, mas forçamos o layout a usar a capa estática no hero.
+  const projectForLayout = {
+    ...matheusAlexandreCase,
+    status: "MVP funcional" as const,
+  };
+
   return (
     <ProjectCaseLayout
-      project={matheusAlexandreCase}
+      project={projectForLayout}
       previousProject={mesaFlowCurrentCase}
       nextProject={nextProject}
     />
