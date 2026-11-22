@@ -107,7 +107,6 @@ export const matheusAlexandreCase: ProjectCase = {
   coverWidth: 800,
   coverHeight: 505,
   liveUrl: "https://matheus-alexandre-site.vercel.app",
-  liveEmbed: false,
   liveLabel: "Acessar site",
   tags: ["Psicologia", "Site profissional", "Responsivo", "WhatsApp"],
   overview:
