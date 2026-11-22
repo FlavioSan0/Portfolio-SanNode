@@ -15,7 +15,9 @@
   --cut: clamp(28px, 4.5vw, 72px);
   position: relative;
   z-index: 1;
-  background: #f5f8fc;
+  /* Quanto menor o alpha, mais o S do fundo aparece por trás do branco. */
+  --band-alpha: 0.84;
+  background: rgba(240, 247, 255, var(--band-alpha));
   margin-block: calc(var(--cut) * -1);
   padding-block: var(--cut);
   clip-path: polygon(0 var(--cut), 100% 0, 100% calc(100% - var(--cut)), 0 100%);
