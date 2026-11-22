@@ -16,6 +16,7 @@ export const contact = {
   )}`,
   github: "https://github.com/FlavioSan0",
   instagram: "https://www.instagram.com/san_node",
+  tiktok: "https://www.tiktok.com/@san_node",
   linkedin: "https://www.linkedin.com/in/flavio-oliveira",
 };
 

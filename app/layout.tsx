@@ -98,7 +98,7 @@ const organizationSchema = {
     "@type": "Person",
     name: siteConfig.founder,
   },
-  sameAs: [contact.instagram, contact.github, contact.linkedin],
+  sameAs: [contact.instagram, contact.tiktok, contact.github, contact.linkedin],
   email: contact.email,
   telephone: contact.phoneDisplay,
   areaServed: "Brasil",

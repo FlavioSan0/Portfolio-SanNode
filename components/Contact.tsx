@@ -30,9 +30,18 @@ function LinkedinIcon() {
   );
 }
 
+function TiktokIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4" fill="currentColor">
+      <path d="M19.6 6.7a5.1 5.1 0 0 1-3.1-1.6A5 5 0 0 1 15.3 2h-3.4v13.2a2.9 2.9 0 1 1-2-2.8V8.9a6.3 6.3 0 1 0 5.4 6.3V9.1a8.4 8.4 0 0 0 4.9 1.6V6.7Z" />
+    </svg>
+  );
+}
+
 const socialLinks = [
-  { label: "GitHub", href: contact.github, icon: GithubIcon },
   { label: "Instagram", href: contact.instagram, icon: InstagramIcon },
+  { label: "TikTok", href: contact.tiktok, icon: TiktokIcon },
+  { label: "GitHub", href: contact.github, icon: GithubIcon },
   { label: "LinkedIn", href: contact.linkedin, icon: LinkedinIcon },
 ];
 
@@ -123,7 +132,7 @@ export default function Contact() {
                 </a>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-3">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {socialLinks.map((item) => {
                   const Icon = item.icon;
                   return (

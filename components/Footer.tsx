@@ -4,6 +4,7 @@ import { contact } from "@/data/contact";
 
 const links = [
   ["Instagram", contact.instagram],
+  ["TikTok", contact.tiktok],
   ["GitHub", contact.github],
   ["LinkedIn", contact.linkedin],
 ] as const;
