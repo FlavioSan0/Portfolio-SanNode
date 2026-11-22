@@ -51,7 +51,7 @@ export const products = [
     pain: "Ordem de serviço, peças e pagamentos espalhados entre papel e WhatsApp.",
     features: ["Ordem de serviço", "Estoque e peças", "Financeiro"],
     status: "Em uso em oficina real",
-    image: "/projetos/oficinanode/etapas-da-os.png",
+    image: "/projetos/oficinanode/home.jpg",
     caseHref: "/projetos/oficinanode",
     demoHref: "https://oficinanode.vercel.app",
   },
@@ -71,7 +71,9 @@ export const products = [
     pain: "Horário marcado no caderno, cliente esquecido e agenda cheia de buraco.",
     features: ["Agenda online", "Equipe e serviços", "Clientes e caixa"],
     status: "Em evolução",
+    image: "/projetos/agendanode/home.jpg",
     caseHref: "/projetos/agendanode",
+    demoHref: "https://agendanode-gamma.vercel.app",
   },
 ] as const;
 
@@ -98,6 +100,7 @@ export const featuredCases: FeaturedCase[] = [
     title: "Matheus Alexandre",
     audience: "Psicólogo clínico",
     outcome: "Site profissional que explica o atendimento online e simplifica o primeiro contato.",
+    image: "/projetos/matheus-alexandre/home.jpg",
     liveUrl: "https://matheus-alexandre-site.vercel.app",
   },
   {

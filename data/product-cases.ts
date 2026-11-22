@@ -8,9 +8,9 @@ export const oficinaNodeCase: ProjectCase = {
   category: "Sistema",
   summary:
     "Plataforma de gestão para oficinas, reunindo ordens de serviço, financeiro, estoque, clientes, veículos, agenda e rotina operacional em um único ambiente.",
-  coverImage: "/projetos/oficinanode/etapas-da-os.png",
-  coverWidth: 1240,
-  coverHeight: 804,
+  coverImage: "/projetos/oficinanode/home.jpg",
+  coverWidth: 800,
+  coverHeight: 500,
   liveUrl: "https://oficinanode.vercel.app",
   liveLabel: "Conhecer OficinaNode",
   tags: ["Oficinas", "Ordens de serviço", "Financeiro", "Estoque"],
@@ -40,6 +40,15 @@ export const oficinaNodeCase: ProjectCase = {
     description: "Dados de demonstração. O cliente recebe o link, autoriza serviço por serviço e a decisão fica registrada na OS.",
   },
   gallery: [
+    {
+      src: "/projetos/oficinanode/etapas-da-os.png",
+      width: 1240,
+      height: 804,
+      alt: "Ordem de serviço do OficinaNode com etapas, histórico e peças",
+      title: "Cada OS com suas etapas",
+      caption: "Diagnóstico, orçamento, aprovação, execução e entrega, com histórico registrado.",
+      layout: "full",
+    },
     {
       src: "/projetos/oficinanode/orcamento-cliente.jpg",
       width: 809,
@@ -92,11 +101,11 @@ export const agendaNodeCase: ProjectCase = {
   category: "Sistema",
   summary:
     "SaaS multiempresa para agendamento e gestão de profissionais autônomos, barbearias, salões, estética, tranças, unhas e outros negócios de atendimento.",
-  coverImage: "/projetos/agendanode/cover.svg",
-  coverWidth: 1600,
-  coverHeight: 1000,
-  coverFit: "contain",
-  coverExpandable: false,
+  coverImage: "/projetos/agendanode/home.jpg",
+  coverWidth: 800,
+  coverHeight: 505,
+  liveUrl: "https://agendanode-gamma.vercel.app",
+  liveLabel: "Conhecer AgendaNode",
   tags: ["Agendamento", "Beleza", "SaaS", "Multiempresa"],
   overview:
     "O AgendaNode foi estruturado para negócios que dependem de agenda, equipe e atendimento recorrente, mas precisam de mais controle do que uma agenda isolada consegue oferecer.",
