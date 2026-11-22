@@ -4,6 +4,8 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import CaseImageGallery from "@/components/CaseImageGallery";
 import { CaseImageLightbox, ExpandableImage } from "@/components/CaseImageLightbox";
 import CaseCTA from "@/components/CaseCTA";
+import JsonLd from "@/components/JsonLd";
+import { caseJsonLd } from "@/lib/seo";
 import LiveProjectPreview from "@/components/LiveProjectPreview";
 import {
   getProjectCoverMedia,
@@ -24,7 +26,8 @@ export default function ProjectCaseLayout({ project, previousProject, nextProjec
 
   return (
     <CaseImageLightbox items={getProjectMedia(project)}>
-      <main className="relative z-10 overflow-hidden bg-[#0A1020] text-[#F7FBFF]">
+      <main id="conteudo" className="relative z-10 overflow-hidden bg-[#0A1020] text-[#F7FBFF]">
+        <JsonLd data={caseJsonLd(project)} />
         <section className="relative border-b border-[#243B5A]/55">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_8%,rgba(63,227,255,0.07),transparent_30%)]" />
           <div className="container-site relative pb-16 pt-8 md:pb-24 md:pt-10 lg:pb-28">

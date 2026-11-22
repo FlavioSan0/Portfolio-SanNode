@@ -18,18 +18,15 @@ export default function SanNodeIntro() {
     } catch {
       /* sessionStorage indisponível: tudo bem */
     }
+    document.documentElement.removeAttribute("data-intro");
     setVisible(false);
   }, []);
 
   useEffect(() => {
-    let alreadySeen = false;
-    try {
-      alreadySeen = window.sessionStorage.getItem(STORAGE_KEY) === "1";
-    } catch {
-      alreadySeen = false;
-    }
+    // O script do <head> só marca data-intro na primeira visita da sessão (e fora de robôs).
+    const shouldPlay = document.documentElement.getAttribute("data-intro") === "1";
 
-    if (alreadySeen) {
+    if (!shouldPlay) {
       const skip = window.setTimeout(() => setVisible(false), 0);
       return () => window.clearTimeout(skip);
     }

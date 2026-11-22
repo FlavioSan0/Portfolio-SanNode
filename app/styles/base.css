@@ -8,6 +8,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
   max-width: 100%;
   overflow-x: hidden;
   background: var(--background);

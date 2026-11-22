@@ -4,9 +4,9 @@ export const siteUrl = (
 
 export const siteConfig = {
   name: "San_Node",
-  title: "San_Node | Sites, Sistemas e Automações",
+  title: "San_Node | Sites, Sistemas e Automações em Natal, RN",
   description:
-    "A San_Node cria sites, sistemas sob medida e automações para organizar processos, fortalecer a presença digital e tornar a operação mais eficiente.",
+    "Sites que geram contato, sistemas sob medida e automações para tirar seu negócio do caderno. Desenvolvimento em Natal, RN, atendendo todo o Brasil.",
   founder: "Flávio Oliveira",
   locale: "pt_BR",
   language: "pt-BR",

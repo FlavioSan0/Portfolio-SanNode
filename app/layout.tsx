@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Oxanium } from "next/font/google";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
 
 import AnimatedSiteBackground from "@/components/AnimatedSiteBackground";
+import JsonLd from "@/components/JsonLd";
 import SanNodeIntro from "@/components/SanNodeIntro";
 import { contact } from "@/data/contact";
 import { siteConfig, siteUrl } from "@/data/site";
+import { siteJsonLd } from "@/lib/seo";
 import "./globals.css";
 
 const oxanium = Oxanium({
@@ -33,8 +35,9 @@ export const metadata: Metadata = {
     "automação de processos",
     "desenvolvimento sob medida",
     "identidade visual",
-    "Next.js",
-    "React",
+    "criação de sites em Natal",
+    "sistema de gestão sob medida",
+    "site para empresa",
     "Natal RN",
   ],
   authors: [{ name: siteConfig.founder }],
@@ -53,16 +56,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
       "max-video-preview": -1,
     },
-  },
-  icons: {
-    icon: [
-      { url: "/logo-sannode.png", type: "image/png", sizes: "32x32" },
-      { url: "/logo-sannode.png", type: "image/png", sizes: "512x512" },
-    ],
-    shortcut: "/logo-sannode.png",
-    apple: [
-      { url: "/logo-sannode.png", type: "image/png", sizes: "180x180" },
-    ],
   },
   openGraph: {
     title: siteConfig.title,
@@ -88,36 +81,31 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: siteConfig.name,
-  url: siteUrl,
-  description: siteConfig.description,
-  founder: {
-    "@type": "Person",
-    name: siteConfig.founder,
-  },
-  sameAs: [contact.instagram, contact.tiktok, contact.github, contact.linkedin],
-  email: contact.email,
-  telephone: contact.phoneDisplay,
-  areaServed: "Brasil",
-  serviceType: [
-    "Desenvolvimento de sites",
-    "Desenvolvimento de sistemas web",
-    "Automação de processos",
-    "Identidade e presença digital",
-  ],
+export const viewport: Viewport = {
+  themeColor: "#0A1020",
+  colorScheme: "dark",
 };
+
+/**
+ * Roda antes da primeira pintura: marca o <html> quando a abertura deve tocar
+ * (primeira visita da sessão, e não para robôs). Sem isso a abertura piscaria em toda recarga.
+ */
+const introGate = `try{if(!sessionStorage.getItem("sannode-intro-seen")&&!navigator.webdriver&&!/bot|crawl|spider|lighthouse|pagespeed/i.test(navigator.userAgent)){document.documentElement.setAttribute("data-intro","1")}}catch(e){}`;
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang={siteConfig.language}>
+    <html lang={siteConfig.language} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: introGate }} />
+      </head>
       <body className={`${oxanium.variable} bg-[var(--background)] text-[var(--text-main)]`}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
+        <a
+          href="#conteudo"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[300] focus:rounded-lg focus:bg-[#3FE3FF] focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-[#06101F]"
+        >
+          Pular para o conteúdo
+        </a>
+        <JsonLd data={siteJsonLd()} />
         <SanNodeIntro />
         <AnimatedSiteBackground />
         <div className="relative z-10 min-h-screen">{children}</div>

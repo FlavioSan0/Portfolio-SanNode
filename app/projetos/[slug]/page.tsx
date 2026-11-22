@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import ProjectCaseLayout from "@/components/ProjectCaseLayout";
 import { getProjectCaseBySlug, projectCases } from "@/data/project-cases";
-import { siteUrl } from "@/data/site";
+import { caseMetadata } from "@/lib/seo";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -17,31 +17,9 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const { slug } = await params;
   const project = getProjectCaseBySlug(slug);
 
-  if (!project) return { title: "Projeto não encontrado | San_Node" };
+  if (!project) return { title: "Projeto não encontrado" };
 
-  const title = project.seo?.title ?? `${project.title} | Case San_Node`;
-  const description = project.seo?.description ?? project.summary;
-  const canonicalPath = `/projetos/${project.slug}`;
-
-  return {
-    title,
-    description,
-    alternates: { canonical: canonicalPath },
-    openGraph: {
-      title,
-      description: project.seo?.openGraphDescription ?? description,
-      url: `${siteUrl}${canonicalPath}`,
-      type: "article",
-      locale: "pt_BR",
-      images: [{ url: project.coverImage, alt: project.title }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description: project.seo?.twitterDescription ?? description,
-      images: [project.coverImage],
-    },
-  };
+  return caseMetadata(project);
 }
 
 export default async function ProjectCasePage({ params }: ProjectPageProps) {

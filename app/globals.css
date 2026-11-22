@@ -22,3 +22,11 @@
   padding-block: var(--cut);
   clip-path: polygon(0 var(--cut), 100% 0, 100% calc(100% - var(--cut)), 0 100%);
 }
+
+/* Abertura: só aparece quando o script do <head> marca o <html> (primeira visita da sessão). */
+.sannode-intro {
+  display: none;
+}
+html[data-intro="1"] .sannode-intro {
+  display: block;
+}
