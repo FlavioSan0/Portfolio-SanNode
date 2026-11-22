@@ -63,16 +63,14 @@ export default function Header() {
     >
       <div className="container-site flex items-center justify-between py-4">
         <a href="#inicio" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
-          <div className="relative h-11 w-11 overflow-hidden rounded-xl border border-[#243B5A] bg-[#0F1B3D]">
-            <Image
-              src="/logo-sannode.png"
-              alt="Logo San_Node"
-              fill
-              sizes="44px"
-              className="object-cover"
-              priority
-            />
-          </div>
+          <Image
+            src="/logo-sannode-trim.png"
+            alt="Logo San_Node"
+            width={416}
+            height={458}
+            className="h-11 w-auto"
+            priority
+          />
           <div className="leading-tight">
             <p className="font-bold text-[#F7FBFF]">{contact.brand}</p>
             <p className="text-xs text-[#7F93AD]">{contact.role}</p>

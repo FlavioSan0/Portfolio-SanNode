@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
 
 import AnimatedSiteBackground from "@/components/AnimatedSiteBackground";
+import SanNodeIntro from "@/components/SanNodeIntro";
 import { contact } from "@/data/contact";
 import { siteConfig, siteUrl } from "@/data/site";
 import "./globals.css";
@@ -117,6 +118,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
+        <SanNodeIntro />
         <AnimatedSiteBackground />
         <div className="relative z-10 min-h-screen">{children}</div>
         <Analytics />
