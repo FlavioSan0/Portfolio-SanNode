@@ -17,12 +17,12 @@ function CaseCard({ item, large }: { item: FeaturedCase; large?: boolean }) {
         />
       </Link>
       <div className="mt-5">
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#3FE3FF]">{item.audience}</p>
-        <h3 className="mt-2 text-2xl font-extrabold tracking-[-0.03em] text-[#F7FBFF]">{item.title}</h3>
-        <p className="mt-2 max-w-xl text-base leading-7 text-[#B7C5D9]">{item.outcome}</p>
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#0A6FD6]">{item.audience}</p>
+        <h3 className="mt-2 text-2xl font-extrabold tracking-[-0.03em] text-[#0A1020]">{item.title}</h3>
+        <p className="mt-2 max-w-xl text-base leading-7 text-[#3D4F6B]">{item.outcome}</p>
         <Link
           href={`/projetos/${item.slug}`}
-          className="mt-2 inline-flex min-h-11 items-center text-sm font-bold text-[#F7FBFF] transition hover:text-[#3FE3FF]"
+          className="mt-2 inline-flex min-h-11 items-center text-sm font-bold text-[#0A1020] transition hover:text-[#0A6FD6]"
         >
           Ver case
           <ArrowUpRight className="ml-1.5 h-4 w-4" />
@@ -34,9 +34,9 @@ function CaseCard({ item, large }: { item: FeaturedCase; large?: boolean }) {
 
 export default function ProjectEditorial() {
   return (
-    <section id="trabalhos" className="border-y border-[#243B5A]/45 bg-[#0F1B3D]/20">
+    <section id="trabalhos" className="relative bg-[#F5F8FC]">
       <div className="container-site py-20 md:py-28">
-        <h2 className="max-w-2xl text-3xl font-extrabold leading-tight tracking-[-0.04em] text-[#F7FBFF] md:text-5xl">
+        <h2 className="max-w-2xl text-3xl font-extrabold leading-tight tracking-[-0.04em] text-[#0A1020] md:text-5xl">
           Trabalhos no ar
         </h2>
 

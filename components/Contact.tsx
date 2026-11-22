@@ -58,7 +58,7 @@ const secondaryButton =
 
 export default function Contact() {
   return (
-    <section id="contato" className="container-site pb-24 md:pb-28">
+    <section id="contato" className="container-site py-20 md:py-28">
       <Reveal duration={700} distance={26} initialScale={0.985}>
         <div className="relative overflow-hidden rounded-[2rem] border border-[#3FE3FF]/25 bg-[linear-gradient(135deg,#0B2A5B,#0F1B3D_70%)] p-6 md:p-12">
           <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#3FE3FF]/20 blur-3xl" />
