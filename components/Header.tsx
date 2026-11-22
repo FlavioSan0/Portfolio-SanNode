@@ -7,11 +7,11 @@ import { useEffect, useState } from "react";
 import { contact } from "@/data/contact";
 
 const navItems = [
-  { label: "Soluções", href: "#servicos", id: "servicos" },
-  { label: "Produtos", href: "#produtos", id: "produtos" },
-  { label: "Projetos", href: "#projetos", id: "projetos" },
+  { label: "O que faço", href: "#servicos", id: "servicos" },
+  { label: "Sistemas", href: "#produtos", id: "produtos" },
+  { label: "Trabalhos", href: "#trabalhos", id: "trabalhos" },
+  { label: "Como funciona", href: "#como-funciona", id: "como-funciona" },
   { label: "Sobre", href: "#sobre", id: "sobre" },
-  { label: "Contato", href: "#contato", id: "contato" },
 ];
 
 export default function Header() {
@@ -28,7 +28,7 @@ export default function Header() {
       setHasScrolled(window.scrollY > 12);
 
       if (pageBottom) {
-        setActiveSection("contato");
+        setActiveSection("sobre");
         return;
       }
 
@@ -100,9 +100,9 @@ export default function Header() {
           href={contact.whatsapp}
           target="_blank"
           rel="noreferrer"
-          className="hidden items-center rounded-xl bg-[#1E90FF] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#1679D8] lg:inline-flex"
+          className="hidden items-center rounded-xl bg-gradient-to-r from-[#3FE3FF] to-[#1E90FF] px-5 py-3 text-sm font-extrabold text-[#06101F] transition hover:brightness-110 lg:inline-flex"
         >
-          Falar com a San_Node
+          Pedir orçamento
           <MessageCircle className="ml-2 h-4 w-4" />
         </a>
 
@@ -135,9 +135,9 @@ export default function Header() {
               target="_blank"
               rel="noreferrer"
               onClick={() => setIsOpen(false)}
-              className="mt-2 inline-flex items-center justify-center rounded-xl bg-[#1E90FF] px-4 py-3 text-sm font-bold text-white"
+              className="mt-2 inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#3FE3FF] to-[#1E90FF] px-4 py-3 text-sm font-extrabold text-[#06101F]"
             >
-              Falar no WhatsApp
+              Pedir orçamento
               <MessageCircle className="ml-2 h-4 w-4" />
             </a>
           </nav>

@@ -43,6 +43,36 @@ export const mesaFlowCurrentCase: ProjectCase = {
     "Módulos adaptáveis à realidade de cada estabelecimento.",
     "Produto preparado para continuar evoluindo em gestão, custos e estoque.",
   ],
+  gallerySection: {
+    title: "Do pedido à cozinha",
+    description: "Dados de demonstração. O garçom lança o pedido e cada item chega ao setor certo.",
+  },
+  gallery: [
+    {
+      src: "/projetos/mesaflow/garcom-pedido.jpg",
+      width: 800,
+      height: 896,
+      alt: "Tela do garçom lançando um pedido no MesaFlow",
+      caption: "Garçom lança o pedido, com observação por item.",
+      layout: "third",
+    },
+    {
+      src: "/projetos/mesaflow/preparo-setores.jpg",
+      width: 800,
+      height: 896,
+      alt: "Painel de preparo por setores do MesaFlow",
+      caption: "Preparo separado por setor: cozinha, bar, churrasqueira.",
+      layout: "third",
+    },
+    {
+      src: "/projetos/mesaflow/dashboard-mobile.jpg",
+      width: 800,
+      height: 896,
+      alt: "Dashboard operacional do MesaFlow",
+      caption: "Dashboard com mesas, delivery e caixa em tempo real.",
+      layout: "third",
+    },
+  ],
   stack: [
     "Next.js",
     "React",

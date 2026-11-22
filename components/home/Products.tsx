@@ -1,60 +1,67 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 
-const products = [
-  {
-    name: "OficinaNode",
-    description:
-      "Gestão para oficinas de carro e moto, reunindo ordem de serviço, financeiro, estoque, clientes, veículos e rotina operacional.",
-    status: "Produto próprio em evolução",
-    href: "/projetos/oficinanode",
-  },
-  {
-    name: "AgendaNode",
-    description:
-      "Agendamento online para negócios de atendimento, com serviços, profissionais, disponibilidade e comunicação integrada.",
-    status: "Produto próprio em evolução",
-    href: "/projetos/agendanode",
-  },
-  {
-    name: "MesaFlow",
-    description:
-      "Pedidos e gestão para alimentação, evoluindo para ficha técnica, precificação, estoque e visão financeira do estabelecimento.",
-    status: "Produto próprio em evolução",
-    href: "/projetos/mesaflow-sistema-garcom",
-  },
-] as const;
+import CaseCover from "@/components/CaseCover";
+import { products } from "@/data/home";
 
 export default function Products() {
   return (
     <section id="produtos" className="container-site py-20 md:py-28">
-      <div className="max-w-3xl">
-        <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#3FE3FF]">Produtos</p>
-        <h2 className="mt-4 text-3xl font-extrabold leading-tight text-[#F7FBFF] md:text-5xl">
-          Soluções que nasceram de problemas reais de operação.
+      <div className="max-w-2xl">
+        <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#3FE3FF]">Sistemas prontos</p>
+        <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-[-0.04em] text-[#F7FBFF] md:text-5xl">
+          Já feitos, testados e em evolução.
         </h2>
-        <p className="mt-5 text-base leading-8 text-[#A8B6CC]">
-          Além dos projetos sob medida, a San_Node mantém produtos próprios que são
-          testados, ajustados e ampliados a partir do uso em cenários reais.
+        <p className="mt-4 text-base leading-7 text-[#A8B6CC]">
+          Comece com um produto pronto ou peça um sistema do zero.
         </p>
       </div>
 
-      <div className="mt-12 divide-y divide-[#243B5A]/70 border-y border-[#243B5A]/70">
-        {products.map((product, index) => (
-          <article key={product.name} className="grid gap-4 py-7 md:grid-cols-[4rem_0.55fr_1fr_auto] md:items-start md:gap-6">
-            <span className="text-xs font-bold tabular-nums text-[#3FE3FF]">0{index + 1}</span>
-            <h3 className="text-xl font-extrabold text-[#F7FBFF]">{product.name}</h3>
-            <p className="text-sm leading-7 text-[#A8B6CC]">{product.description}</p>
-            <div className="flex flex-col items-start gap-3 md:items-end">
-              <span className="w-fit rounded-full border border-[#3FE3FF]/25 bg-[#3FE3FF]/6 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#9DEEFF]">
-                {product.status}
-              </span>
+      <div className="mt-12 grid gap-5 lg:grid-cols-3">
+        {products.map((product) => (
+          <article
+            key={product.name}
+            className="flex flex-col rounded-2xl border border-[#243B5A] bg-[#101A31]/80 p-7 transition hover:border-[#3FE3FF]/40"
+          >
+            <CaseCover
+              title={product.name}
+              image={"image" in product ? product.image : undefined}
+              url={"demoHref" in product ? product.demoHref : undefined}
+              sizes="(max-width: 1024px) 100vw, 33vw"
+            />
+            <span className="mt-6 w-fit rounded-full border border-[#3FE3FF]/25 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#9DEEFF]">
+              {product.status}
+            </span>
+            <h3 className="mt-4 text-3xl font-extrabold tracking-[-0.03em] text-[#F7FBFF]">{product.name}</h3>
+            <p className="mt-1 text-sm font-semibold text-[#3FE3FF]">{product.forWho}</p>
+            <p className="mt-4 text-base leading-7 text-[#B7C5D9]">{product.pain}</p>
+
+            <ul className="mt-6 grid gap-2.5">
+              {product.features.map((feature) => (
+                <li key={feature} className="flex items-center gap-2.5 text-sm font-semibold text-[#DFF0FA]">
+                  <Check className="h-4 w-4 shrink-0 text-[#3FE3FF]" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-1 pt-7">
+              {"demoHref" in product ? (
+                <a
+                  href={product.demoHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center text-sm font-bold text-[#F7FBFF] transition hover:text-[#3FE3FF]"
+                >
+                  Ver funcionando
+                  <ArrowUpRight className="ml-1.5 h-4 w-4" />
+                </a>
+              ) : null}
               <Link
-                href={product.href}
-                className="inline-flex items-center text-sm font-bold text-[#DFF9FF] transition hover:text-[#3FE3FF]"
+                href={product.caseHref}
+                className="inline-flex min-h-11 items-center text-sm font-bold text-[#7F93AD] transition hover:text-[#3FE3FF]"
               >
-                Ver case
-                <ArrowUpRight className="ml-1.5 h-4 w-4" />
+                Detalhes
               </Link>
             </div>
           </article>

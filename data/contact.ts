@@ -18,3 +18,7 @@ export const contact = {
   instagram: "https://www.instagram.com/san_node",
   linkedin: "https://www.linkedin.com/in/flavio-oliveira",
 };
+
+export function whatsappLink(message: string) {
+  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+}

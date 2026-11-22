@@ -15,7 +15,7 @@ export default function Footer() {
         <div>
           <p className="text-2xl font-extrabold text-[#F7FBFF]">{contact.brand}</p>
           <p className="mt-2 max-w-xl text-sm leading-6 text-[#8FA1B9]">
-            Sites, sistemas e automações para organizar processos e fortalecer negócios no digital.
+            Seu negócio sai do caderno. Sites, sistemas e automações sob medida, em Natal e todo o Brasil.
           </p>
           <p className="mt-5 text-xs text-[#667B98]">© 2026 — San_Node. Desenvolvimento por {contact.name}.</p>
         </div>
