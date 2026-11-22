@@ -2,27 +2,37 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const INTRO_DURATION_MS = 2600;
 const STORAGE_KEY = "sannode-intro-seen";
+
+/** Libera a rolagem da página (a abertura a trava enquanto toca). */
+function unlockScroll() {
+  document.body.style.overflow = "";
+  document.documentElement.style.overflow = "";
+}
 
 /** Abertura: a logo (PNG, sem moldura) surge com luz e o nome aparece embaixo. Uma vez por sessão. */
 export default function SanNodeIntro() {
   const reduceMotion = useReducedMotion();
   const [visible, setVisible] = useState(true);
+  const closedRef = useRef(false);
 
   const closeIntro = useCallback(() => {
+    closedRef.current = true;
     try {
       window.sessionStorage.setItem(STORAGE_KEY, "1");
     } catch {
       /* sessionStorage indisponível: tudo bem */
     }
-    document.documentElement.removeAttribute("data-intro");
+    unlockScroll();
     setVisible(false);
   }, []);
 
   useEffect(() => {
+    if (closedRef.current) return;
+
     // O script do <head> só marca data-intro na primeira visita da sessão (e fora de robôs).
     const shouldPlay = document.documentElement.getAttribute("data-intro") === "1";
 
@@ -31,8 +41,6 @@ export default function SanNodeIntro() {
       return () => window.clearTimeout(skip);
     }
 
-    const previousBodyOverflow = document.body.style.overflow;
-    const previousHtmlOverflow = document.documentElement.style.overflow;
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
 
@@ -40,13 +48,12 @@ export default function SanNodeIntro() {
 
     return () => {
       window.clearTimeout(timer);
-      document.body.style.overflow = previousBodyOverflow;
-      document.documentElement.style.overflow = previousHtmlOverflow;
+      unlockScroll();
     };
   }, [closeIntro, reduceMotion]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={() => document.documentElement.removeAttribute("data-intro")}>
       {visible ? (
         <motion.div
           key="sannode-intro"
