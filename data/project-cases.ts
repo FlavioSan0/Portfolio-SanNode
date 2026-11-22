@@ -836,7 +836,7 @@ export function shouldUsePublishedScreenPreview(
 ) {
   return (
     (project.category === "Site" || project.category === "Sistema") &&
-    project.status === "Publicado"
+    (project.status === "Publicado" || project.status === "MVP funcional")
   );
 }
 
