@@ -61,8 +61,8 @@ export default function Contact() {
     <section id="contato" className="container-site py-20 md:py-28">
       <Reveal duration={700} distance={26} initialScale={0.985}>
         <div className="relative overflow-hidden rounded-[2rem] border border-[#3FE3FF]/25 bg-[linear-gradient(135deg,#0B2A5B,#0F1B3D_70%)] p-6 md:p-12">
-          <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#3FE3FF]/20 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-28 -left-20 h-64 w-64 rounded-full bg-[#1E90FF]/20 blur-3xl" />
+          <div className="pointer-events-none absolute -right-24 -top-24 hidden h-80 w-80 md:block rounded-full bg-[#3FE3FF]/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-28 -left-20 hidden h-64 w-64 md:block rounded-full bg-[#1E90FF]/20 blur-3xl" />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(63,227,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(63,227,255,0.05)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_80%_0%,black,transparent_65%)]" />
 
           <div className="relative z-10 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14">

@@ -5,6 +5,7 @@ import { ArrowUpRight, LoaderCircle, RefreshCw } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
 import type { LivePreviewConfig } from "@/data/project-cases";
+import { useCanEmbed } from "@/lib/use-can-embed";
 
 type LiveProjectPreviewProps = {
   url: string;
@@ -34,6 +35,7 @@ export default function LiveProjectPreview({
   config,
 }: LiveProjectPreviewProps) {
   const isCard = variant === "card";
+  const canEmbed = useCanEmbed();
   const previewAreaRef = useRef<HTMLDivElement>(null);
   const [previewState, setPreviewState] = useState<PreviewState>("loading");
   const [reloadKey, setReloadKey] = useState(0);
@@ -48,7 +50,7 @@ export default function LiveProjectPreview({
   const offsetY = config?.offsetY ?? 0;
 
   useEffect(() => {
-    if (isCard) return;
+    if (isCard || !canEmbed) return;
 
     const element = previewAreaRef.current;
     if (!element) return;
@@ -62,17 +64,17 @@ export default function LiveProjectPreview({
     const observer = new ResizeObserver(updateSize);
     observer.observe(element);
     return () => observer.disconnect();
-  }, [isCard]);
+  }, [isCard, canEmbed]);
 
   useEffect(() => {
-    if (isCard) return;
+    if (isCard || !canEmbed) return;
 
     const timeout = window.setTimeout(() => {
       setPreviewState((current) => (current === "loading" ? "failed" : current));
     }, 10000);
 
     return () => window.clearTimeout(timeout);
-  }, [isCard, previewUrl, reloadKey]);
+  }, [isCard, canEmbed, previewUrl, reloadKey]);
 
   const iframeStyle = useMemo<CSSProperties>(() => {
     if (!previewSize.width) {
@@ -103,6 +105,38 @@ export default function LiveProjectPreview({
           sizes="33vw"
           className="object-cover object-top"
         />
+      </div>
+    );
+  }
+
+  if (!canEmbed) {
+    return (
+      <div className="rounded-[1.5rem] border border-[#3FE3FF]/20 bg-[#0F1B3D] p-3 shadow-[0_18px_45px_rgba(0,0,0,0.22)]">
+        <div className="overflow-hidden rounded-[1.1rem] border border-[#243B5A] bg-[#08101F]">
+          <div className="flex h-10 items-center gap-2 border-b border-[#243B5A]/70 bg-[#101A31] px-4">
+            <span className="min-w-0 flex-1 truncate text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#8FA1B9]">
+              {hostname}
+            </span>
+          </div>
+          <div className="relative aspect-[16/10]">
+            <Image
+              src={fallbackImage}
+              alt={`Capa do projeto ${title}`}
+              fill
+              sizes="100vw"
+              className="object-cover object-top"
+            />
+          </div>
+          <a
+            href={url}
+            target="_blank"
+            rel="noreferrer"
+            className="flex min-h-12 items-center justify-center gap-2 border-t border-white/8 bg-[#08101F] px-4 text-xs font-bold uppercase tracking-[0.12em] text-[#DFF9FF] hover:text-[#3FE3FF]"
+          >
+            Abrir o site ao vivo
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+        </div>
       </div>
     );
   }

@@ -32,12 +32,25 @@ export default function ScrollNodeS() {
       path!.style.strokeDasharray = String(total);
     });
 
-    let frame = 0;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktop = window.matchMedia("(min-width: 1024px)");
 
-    function update() {
+    let frame = 0;
+    let maxScroll = 0;
+    let lastProgress = -1;
+
+    // A altura da página só é medida quando ela muda (e não a cada quadro da rolagem).
+    function measure() {
+      maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    }
+
+    function update(force = false) {
       frame = 0;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       const progress = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0;
+
+      // Mudança minúscula: não vale redesenhar o SVG.
+      if (!force && Math.abs(progress - lastProgress) < 0.002) return;
+      lastProgress = progress;
 
       bases.forEach((path, index) => {
         const total = lengths[index];
@@ -55,21 +68,34 @@ export default function ScrollNodeS() {
         node?.setAttribute("fill-opacity", progress >= S_NODES[index].at ? "1" : "0.14");
       });
 
-      // Paralaxe leve: o S sobe e cresce um pouco ao longo da página.
-      stage!.style.transform = `translate3d(0, ${(-progress * 6).toFixed(2)}vh, 0) scale(${(1 + progress * 0.07).toFixed(3)})`;
+      // Paralaxe leve (só em tela grande e sem "reduzir movimento"): o S sobe e cresce um pouco.
+      // No celular o S fica parado; só o caminho aceso e os nós acompanham a rolagem.
+      stage!.style.transform =
+        desktop.matches && !reduceMotion.matches
+          ? `translate3d(0, ${(-progress * 6).toFixed(2)}vh, 0) scale(${(1 + progress * 0.07).toFixed(3)})`
+          : "";
     }
 
     function requestUpdate() {
-      if (!frame) frame = window.requestAnimationFrame(update);
+      if (!frame) frame = window.requestAnimationFrame(() => update());
     }
 
-    update();
+    function onResize() {
+      measure();
+      frame = window.requestAnimationFrame(() => update(true));
+    }
+
+    measure();
+    update(true);
     window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
+    const resizeObserver = new ResizeObserver(onResize);
+    resizeObserver.observe(document.body);
+    window.addEventListener("resize", onResize);
 
     return () => {
       window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
+      window.removeEventListener("resize", onResize);
+      resizeObserver.disconnect();
       if (frame) window.cancelAnimationFrame(frame);
     };
   }, []);
@@ -80,7 +106,7 @@ export default function ScrollNodeS() {
     <div className="absolute inset-0 grid place-items-center overflow-hidden lg:pl-[16vw]" aria-hidden="true">
       <div className="absolute h-[70vh] w-[70vh] rounded-full bg-[radial-gradient(circle,rgba(30,144,255,0.16),transparent_65%)] lg:translate-x-[16vw]" />
 
-      <div ref={stageRef} className="will-change-transform">
+      <div ref={stageRef} className="lg:will-change-transform">
         <svg viewBox={S_VIEWBOX} className="h-[92vh] w-auto max-w-none opacity-60 sm:opacity-100">
           <defs>
             <linearGradient id="sannode-s-gradient" gradientUnits="userSpaceOnUse" x1="0" y1="297" x2="0" y2="727">
@@ -107,6 +133,7 @@ export default function ScrollNodeS() {
           {paths.map((d, index) => (
             <path
               key={`glow-${index}`}
+              className="max-md:hidden"
               ref={(element) => {
                 glowPaths.current[index] = element;
               }}
@@ -161,7 +188,7 @@ export default function ScrollNodeS() {
               }}
               style={{ visibility: "hidden" }}
             >
-              <circle r="44" fill="#3FE3FF" fillOpacity="0.14" className="motion-safe:animate-pulse" />
+              <circle r="44" fill="#3FE3FF" fillOpacity="0.14" className="md:motion-safe:animate-pulse" />
               <circle r="20" fill="#3FE3FF" />
               <circle r="8" fill="#0A1020" />
             </g>

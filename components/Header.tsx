@@ -57,8 +57,8 @@ export default function Header() {
       className={[
         "sticky top-0 z-50 border-b transition-all duration-300",
         hasScrolled
-          ? "border-[#243B5A]/70 bg-[#0A1020]/88 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl"
-          : "border-[#243B5A]/35 bg-[#0A1020]/68 backdrop-blur-lg",
+          ? "border-[#243B5A]/70 bg-[#0A1020]/96 shadow-[0_18px_50px_rgba(0,0,0,0.22)] lg:bg-[#0A1020]/88 lg:backdrop-blur-xl"
+          : "border-[#243B5A]/35 bg-[#0A1020]/90 lg:bg-[#0A1020]/68 lg:backdrop-blur-lg",
       ].join(" ")}
     >
       <div className="container-site flex items-center justify-between py-4">
@@ -116,7 +116,7 @@ export default function Header() {
       </div>
 
       {isOpen ? (
-        <div className="border-t border-[#243B5A]/60 bg-[#0A1020]/96 backdrop-blur-xl lg:hidden">
+        <div className="border-t border-[#243B5A]/60 bg-[#0A1020] lg:hidden">
           <nav className="container-site flex flex-col gap-1 py-4" aria-label="Navegação mobile">
             {navItems.map((item) => (
               <a

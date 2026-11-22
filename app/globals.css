@@ -30,3 +30,10 @@
 html[data-intro="1"] .sannode-intro {
   display: block;
 }
+
+/* Celular: faixas brancas opacas (sem transparência sobre o fundo animado, que obrigaria a redesenhar a cada rolagem). */
+@media (max-width: 767px) {
+  .band-light {
+    --band-alpha: 1;
+  }
+}

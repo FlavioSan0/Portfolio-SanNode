@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
+import { useCanEmbed } from "@/lib/use-can-embed";
+
 type CaseCoverProps = {
   title: string;
   image?: string;
@@ -32,10 +34,12 @@ export default function CaseCover({ title, image, url, live = true, sizes = "(ma
   const [active, setActive] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [scale, setScale] = useState(0);
+  const canEmbed = useCanEmbed();
+  const embed = Boolean(url) && live && canEmbed;
 
   useEffect(() => {
     const element = areaRef.current;
-    if (!element || !url || !live) return;
+    if (!element || !embed) return;
 
     const resizeObserver = new ResizeObserver(() => {
       setScale(element.getBoundingClientRect().width / VIEWPORT.width);
@@ -57,7 +61,7 @@ export default function CaseCover({ title, image, url, live = true, sizes = "(ma
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
     };
-  }, [url, live]);
+  }, [embed]);
 
   return (
     <div className="overflow-hidden rounded-xl border border-[#243B5A] bg-[#0A1020]">
@@ -66,7 +70,7 @@ export default function CaseCover({ title, image, url, live = true, sizes = "(ma
         <span className="h-2 w-2 rounded-full bg-[#3B5270]" />
         <span className="h-2 w-2 rounded-full bg-[#3B5270]" />
         <span className="ml-2 min-w-0 flex-1 truncate text-[0.68rem] font-semibold text-[#7F93AD]">{hostOf(url)}</span>
-        {url && live ? (
+        {embed ? (
           <span className="flex items-center gap-1.5 text-[0.6rem] font-bold uppercase tracking-[0.14em] text-[#9DEEFF]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#3FE3FF] motion-safe:animate-pulse" />
             Ao vivo
@@ -88,7 +92,7 @@ export default function CaseCover({ title, image, url, live = true, sizes = "(ma
           </div>
         )}
 
-        {url && live && active && scale > 0 ? (
+        {embed && active && scale > 0 ? (
           <iframe
             src={url}
             title={`Site ${title} ao vivo`}
