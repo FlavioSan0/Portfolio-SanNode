@@ -5,7 +5,7 @@ import { offers } from "@/data/home";
 
 export default function WorkFronts() {
   return (
-    <section id="servicos" className="relative bg-[#F5F8FC]">
+    <section id="servicos" className="band-light">
       <div className="container-site py-20 md:py-24">
         <h2 className="max-w-2xl text-3xl font-extrabold leading-tight tracking-[-0.04em] text-[#0A1020] md:text-5xl">
           O que eu faço

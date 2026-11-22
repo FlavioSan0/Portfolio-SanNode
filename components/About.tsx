@@ -4,7 +4,7 @@ import { about } from "@/data/home";
 
 export default function About() {
   return (
-    <section id="sobre" className="relative bg-[#F5F8FC]">
+    <section id="sobre" className="band-light">
       <div className="container-site py-20 md:py-28">
       <div className="grid items-center gap-10 rounded-3xl border border-[#D6E2F0] bg-white p-7 shadow-[0_14px_36px_rgba(10,16,32,0.07)] md:grid-cols-[auto_1fr] md:gap-12 md:p-10">
         <div className="relative h-40 w-40 overflow-hidden rounded-2xl border border-[#D6E2F0] md:h-52 md:w-52">

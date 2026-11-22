@@ -8,3 +8,15 @@
 @import "./styles/animations.css";
 @import "./styles/section-transitions.css";
 @import "./styles/responsive.css";
+
+/* Faixas brancas com corte inclinado (sobem para a direita, como o S da logo).
+   O corte deixa ver o fundo azul escuro com o S por trás. */
+.band-light {
+  --cut: clamp(28px, 4.5vw, 72px);
+  position: relative;
+  z-index: 1;
+  background: #f5f8fc;
+  margin-block: calc(var(--cut) * -1);
+  padding-block: var(--cut);
+  clip-path: polygon(0 var(--cut), 100% 0, 100% calc(100% - var(--cut)), 0 100%);
+}

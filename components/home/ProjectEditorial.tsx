@@ -34,7 +34,7 @@ function CaseCard({ item, large }: { item: FeaturedCase; large?: boolean }) {
 
 export default function ProjectEditorial() {
   return (
-    <section id="trabalhos" className="relative bg-[#F5F8FC]">
+    <section id="trabalhos" className="band-light">
       <div className="container-site py-20 md:py-28">
         <h2 className="max-w-2xl text-3xl font-extrabold leading-tight tracking-[-0.04em] text-[#0A1020] md:text-5xl">
           Trabalhos no ar
