@@ -7,6 +7,7 @@ type CaseCoverProps = {
   title: string;
   image?: string;
   url?: string;
+  live?: boolean;
   sizes?: string;
 };
 
@@ -26,7 +27,7 @@ function hostOf(url?: string) {
  * O print fica por baixo como fundo enquanto o site carrega (e se ele não carregar).
  * O site só começa a carregar quando a capa se aproxima da tela.
  */
-export default function CaseCover({ title, image, url, sizes = "(max-width: 768px) 100vw, 50vw" }: CaseCoverProps) {
+export default function CaseCover({ title, image, url, live = true, sizes = "(max-width: 768px) 100vw, 50vw" }: CaseCoverProps) {
   const areaRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -34,7 +35,7 @@ export default function CaseCover({ title, image, url, sizes = "(max-width: 768p
 
   useEffect(() => {
     const element = areaRef.current;
-    if (!element || !url) return;
+    if (!element || !url || !live) return;
 
     const resizeObserver = new ResizeObserver(() => {
       setScale(element.getBoundingClientRect().width / VIEWPORT.width);
@@ -56,7 +57,7 @@ export default function CaseCover({ title, image, url, sizes = "(max-width: 768p
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
     };
-  }, [url]);
+  }, [url, live]);
 
   return (
     <div className="overflow-hidden rounded-xl border border-[#243B5A] bg-[#0A1020]">
@@ -65,7 +66,7 @@ export default function CaseCover({ title, image, url, sizes = "(max-width: 768p
         <span className="h-2 w-2 rounded-full bg-[#3B5270]" />
         <span className="h-2 w-2 rounded-full bg-[#3B5270]" />
         <span className="ml-2 min-w-0 flex-1 truncate text-[0.68rem] font-semibold text-[#7F93AD]">{hostOf(url)}</span>
-        {url ? (
+        {url && live ? (
           <span className="flex items-center gap-1.5 text-[0.6rem] font-bold uppercase tracking-[0.14em] text-[#9DEEFF]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#3FE3FF] motion-safe:animate-pulse" />
             Ao vivo
@@ -87,7 +88,7 @@ export default function CaseCover({ title, image, url, sizes = "(max-width: 768p
           </div>
         )}
 
-        {url && active && scale > 0 ? (
+        {url && live && active && scale > 0 ? (
           <iframe
             src={url}
             title={`Site ${title} ao vivo`}

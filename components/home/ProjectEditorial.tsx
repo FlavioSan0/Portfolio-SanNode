@@ -12,6 +12,7 @@ function CaseCard({ item, large }: { item: FeaturedCase; large?: boolean }) {
           title={item.title}
           image={item.image}
           url={item.liveUrl}
+          live={item.embed !== false}
           sizes={large ? "(max-width: 1024px) 100vw, 50vw" : "(max-width: 1024px) 100vw, 33vw"}
         />
       </Link>

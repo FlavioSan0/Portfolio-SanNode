@@ -20,7 +20,7 @@ type ProjectCaseLayoutProps = {
 
 export default function ProjectCaseLayout({ project, previousProject, nextProject }: ProjectCaseLayoutProps) {
   const cover = getProjectCoverMedia(project);
-  const useLivePublishedPreview = shouldUsePublishedScreenPreview(project) && Boolean(project.liveUrl);
+  const useLivePublishedPreview = shouldUsePublishedScreenPreview(project) && Boolean(project.liveUrl) && project.liveEmbed !== false;
 
   return (
     <CaseImageLightbox items={getProjectMedia(project)}>

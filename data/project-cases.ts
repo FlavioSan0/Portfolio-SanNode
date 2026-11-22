@@ -49,6 +49,8 @@ export type ProjectCase = {
   liveUrl?: string;
   liveLabel?: string;
   livePreview?: LivePreviewConfig;
+  /** false quando o site publicado bloqueia ser aberto dentro de outro site (X-Frame-Options / frame-ancestors). */
+  liveEmbed?: boolean;
   tags: string[];
   overview: string;
   challenge: string;

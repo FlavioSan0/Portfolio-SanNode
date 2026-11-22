@@ -84,6 +84,7 @@ export type FeaturedCase = {
   outcome: string;
   image?: string;
   liveUrl?: string;
+  embed?: boolean;
 };
 
 export const featuredCases: FeaturedCase[] = [
@@ -102,6 +103,7 @@ export const featuredCases: FeaturedCase[] = [
     outcome: "Site profissional que explica o atendimento online e simplifica o primeiro contato.",
     image: "/projetos/matheus-alexandre/home.jpg",
     liveUrl: "https://matheus-alexandre-site.vercel.app",
+    embed: false,
   },
   {
     slug: "paroquia-santuario",
